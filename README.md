@@ -11,3 +11,13 @@ How to setup AMS
 How to edit screens/htmls
 1. Go to the corresponding templates folder
 2. Edit the html file
+
+How to add new screens to urls and views
+1. Add the new html to the corresponding templates folder
+2. Open the corresponding views.py in the app
+3. Create the view function<br>
+    def <i>functionname</i>(request):<br>
+	    &nbsp;&nbsp;&nbsp;&nbsp;return render(request, '<i>appname</i>/htmlfile.html')
+4. Add the view function to urlspath in urls.py<br>
+    1. Add an import:  <i>from . import views</i>
+    2.  Add a URL to urlpatterns:  <i>path('pathname/', views.functionname, name='home')</i>
