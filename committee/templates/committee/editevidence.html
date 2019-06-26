@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add Evidence</title>
+    <title>Edit Evidence</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -86,8 +86,8 @@
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item">Document Outline</li>
-          <li class="breadcrumb-item active">Add Evidence</li>
+          <li class="breadcrumb-item">Evidence List</li>
+          <li class="breadcrumb-item active">Edit Evidence</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -97,7 +97,7 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>Add Evidence</strong>
+                    <strong>Edit Evidence</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
@@ -110,7 +110,7 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <i><label for="name">Evidence Name</label></i>
-                          <input class="form-control" id="name" type="text" placeholder="Enter Source">
+                          <input class="form-control" id="name" type="text" placeholder="Enter Evidence Name">
                         </div>
                       </div>
                       <div class="col-sm-3">
@@ -136,17 +136,15 @@
                         </div>
                       </div>
                     </div>
-                    <br>
-                    <div id="moreEvidence">
-                    </div>
-                    <br><br>
                     <div class="row">
-                      <div class="col-sm-4">
+                      <div class="col-sm-3">
                         <div class="form-group">
-                          <button class="btn btn-primary" type="button" onclick="moreEvidence()">Add More Evidence</button>
+                          <i><label for="name">Evidence Code</label></i>
+                          <input class="form-control" id="name" type="text" placeholder="Enter Evidence Code">
                         </div>
                       </div>
                     </div>
+                    <br>
                   </div>
                   <div class="card-footer">
                     <button class="btn btn-primary" type="button"><a href="criteriachecklist.html" style="text-decoration: none; color:white;">Save</a></button>
