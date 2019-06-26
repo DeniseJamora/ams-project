@@ -103,53 +103,82 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">Program Name</label></i>
-                          <input class="form-control" id="accreditingbody" type="text" placeholder="Ex. BS Information Systems">
+                          <input class="form-control" id="programname" type="text" placeholder="Ex. BS Information Systems">
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">Program Code</label></i>
-                          <input class="form-control" id="accreditingbody" type="text" placeholder="Ex. BSINSYS">
+                          <input class="form-control" id="programcode" type="text" placeholder="Ex. BSINSYS">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <i><label for="name">Year Started</label></i>
-                          <input class="form-control" id="accreditingbody" type="text" placeholder="">
+                          <i><label for="name">Date Started</label></i>
+                          <input class="form-control" id="startdate" type="month" placeholder="">
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">No of years with graduates</label></i>
-                          <input class="form-control" id="accreditingbody" type="text" placeholder="">
+                          <input class="form-control" id="graduates" type="number" min="0" placeholder="Ex. 1">
                         </div>
                       </div>
                     </div>
+                    <hr>
                     <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-3">
                         <div class="form-group">
                           <i><label for="name">Previous Accreditations</label></i>
-                          <br><br>
-                          <p><input type="checkbox" name=""> N/A</p>
-                          <br>
-                          <ol id="accreditation">
-                          </ol>
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="form-group">
+                          <p><input type="checkbox" name=""> None</p>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-4">
-                        <input class="form-control" id="accreditationInput" type="text" placeholder="Ex. PAASCU Level IV 2018">
+                      <div class="form-group col-sm-2">
+                        <i><label for="period">Accreditation Agency</label></i>
                       </div>
-                      <div class="col-sm-2">
-                        <div class="form-group">
-                          <button class="btn btn-primary" type="button" onclick="newAccreditation()">Add Accreditation</button>
-                        </div>
+                      <div class="form-group col-sm-2">
+                        <i><label for="area">Level</label></i>
                       </div>
-                    </div> 
-                    <br>
+                      <div class="form-group col-sm-3">
+                        <i><label for="team">Start Date</label></i>
+                      </div>
+                      <div class="form-group col-sm-5">
+                        <i><label for="position">End Date</label></i>
+                      </div>
+                    </div>
+                    <div id="prevacc">
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-2">
+                        <select class="form-control" id="paAgencyIn">
+                          <option>PAASCU</option>
+                          <option>PACUCOA</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <select class="form-control" id="paLevelIn">
+                          <option>1</option>
+                          <option>2</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-sm-3">
+                        <input class="form-control" id="paStartDateIn" type="month" placeholder="">
+                      </div>
+                      <div class="form-group col-sm-3">
+                        <input class="form-control" id="paEndDateIn" type="month" placeholder="">
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <button class="btn btn-primary" type="button" onclick="newAccreditation()">Add Accreditation</button>
+                      </div>
+                    </div>
                   </div>
                   <div class="card-footer">
                     <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Save</a></button>
@@ -194,21 +223,40 @@
 
     <script>
 
-      var i = 0;
-      var j = 0;
+      var i = 1;
 
       // Create a new list item when clicking on the "Add" button
       function newAccreditation() {
-        var item = document.getElementById("accreditationInput").value;
-        var x = '<li style="padding-bottom: 10px">'+ item +'</li>';
-        if (item === '') {
+        var agency = document.getElementById("paAgencyIn").value;
+        var level = document.getElementById("paLevelIn").value;
+        var start = document.getElementById("paStartDateIn").value;
+        var end = document.getElementById("paEndDateIn").value;
+        var x = '<div class="row">'+
+                      '<div class="col-sm-2">'+
+                        '<p>'+ agency + '</p>'+
+                      '</div>'+
+                      '<div class="col-sm-2">'+
+                        '<p>' + level + '</p>'+
+                      '</div>'+
+                      '<div class="col-sm-3">'+
+                        '<p>' + start + '</p>'+
+                      '</div>'+
+                      '<div class="col-sm-5">'+
+                        '<p>' + end + '</p>'+
+                      '</div>'+
+                    '</div>';
+        //var x = '<li style="padding-bottom: 10px">'+ item +'</li>';
+        if (agency === '' || level === '' || start === '' || end === '') {
           alert("You must write something!");
         }
         else {
-          document.getElementById("accreditation").insertAdjacentHTML('beforeend', x);
-          j++;
+          document.getElementById("prevacc").insertAdjacentHTML('beforeend', x);
+          i++;
         }
-        document.getElementById("accreditationInput").value = "";
+        document.getElementById("paAgencyIn").value = "";
+        document.getElementById("paLevelIn").value = "";
+        document.getElementById("paStartDateIn").value = "";
+        document.getElementById("paEndDateIn").value = "";
       }
     </script>
 
