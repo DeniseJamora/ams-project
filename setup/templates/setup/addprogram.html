@@ -231,7 +231,8 @@
         var level = document.getElementById("paLevelIn").value;
         var start = document.getElementById("paStartDateIn").value;
         var end = document.getElementById("paEndDateIn").value;
-        var x = '<div class="row">'+
+        var x = '<div id="prev'+i+'">'+
+                  '<div class="row">'+
                       '<div class="col-sm-2">'+
                         '<p>'+ agency + '</p>'+
                       '</div>'+
@@ -241,9 +242,12 @@
                       '<div class="col-sm-3">'+
                         '<p>' + start + '</p>'+
                       '</div>'+
-                      '<div class="col-sm-5">'+
+                      '<div class="col-sm-3">'+
                         '<p>' + end + '</p>'+
                       '</div>'+
+                      '<div class="col-sm-2">'+
+                      '<button class="btn btn-sm btn-danger remove" type="button" id="'+i+'" onclick="myFunction(this)">Remove</button>'+
+                    '</div>'+
                     '</div>';
         //var x = '<li style="padding-bottom: 10px">'+ item +'</li>';
         if (agency === '' || level === '' || start === '' || end === '') {
@@ -257,6 +261,14 @@
         document.getElementById("paLevelIn").value = "";
         document.getElementById("paStartDateIn").value = "";
         document.getElementById("paEndDateIn").value = "";
+      }
+
+      function myFunction(el) {
+        var y = Number(el.id);
+
+        // Click on a close button to hide the current list item
+        var div = document.getElementById("prev"+y);
+        div.style.display = "none";
       }
     </script>
 
