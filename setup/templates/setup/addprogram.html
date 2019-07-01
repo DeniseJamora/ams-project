@@ -132,14 +132,12 @@
                         <div class="form-group">
                           <i><label for="name">Previous Accreditations</label></i>
                           <br><br>
-                          <p><input type="checkbox" name=""> N/A</p>
-                          <br>
-                          <ol id="accreditation">
-                          </ol>
+                          <ul id="accreditation">
+                          </ul>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="inputs">
                       <div class="col-sm-4">
                         <input class="form-control" id="accreditationInput" type="text" placeholder="Ex. PAASCU Level IV 2018">
                       </div>
@@ -148,7 +146,12 @@
                           <button class="btn btn-primary" type="button" onclick="newAccreditation()">Add Accreditation</button>
                         </div>
                       </div>
-                    </div> 
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p><input type="checkbox" id="myCheckbox" name="" onchange="showHide(this.checked)"> N/A</p> 
+                      </div>
+                    </div>
                     <br>
                   </div>
                   <div class="card-footer">
@@ -209,6 +212,15 @@
           j++;
         }
         document.getElementById("accreditationInput").value = "";
+      }
+    </script>
+
+    <script>
+      function showHide(checked) {
+        if (checked == true)
+          $('#inputs').hide();
+        else
+          $('#inputs').show();
       }
     </script>
 

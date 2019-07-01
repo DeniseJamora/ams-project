@@ -3,6 +3,9 @@ from django.shortcuts import render
 def addagency(request):
 	return render(request, 'setup/addagency.html')
 
+def createdocuoutline(request):
+	return render(request, 'setup/createdocuoutline.html')
+
 def addprogram(request):
 	return render(request, 'setup/addprogram.html')
 
