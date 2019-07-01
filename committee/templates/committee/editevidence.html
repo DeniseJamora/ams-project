@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add Degree Program</title>
+    <title>Edit Evidence</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -86,7 +86,8 @@
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Add Degree Program</li>
+          <li class="breadcrumb-item">Evidence List</li>
+          <li class="breadcrumb-item active">Edit Evidence</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -96,85 +97,57 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>Add Degree Program</strong>
+                    <strong>Edit Evidence</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm">
+                          <label for="name">1. There are adequate computer laboratories for all computer offerings</label>
+                      </div>
+                    </div>
+                    <br><hr><br>
+                    <div class="row">
+                      <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="pName">Program Name</label>
-                          <input class="form-control" id="name" type="text" placeholder="e.g. BS Information Technology">
+                          <i><label for="name">Evidence Name</label></i>
+                          <input class="form-control" id="name" type="text" placeholder="Enter Evidence Name">
                         </div>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="pCode">Program Code</label>
-                          <input class="form-control" id="code" type="text" placeholder="e.g. BS IT">
+                          <i><label for="name">Evidence Type</label></i>
+                          <select class="form-control" id="agency">
+                            <option>Please Select</option>
+                            <option value="Appendix">Appendix</option>
+                            <option value="Exhibit">Exhibit</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="name">Comments</label></i>
+                          <textarea class="form-control" id="textarea-input" name="textarea-input" rows="1" placeholder="Enter Description Here.."></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="name">Upload File</label></i>
+                            <input id="file-input" type="file" name="file-input">
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-3">
                         <div class="form-group">
-                          <label for="pStartDate">Date Started</label>
-                          <input class="form-control" id="start" type="month" placeholder="">
+                          <i><label for="name">Evidence Code</label></i>
+                          <input class="form-control" id="name" type="text" placeholder="Enter Evidence Code">
                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="pGraduates">No of years with graduates</label>
-                          <input class="form-control" id="graduate" type="number" min="0" placeholder="e.g. 5">
-                        </div>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-md-12" id="prev">
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <div class="form-group">
-                              <i><label for="name">Previous Accreditations</label></i>
-                              <br><br>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-sm-4">
-                            <i><p style="text-align: center">Agency</p></i>
-                          </div>
-                          <div class="form-group col-sm-4">
-                            <i><p style="text-align: center">Level</p></i>
-                          </div>
-                          <div class="form-group col-sm-4">
-                            <i><p style="text-align: center">Year</p></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <br><br>
-                    <div class="row" id="inputs">
-                      <div class="form-group col-sm-4">
-                        <input class="form-control" id="agency" type="text" placeholder="Agency">
-                      </div>
-                      <div class="form-group col-sm-4">
-                        <input class="form-control" id="level" type="text" placeholder="Level/Result of Accreditation">
-                      </div>
-                      <div class="form-group col-sm-3">
-                        <input class="form-control" id="year" type="text" placeholder="Year Accredited">
-                      </div>
-                      <div class="form-group col-sm-1">
-                        <button class="btn btn-primary" type="button" onclick="newAccreditation()">Add</button>
                       </div>
                     </div>
                     <br>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <p><input type="checkbox" id="myCheckbox" name="" onchange="showHide(this.checked)"> N/A</p> 
-                      </div>
-                    </div>
                   </div>
                   <div class="card-footer">
-                    <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Save</a></button>
+                    <button class="btn btn-primary" type="button"><a href="criteriachecklist.html" style="text-decoration: none; color:white;">Save</a></button>
                   </div>
                 </div>
               </div>
@@ -215,46 +188,40 @@
     </script>
 
     <script>
-
-      var i = 1;
-
       // Create a new list item when clicking on the "Add" button
-      function newAccreditation() {
-        var agency = document.getElementById("agency").value;
-        var level = document.getElementById("level").value;
-        var year = document.getElementById("year").value;
-
-        var x =     '<div class="row" id="inputs">'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ agency + '</p>'+
+      function moreEvidence() {
+        var x = '<div class="row">'+
+                      '<div class="col-sm-3">'+
+                        '<div class="form-group">'+
+                          '<i><label for="name">Evidence Name</label></i>'+
+                          '<input class="form-control" id="name" type="text" placeholder="Enter Source">'+
+                        '</div>'+
                       '</div>'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ level + '</p>'+
+                      '<div class="col-sm-3">'+
+                        '<div class="form-group">'+
+                          '<i><label for="name">Evidence Type</label></i>'+
+                          '<select class="form-control" id="agency">'+
+                            '<option>Please Select</option>'+
+                            '<option value="PAASCU">Appendix</option>'+
+                            '<option value="PACUCOA">Exhibit</option>'+
+                          '</select>'+
+                        '</div>'+
                       '</div>'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ year + '</p>'+
+                      '<div class="col-sm-3">'+
+                        '<div class="form-group">'+
+                          '<i><label for="name">Comments</label></i>'+
+                          '<textarea class="form-control" id="textarea-input" name="textarea-input" rows="1" placeholder="Enter Description Here.."></textarea>'+
+                        '</div>'+
                       '</div>'+
-                    '</div>';
-        //var x = '<li style="padding-bottom: 10px">'+ item +'</li>';
-        if (agency === '' || level === '' || year === '') {
-          alert("You must write something!");
-        }
-        else {
-          document.getElementById("prev").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("agency").value = "";
-        document.getElementById("level").value = "";
-        document.getElementById("year").value = "";
-      }
-    </script>
-
-    <script>
-      function showHide(checked) {
-        if (checked == true)
-          $('#inputs').hide();
-        else
-          $('#inputs').show();
+                      '<div class="col-sm-3">'+
+                        '<div class="form-group">'+
+                          '<i><label for="name">Upload File</label></i>'+
+                          '<input id="file-input" type="file" name="file-input">'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
+                    '<br>';
+        document.getElementById("moreEvidence").insertAdjacentHTML('beforeend', x);
       }
     </script>
 

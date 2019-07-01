@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add Accrediting Agency</title>
+    <title>Add Evidence</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -86,6 +86,7 @@
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item">Document Outline</li>
           <li class="breadcrumb-item active">Add Evidence</li>
           <!-- Breadcrumb Menu-->
         </ol>
@@ -100,17 +101,8 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <i><label for="name">Criteria</label></i>
-                          <input class="form-control" id="disabled-input" type="text" name="disabled-input" placeholder="A. Curriculum" disabled="">
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <i><label for="name">Item</label></i>
-                          <input class="form-control" id="disabled-input" type="text" name="disabled-input" placeholder="1. There are adequate computer laboratories for all computer offerings" disabled="">
-                        </div>
+                      <div class="col-sm">
+                          <label for="name">1. There are adequate computer laboratories for all computer offerings</label>
                       </div>
                     </div>
                     <br><hr><br>
@@ -126,8 +118,8 @@
                           <i><label for="name">Evidence Type</label></i>
                           <select class="form-control" id="agency">
                             <option>Please Select</option>
-                            <option value="PAASCU">Appendix</option>
-                            <option value="PACUCOA">Exhibit</option>
+                            <option value="Appendix">Appendix</option>
+                            <option value="Exhibit">Exhibit</option>
                           </select>
                         </div>
                       </div>

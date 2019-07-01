@@ -6,7 +6,7 @@
 * Copyright (c) 2018 creativeLabs Łukasz Holeczek
 * Licensed under MIT (https://coreui.io/license)
 -->
-{% load staticfiles %}
+{% load static %}
 <html lang="en">
   <head>
     <base href="./">
@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add New Agency</title>
+    <title>Degree Program</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -86,30 +86,54 @@
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Add New Agency</li>
+          <li class="breadcrumb-item active">Degree Program List</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
         <div class="container-fluid">
           <div class="animated fadeIn">
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-lg-12">
                 <div class="card">
-                  <div class="card-header">
-                    <strong>Add New Agency</strong>
-                  </div>
+                  <div class="card-header">Degree Program List</div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <i><label for="name">Accreditating Agency</label></i>
-                          <input class="form-control" id="accreditingbody" type="text" placeholder="Ex. PAASCU">
-                        </div>
+                      <div class="col-md-12">
+                        <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Program Name</th>
+                              <th>Program Code</th>
+                              <th>Date Started</th>
+                              <th># of graduates</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>BS Computer Science</td>
+                              <td>BS CS</td>
+                              <td>2005</td>
+                              <td>10</td>
+                              <td>
+                                <button class="btn btn-primary" type="submit">View</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <tbody>
+                            <tr>
+                              <td>BS Information Technology</td>
+                              <td>BS IT</td>
+                              <td>2010</td>
+                              <td>5</td>
+                              <td>
+                                <button class="btn btn-primary" type="submit">View</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
-                  </div>
-                  <div class="card-footer">
-                    <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Next</a></button>
                   </div>
                 </div>
               </div>
@@ -147,39 +171,6 @@
       $(document).ready( function () {
         $('#myTable').DataTable();
       } );
-    </script>
-
-    <script>
-
-      var i = 0;
-      var j = 0;
-
-      function newChecklistItem() {
-        var item = document.getElementById("checklistInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("You must write something!");
-        }
-        else     {
-          document.getElementById("generalchecklist").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("checklistInput").value = "";
-      }
-
-      // Create a new list item when clicking on the "Add" button
-      function newCriteria() {
-        var item = document.getElementById("criteriaInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("You must write something!");
-        }
-        else {
-          document.getElementById("areacriteria").insertAdjacentHTML('beforeend', x);
-          j++;
-        }
-        document.getElementById("criteriaInput").value = "";
-      }
     </script>
 
   </body>

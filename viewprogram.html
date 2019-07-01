@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add Degree Program</title>
+    <title>View Degree Program</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -86,7 +86,7 @@
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Add Degree Program</li>
+          <li class="breadcrumb-item active">Degree Program</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -96,20 +96,20 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>Add Degree Program</strong>
+                    <strong>Degree Program</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="pName">Program Name</label>
-                          <input class="form-control" id="name" type="text" placeholder="e.g. BS Information Technology">
+                            <p><strong id="pName">BS Information Technology</strong></p>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="pCode">Program Code</label>
-                          <input class="form-control" id="code" type="text" placeholder="e.g. BS IT">
+                          <p><strong id="pCode">BS IT</strong></p>
                         </div>
                       </div>
                     </div>
@@ -117,64 +117,66 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="pStartDate">Date Started</label>
-                          <input class="form-control" id="start" type="month" placeholder="">
+                          <p><strong id="pStartDate">June 2015</strong></p>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label for="pGraduates">No of years with graduates</label>
-                          <input class="form-control" id="graduate" type="number" min="0" placeholder="e.g. 5">
+                          <p><strong id="pGraduates">1</strong></p>
                         </div>
                       </div>
                     </div>
                     <hr>
                     <div class="row">
-                      <div class="col-md-12" id="prev">
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <div class="form-group">
-                              <i><label for="name">Previous Accreditations</label></i>
-                              <br><br>
-                            </div>
-                          </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <b><label for="prevacc">Previous Accreditations</label></b>
                         </div>
-                        <div class="row">
-                          <div class="form-group col-sm-4">
-                            <i><p style="text-align: center">Agency</p></i>
-                          </div>
-                          <div class="form-group col-sm-4">
-                            <i><p style="text-align: center">Level</p></i>
-                          </div>
-                          <div class="form-group col-sm-4">
-                            <i><p style="text-align: center">Year</p></i>
-                          </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="form-group">
+                          <p><input type="checkbox" name=""> None</p>
                         </div>
                       </div>
                     </div>
-                    <br><br>
-                    <div class="row" id="inputs">
-                      <div class="form-group col-sm-4">
-                        <input class="form-control" id="agency" type="text" placeholder="Agency">
-                      </div>
-                      <div class="form-group col-sm-4">
-                        <input class="form-control" id="level" type="text" placeholder="Level/Result of Accreditation">
+                    <div class="row">
+                      <div class="form-group col-sm-2">
+                        <label for="paAgency">Accreditation Agency</label>
                       </div>
                       <div class="form-group col-sm-3">
-                        <input class="form-control" id="year" type="text" placeholder="Year Accredited">
+                        <label for="paStartDate">Start Date</label>
                       </div>
-                      <div class="form-group col-sm-1">
-                        <button class="btn btn-primary" type="button" onclick="newAccreditation()">Add</button>
+                      <div class="form-group col-sm-3">
+                        <label for="paEndDate">End Date</label>
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <label for="paLevel">Level</label>
                       </div>
                     </div>
-                    <br>
+                    <div id="prev">
+                    </div>
                     <div class="row">
-                      <div class="col-md-12">
-                        <p><input type="checkbox" id="myCheckbox" name="" onchange="showHide(this.checked)"> N/A</p> 
+                      <div class="form-group col-sm-2">
+                        <p id="paAgency">PAASCU</p>
+                      </div>
+                      <div class="form-group col-sm-3">
+                        <p id="paStartDate">June 2010</p>
+                      </div>
+                      <div class="form-group col-sm-3">
+                        <p id="paEndDate">June 2015</p>
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <p id="paLevel">4</p>
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <button class="btn btn-primary" type="button" onclick="">View</button>
                       </div>
                     </div>
                   </div>
                   <div class="card-footer">
-                    <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Save</a></button>
+                    <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Go Back</a></button>
+                    <button class="btn btn-primary" type="button" onclick="">Edit</button>
                   </div>
                 </div>
               </div>
@@ -216,46 +218,6 @@
 
     <script>
 
-      var i = 1;
-
-      // Create a new list item when clicking on the "Add" button
-      function newAccreditation() {
-        var agency = document.getElementById("agency").value;
-        var level = document.getElementById("level").value;
-        var year = document.getElementById("year").value;
-
-        var x =     '<div class="row" id="inputs">'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ agency + '</p>'+
-                      '</div>'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ level + '</p>'+
-                      '</div>'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ year + '</p>'+
-                      '</div>'+
-                    '</div>';
-        //var x = '<li style="padding-bottom: 10px">'+ item +'</li>';
-        if (agency === '' || level === '' || year === '') {
-          alert("You must write something!");
-        }
-        else {
-          document.getElementById("prev").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("agency").value = "";
-        document.getElementById("level").value = "";
-        document.getElementById("year").value = "";
-      }
-    </script>
-
-    <script>
-      function showHide(checked) {
-        if (checked == true)
-          $('#inputs').hide();
-        else
-          $('#inputs').show();
-      }
     </script>
 
   </body>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v2.1.12
+* @link https://coreui.io
+* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Add Faculty</title>
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
+    <!-- Icons-->
+    <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/pace-progress/css/pace.min.css' %}" rel="stylesheet">
+
+    <!--PLUGINS AND OTHERS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      // Shared ID
+      gtag('config', 'UA-118965717-3');
+      // Bootstrap ID
+      gtag('config', 'UA-118965717-5');
+    </script>
+
+    <style>
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #888; 
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+    </style>
+
+  </head>
+  <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    <header class="app-header navbar" id="header">
+      <script>
+        $("#header").load("{% static 'header.html' %}");
+      </script>
+    </header>
+    <div class="app-body">
+      <div class="sidebar" id="sidebar">
+        <script>
+          $("#sidebar").load("{% static 'sidebar.html' %}");
+        </script>
+        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+      </div>
+      <main class="main">
+        <!-- Breadcrumb-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item active">Add Faculty</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
+<!--START OF CONTENT-->
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong>Add Faculty</strong>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="form-group col-sm-4">
+                        <label for="fLastName">Last Name</label>
+                        <input class="form-control" id="fLastName" type="text" placeholder="Ex. Dela Cruz">
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="fFirstName">First Name</label>
+                        <input class="form-control" id="fFirstName" type="text" placeholder="Ex. John">
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="fMiddleName">Middle Name</label>
+                        <input class="form-control" id="fMiddleName" type="text" placeholder="Ex. Smith">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-4">
+                        <label for="fIDNumber">ID Number</label>
+                        <input class="form-control" id="fIDNnumber" type="text" placeholder="Ex. 1234567">
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="fClassification">Faculty Classification</label>
+                        <input class="form-control" id="fClassification" type="text" placeholder="Ex. Full Time">
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="fStatus">Faculty Status</label>
+                        <select class="form-control" id="fStatus">
+                            <option value="" disabled selected hidden>Please Select</option>
+                            <option>Active</option>
+                            <option>On Leave</option>
+                            <option>Deactivate</option>
+                        </select>
+                      </div>
+                    </div>
+                    <!--Position in school-->
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <b><label for="name">Position in school</label></b>
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="form-group">
+                          <p><input type="checkbox" name=""> None</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-3">
+                          <label for="period">Position</label>
+                      </div>
+                      <div class="form-group col-sm-3">
+                        <label for="team">College / Department</label>
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <label for="position">Start Date</label>
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <label for="position">End Date</label>
+                      </div>
+                    </div>
+                    <div id="school">
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-3">
+                        <input class="form-control" id="fPosition" type="text" placeholder="Ex. Dean">
+                      </div>
+                      <div class="form-group col-sm-3">
+                        <input class="form-control" id="fCollege" type="text" placeholder="Ex. CCS - IT">
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <input class="form-control" id="fStartDate" type="month" placeholder="">
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <input class="form-control" id="fEndDate" type="month" placeholder="">
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <button class="btn btn-primary" type="button" onclick="newPosition()">Add Position</button>
+                      </div>
+                    </div>
+                    <!--Position in accreditation-->
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <b><label for="name">Position in accreditation</label></b>
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="form-group">
+                          <p><input type="checkbox" name=""> None</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-3">
+                          <label for="aAgency">Agency</label>
+                      </div>
+                      <div class="form-group col-sm-3">
+                        <label for="aCourse">Course</label>
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <label for="aPosition">Position</label>
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <label for="aDate">Date</label>
+                      </div>
+                    </div>
+                    <div id="accreditation">
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-3">
+                        <input class="form-control" id="aAgency" type="text" placeholder="Ex. PAASCU">
+                      </div>
+                      <div class="form-group col-sm-3">
+                        <input class="form-control" id="aCourse" type="text" placeholder="Ex. BS INSYS">
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <input class="form-control" id="aPosition" type="text" placeholder="Ex. Analyst - Lab">
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <input class="form-control" id="aDate" type="month" placeholder="">
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <button class="btn btn-primary" type="button" onclick="newAccPosition()">Add Position</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Save</a></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!--END OF CONTENT-->
+      </main>
+      <aside class="aside-menu" id="sidemenu">
+        <script>
+          $("#sidemenu").load("{% static 'sidemenu.html' %}");
+        </script>
+      </aside>
+    </div>
+    <footer class="app-footer">
+      <div>
+        <a href="https://coreui.io">CoreUI</a>
+        <span>&copy; 2018 creativeLabs.</span>
+      </div>
+      <div class="ml-auto">
+        <span>Powered by</span>
+        <a href="https://coreui.io">CoreUI</a>
+      </div>
+    </footer>
+    <!-- CoreUI and necessary plugins-->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/util.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <script>
+      $(document).ready( function () {
+        $('#myTable').DataTable();
+      } );
+    </script>
+
+    <script>
+
+      var i = 1;
+
+      // Create a new list item when clicking on the "Add" button
+      function newPosition() {
+        var position = document.getElementById("fPosition").value;
+        var college = document.getElementById("fCollege").value;
+        var start = document.getElementById("fStartDate").value;
+        var end = document.getElementById("fEndDate").value;
+        var x = '<div id="prev'+i+'">'+
+                    '<div class="row">'+
+                      '<div class="col-sm-3">'+
+                        '<div class="form-group">'+
+                          '<input class="form-control" id="fPosition'+i+'" type="text" value="'+position+'">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-sm-3">'+
+                        '<div class="form-group">'+
+                          '<input class="form-control" id="fCollege'+i+'" type="text" value="'+college+'">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-sm-2">'+
+                        '<div class="form-group">'+
+                          '<input class="form-control" id="fStartDate'+i+'" type="month" value="'+start+'">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-sm-2">'+
+                        '<div class="form-group">'+
+                          '<input class="form-control" id="fEndDate'+i+'" type="month" value="'+end+'">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-sm-2">'+
+                        '<button class="btn btn-sm btn-danger remove" type="button" id="'+i+'" onclick="removePosition(this)">Remove</button>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>';
+        if (position === '' || college === '' || start === '' || end === '') {
+          alert("You must write something!");
+        }
+        else {
+          document.getElementById("school").insertAdjacentHTML('beforeend', x);
+          i++;
+        }
+        document.getElementById("fPosition").value = "";
+        document.getElementById("fCollege").value = "";
+        document.getElementById("fStartDate").value = "";
+        document.getElementById("fEndDate").value = "";
+      }
+
+      function removePosition(el) {
+        var y = Number(el.id);
+
+        // Click on a close button to hide the current list item
+        var div = document.getElementById("prev"+y);
+        div.style.display = "none";
+      }
+
+      // Create a new list item when clicking on the "Add" button
+      function newAccPosition() {
+        var agency = document.getElementById("aAgency").value;
+        var course = document.getElementById("aCourse").value;
+        var position = document.getElementById("aPosition").value;
+        var date = document.getElementById("aDate").value;
+        var x = '<div id="prev'+i+'">'+
+                    '<div class="row">'+
+                      '<div class="col-sm-3">'+
+                        '<div class="form-group">'+
+                          '<input class="form-control" id="aAgency'+i+'" type="text" value="'+agency+'">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-sm-3">'+
+                        '<div class="form-group">'+
+                          '<input class="form-control" id="aCourse'+i+'" type="text" value="'+course+'">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-sm-2">'+
+                        '<div class="form-group">'+
+                          '<input class="form-control" id="aPosition'+i+'" type="text" value="'+position+'">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-sm-2">'+
+                        '<div class="form-group">'+
+                          '<input class="form-control" id="aDate'+i+'" type="month" value="'+date+'">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-sm-2">'+
+                        '<button class="btn btn-sm btn-danger remove" type="button" id="'+i+'" onclick="removeAccPosition(this)">Remove</button>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>';
+        if (agency === '' || course === '' || position === '' || date === '') {
+          alert("You must write something!");
+        }
+        else {
+          document.getElementById("accreditation").insertAdjacentHTML('beforeend', x);
+          i++;
+        }
+        document.getElementById("aAgency").value = "";
+        document.getElementById("aCourse").value = "";
+        document.getElementById("aPosition").value = "";
+        document.getElementById("aDate").value = "";
+      }
+
+      function removeAccPosition(el) {
+        var y = Number(el.id);
+
+        // Click on a close button to hide the current list item
+        var div = document.getElementById("prev"+y);
+        div.style.display = "none";
+      }
+
+    </script>
+
+  </body>
+</html>
