@@ -8,7 +8,7 @@
 -->
 {% load staticfiles %}
 <html lang="en">
-  <head>
+<head>
     <base href="./">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,13 +23,28 @@
     <link href="https://unpkg.com/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://unpkg.com/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
     <!-- Main styles for this application-->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendors/pace-progress/css/pace.min.css' %}" rel="stylesheet">
 
     <!--PLUGINS AND OTHERS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"
+            integrity="sha256-FXzZGmaRFZngOjUKy3lWZJq/MflaMpffBbu3lPT0izE=" crossorigin="anonymous"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
@@ -44,6 +59,7 @@
       gtag('config', 'UA-118965717-3');
       // Bootstrap ID
       gtag('config', 'UA-118965717-5');
+
     </script>
 
     <style>
@@ -66,160 +82,176 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #555; 
       }
+
     </style>
 
-  </head>
-  <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-    <header class="app-header navbar" id="header">
-      <script>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<header class="app-header navbar" id="header">
+    <script>
         $("#header").load("{% static 'header.html' %}");
-      </script>
-    </header>
-    <div class="app-body">
-      <div class="sidebar" id="sidebar">
+
+    </script>
+</header>
+<div class="app-body">
+    <div class="sidebar" id="sidebar">
         <script>
           $("#sidebar").load("{% static 'sidebar.html' %}");
+
         </script>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-      </div>
-      <main class="main">
+    </div>
+    <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Add Committees</li>
-          <!-- Breadcrumb Menu-->
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item active">Add Committees</li>
+            <!-- Breadcrumb Menu-->
         </ol>
-<!--START OF CONTENT-->
-<!--START OF CONTENT-->
+
+        <!--START OF CONTENT-->
         <div class="container-fluid">
-          <div class="animated fadeIn">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-header">
-                    <strong>Add Committees</strong>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="name">Committee Name</label>
-                          <input class="form-control" id="committeeName" type="text" placeholder="Committee Name">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Add Committees</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Committee Name</label>
+                                            <input class="form-control" id="committeeName" type="text"
+                                                   placeholder="Committee Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Accrediting Agency</label>
+                                            <select class="form-control" id="accreditingAgency"
+                                                    onchange=" selectOptions()">
+                                                <option>Please Select</option>
+                                                <option value="PAASCU">PAASCU</option>
+                                                <option value="PACUCOA">PACUCOA</option>
+                                                <option value="AUN">AUN</option>
+                                                <option value="ABET">ABET</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Accreditation Period</label>
+                                            <select class="form-control" id="select">
+                                                <option>Please Select</option>
+                                                <option>2019 - 2023</option>
+                                                <option>2013 - 2018</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div id="addAssignments">
+                                    <p>Assigned to:</p>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <select class="form-control selectpicker" id="Checklist" data-live-search="true">
+                                            <option> Select a Checklist to be Added</option>
+
+                                            <optgroup label="Reports or Surveys">
+                                                <option>Self Assessment/Survey Report</option>
+                                                <option>Initial/Preliminary Survey</option>
+                                            </optgroup>
+
+                                            <optgroup label="Area">
+                                                <option>Faculty</option>
+                                                <option>Curriculum</option>
+                                                <option>Students</option>
+                                                <option>Facilities</option>
+                                            </optgroup>
+
+                                            <optgroup label="Committee">
+                                                <option>Committee A</option>
+                                                <option>Committee B</option>
+                                                <option>Committee C</option>
+                                                <option>Committee D</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="button" onclick="addArea()">Assign
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <script>
+                                $(() => {
+                                    $('.selectpicker').selectpicker();
+                                });
+
+                            </script>
+                            <div class="card-footer">
+                                <button class="btn btn-primary" type="button"><a href="criteriachecklist.html"
+                                                                                 style="text-decoration: none; color:white;">Save</a>
+                                </button>
+                            </div>
+
                         </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="name">Accrediting Agency</label>
-                          <select class="form-control" id="accreditingAgency" onchange=" selectOptions()">
-                            <option>Please Select</option>
-                            <option value="PAASCU">PAASCU</option>
-                            <option value="PACUCOA">PACUCOA</option>
-                            <option value="AUN">AUN</option>
-                            <option value="ABET">ABET</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <label for="name">Accreditation Period</label>
-                          <select class="form-control" id="select">
-                            <option>Please Select</option>
-                            <option>2019 - 2023</option>
-                            <option>2013 - 2018</option>
-                          </select>
-                        </div>
-                      </div>
                     </div>
-                    <br>
-                    <div id="addAssignments">
-                      <p>Assigned to:</p>
-                    </div>
-                    <br>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <select class="form-control" id="checklistItem">
-                            <option>Select Checklist Item</option>
-                            <option>Self Assessment/Survey Report</option>
-                            <option>Initial/Preliminary Survey</option>
-                          </select>
-                      </div>
-                      <div class="col-sm-1">
-                        <div class="form-group">
-                          <button class="btn btn-primary" type="button" onclick="addItem()">Assign</button>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <select class="form-control" id="area">
-                            <option>Select Area</option>
-                            <option>Faculty</option>
-                            <option>Curriculum</option>
-                            <option>Students</option>
-                            <option>Facilities</option>
-                          </select>
-                      </div>
-                      <div class="col-sm-1">
-                        <div class="form-group">
-                          <button class="btn btn-primary" type="button" onclick="addArea()">Assign</button>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <select class="form-control" id="committee">
-                            <option>Select Committee</option>
-                            <option>Committee A</option>
-                            <option>Committee B</option>
-                            <option>Committee C</option>
-                            <option>Committee D</option>
-                          </select>
-                      </div>
-                      <div class="col-sm-1">
-                        <div class="form-group">
-                          <button class="btn btn-primary" type="button" onclick="addCommittee()">Assign</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <button class="btn btn-primary" type="button"> <a href="criteriachecklist.html" style="text-decoration: none; color:white;">Save</a></button>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-<!--END OF CONTENT-->
-      </main>
-      <aside class="aside-menu" id="sidemenu">
+        <!--END OF CONTENT-->
+    </main>
+    <aside class="aside-menu" id="sidemenu">
         <script>
           $("#sidemenu").load("{% static 'sidemenu.html' %}");
         </script>
-      </aside>
-    </div>
-    <footer class="app-footer">
-      <div>
+    </aside>
+</div>
+<footer class="app-footer">
+    <div>
         <a href="https://coreui.io">CoreUI</a>
         <span>&copy; 2018 creativeLabs.</span>
-      </div>
-      <div class="ml-auto">
+    </div>
+    <div class="ml-auto">
         <span>Powered by</span>
         <a href="https://coreui.io">CoreUI</a>
-      </div>
-    </footer>
-    <!-- CoreUI and necessary plugins-->
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/util.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+    </div>
+</footer>
+<!-- CoreUI and necessary plugins-->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/util.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
-    <script>
+<script>
       $(document).ready( function () {
         $('#myTable').DataTable();
       } );
-    </script>
 
-    <script>
+
+</script>
+
+<script>
       var i = 0;
       // Create a new list item when clicking on the "Add" button
 
@@ -261,6 +293,6 @@
         }
         document.getElementById("checklistItem").value = "Select Committee";
       }
-    </script>
-  </body>
+</script>
+</body>
 </html>
