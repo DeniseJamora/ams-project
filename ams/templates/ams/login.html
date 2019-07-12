@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add New Agency</title>
+    <title>Login</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -69,118 +69,59 @@
     </style>
 
   </head>
-  <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-    <header class="app-header navbar" id="header">
-      <script>
-        $("#header").load("{% static 'header.html' %}");
-      </script>
-    </header>
-    <div class="app-body">
-      <div class="sidebar" id="sidebar">
-        <script>
-          $("#sidebar").load("{% static 'sidebar.html' %}");
-        </script>
-        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-      </div>
-      <main class="main">
-        <!-- Breadcrumb-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Add New Agency</li>
-          <!-- Breadcrumb Menu-->
-        </ol>
-<!--START OF CONTENT-->
-        <div class="container-fluid">
-          <div class="animated fadeIn">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-header">
-                    <strong>Add New Agency</strong>
+  <body class="app flex-row align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                <h1>Login</h1>
+                <p class="text-muted">Sign In to your account</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="icons cui-envelope-closed"></i>
+                    </span>
                   </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <i><label for="name">Accreditating Agency</label></i>
-                          <input class="form-control" id="accreditingbody" type="text" placeholder="Ex. PAASCU">
-                        </div>
-                      </div>
-                    </div>
+                  <input class="form-control" type="text" placeholder="Email">
+                </div>
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="icon-lock"></i>
+                    </span>
                   </div>
-                  <div class="card-footer">
-                    <a href="{% url 'createdocuoutline' %}" style="text-decoration: none; color:white;"><button class="btn btn-primary" type="button">Next</button></a>
+                  <input class="form-control" type="password" placeholder="Password">
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <a href="{% url 'dash' %}" style="text-decoration: none; color: white"><button class="btn btn-primary px-4" type="button">Login</button></a>
                   </div>
+                  <div class="col-6 text-right">
+                    <button class="btn btn-link px-0" type="button">Forgot password?</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+              <div class="card-body text-center">
+                <div>
+                  <h2>Sign up</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <a href="{% url 'register' %}" style="text-decoration: none; color: white"><button class="btn btn-primary active mt-3" type="button">Register Now!</button></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-<!--END OF CONTENT-->
-      </main>
-      <aside class="aside-menu" id="sidemenu">
-        <script>
-          $("#sidemenu").load("{% static 'sidemenu.html' %}");
-        </script>
-      </aside>
+      </div>
     </div>
-    <footer class="app-footer">
-      <div>
-        <a href="https://coreui.io">CoreUI</a>
-        <span>&copy; 2018 creativeLabs.</span>
-      </div>
-      <div class="ml-auto">
-        <span>Powered by</span>
-        <a href="https://coreui.io">CoreUI</a>
-      </div>
-    </footer>
     <!-- CoreUI and necessary plugins-->
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/util.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
-
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
-    <script>
-      $(document).ready( function () {
-        $('#myTable').DataTable();
-      } );
-    </script>
-
-    <script>
-
-      var i = 0;
-      var j = 0;
-
-      function newChecklistItem() {
-        var item = document.getElementById("checklistInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("You must write something!");
-        }
-        else     {
-          document.getElementById("generalchecklist").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("checklistInput").value = "";
-      }
-
-      // Create a new list item when clicking on the "Add" button
-      function newCriteria() {
-        var item = document.getElementById("criteriaInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("You must write something!");
-        }
-        else {
-          document.getElementById("areacriteria").insertAdjacentHTML('beforeend', x);
-          j++;
-        }
-        document.getElementById("criteriaInput").value = "";
-      }
-    </script>
-
   </body>
 </html>

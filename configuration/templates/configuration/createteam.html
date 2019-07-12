@@ -86,61 +86,127 @@
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Create Team</li>
+          <li class="breadcrumb-item active">New Accreditation Period</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
         <div class="container-fluid">
           <div class="animated fadeIn">
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-sm-12">
                 <div class="card">
-                  <div class="card-header"> Create Team</div>
+                  <div class="card-header">
+                    <strong>New Accreditation Period</strong>
+                  </div>
                   <div class="card-body">
-                    <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Department</th>
-                          <th>Expertise</th>
-                          <th>Experience</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Yiorgos Avraamu</td>
-                          <td>IT</td>
-                          <td>Laboratory</td>
-                          <td>PAASCU 2018, Faculty Committee, Analysis Team Head</td>
-                          <td>
-                            <button class="btn btn-primary" type="button"><a href="assignuser.html" style="text-decoration: none; color:white;">Assign</a></button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Denise Jamora</td>
-                          <td>IT</td>
-                          <td>Faculty</td>
-                          <td>ABET 2018, Curriculum Committee, Evaluation Team Member</td>
-                          <td>
-                            <button class="btn btn-primary" type="button"><a href="assignuser.html" style="text-decoration: none; color:white;">Assign</a></button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Yenn Teng</td>
-                          <td>IT</td>
-                          <td>Curriculum</td>
-                          <td>AUN 2018, Laboratory Committee, Analysis Team Head</td>
-                          <td>
-                            <button class="btn btn-primary" type="button"><a href="assignuser.html" style="text-decoration: none; color:white;">Assign</a></button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="name">Accrediting Agency</label></i>
+                          <select class="form-control" id="agency" disabled="">
+                            <option>Please Select</option>
+                            <option value="PAASCU">PAASCU</option>
+                            <option value="PACUCOA">PACUCOA</option>
+                            <option value="AUN" selected="">AUN</option>
+                            <option value="ABET">ABET</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="name">Type</label></i>
+                          <select class="form-control" id="select" disabled="">
+                            <option>Please Select</option>
+                            <option selected="">Initial Application</option>
+                            <option>Reaccreditation</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="name">Document</label></i>
+                          <select class="form-control" id="select" disabled="">
+                            <option>Please Select</option>
+                            <option selected="">ABET CAC Self-Survey Report</option>
+                            <option>ABET ANSAC Self-Survey Report</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="name">Degree Program</label></i>
+                          <select class="form-control" id="select" disabled="">
+                            <option>Please Select</option>
+                            <option selected="">BS Information Systems</option>
+                            <option>BS Information Technology</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <br><hr>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <i><label for="name">Team Name</label></i>
+                          <input class="form-control" id="committeeName" type="text" placeholder="Committee Name">
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div id="addAssignments">
+                      <i><p>Team Assignments:</p></i>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <select class="form-control" id="checklistItem">
+                            <option>Select Chapter</option>
+                            <option>I. Introduction</option>
+                            <option>Initial/Preliminary Survey</option>
+                          </select>
+                      </div>
+                      <div class="col-sm-1">
+                        <div class="form-group">
+                          <button class="btn btn-primary" type="button" onclick="addItem()">Assign</button>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="area">
+                            <option>Select Team</option>
+                            <option>Team A</option>
+                            <option>Team B</option>
+                            <option>Team C</option>
+                            <option>Team D</option>
+                          </select>
+                      </div>
+                      <div class="col-sm-1">
+                        <div class="form-group">
+                          <button class="btn btn-primary" type="button" onclick="addArea()">Assign</button>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="committee">
+                            <option>Select User</option>
+                            <option>Juan Dela Cruz</option>
+                            <option>Juan Dela Cruz</option>
+                            <option>Juan Dela Cruz</option>
+                            <option>Juan Dela Cruz</option>
+                          </select>
+                      </div>
+                      <div class="col-sm-1">
+                        <div class="form-group">
+                          <button class="btn btn-primary" type="button" onclick="addCommittee()">Assign</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  <br>
                   <div class="card-footer">
-                    <button class="btn btn-primary" type="button"> <a href="accreditationlist.html" style="text-decoration: none; color:white;">Finish</a></button>
+                    <a href="{% url 'createteam' %}" style="text-decoration: none; color:white;"><button class="btn btn-secondary" type="button"> Create Another Team</button></a>
+                    <a href="{% url 'dash' %}" style="text-decoration: none; color:white;"><button class="btn btn-primary" type="button"> Save</button></a>
                   </div>
+                  </div>
+                  <br>
                 </div>
               </div>
             </div>
@@ -177,6 +243,50 @@
       $(document).ready( function () {
         $('#myTable').DataTable();
       } );
+    </script>
+
+    <script>
+      var i = 0;
+      // Create a new list item when clicking on the "Add" button
+
+      function addItem() {
+        var item = document.getElementById("checklistItem").value;
+        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+        if (item === 'Select Chapter') {
+          alert("You must select something!");
+        }
+        else {
+          document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+          i++;
+        }
+        document.getElementById("checklistItem").value = "Select Chapter";
+      }
+
+      function addArea() {
+        var item = document.getElementById("area").value;
+        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+        if (item === 'Select Team') {
+          alert("You must select something!");
+        }
+        else {
+          document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+          i++;
+        }
+        document.getElementById("area").value = "Select Team";
+      }
+
+      function addCommittee() {
+        var item = document.getElementById("committee").value;
+        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+        if (item === 'Select User') {
+          alert("You must select something!");
+        }
+        else {
+          document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+          i++;
+        }
+        document.getElementById("checklistItem").value = "Select User";
+      }
     </script>
 
   </body>

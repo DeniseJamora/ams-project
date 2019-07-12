@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+# Create your views here.
+
 def criteria(request):
 	return render(request, 'committee/criteria.html')
 
@@ -23,7 +25,3 @@ def viewchecklist(request):
 
 def evidencelist(request):
 	return render(request, 'committee/evidencelist.html')
-
-
-
-# Create your views here.
