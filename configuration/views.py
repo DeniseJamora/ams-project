@@ -3,6 +3,12 @@ from django.shortcuts import render
 def accreditationlist(request):
 	return render(request, 'configuration/accreditationlist.html')
 
+def docuoutlinelist(request):
+	return render(request, 'configuration/docuoutlinelist.html')
+
+def ongoinglist(request):
+	return render(request, 'configuration/ongoinglist.html')
+
 def announcementlist(request):
 	return render(request, 'configuration/announcementlist.html')
 

@@ -129,48 +129,27 @@
                     </div>
                     <hr>
                     <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <b><label for="prevacc">Previous Accreditations</label></b>
-                        </div>
-                      </div>
-                      <div class="col-sm">
-                        <div class="form-group">
-                          <p><input type="checkbox" name=""> None</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group col-sm-2">
-                        <label for="paAgency">Accreditation Agency</label>
-                      </div>
-                      <div class="form-group col-sm-3">
-                        <label for="paStartDate">Start Date</label>
-                      </div>
-                      <div class="form-group col-sm-3">
-                        <label for="paEndDate">End Date</label>
-                      </div>
-                      <div class="form-group col-sm-2">
-                        <label for="paLevel">Level</label>
-                      </div>
-                    </div>
-                    <div id="prev">
-                    </div>
-                    <div class="row">
-                      <div class="form-group col-sm-2">
-                        <p id="paAgency">PAASCU</p>
-                      </div>
-                      <div class="form-group col-sm-3">
-                        <p id="paStartDate">June 2010</p>
-                      </div>
-                      <div class="form-group col-sm-3">
-                        <p id="paEndDate">June 2015</p>
-                      </div>
-                      <div class="form-group col-sm-2">
-                        <p id="paLevel">4</p>
-                      </div>
-                      <div class="form-group col-sm-2">
-                        <button class="btn btn-primary" type="button" onclick="">View</button>
+                      <div class="col-md-12">
+                        <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Accrediting Agency</th>
+                              <th>Level / Result</th>
+                              <th>Year Accredited</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>PAASCU</td>
+                              <td>Level IV</td>
+                              <td>2018</td>
+                              <td>
+                                <button class="btn btn-primary" type="reset"> Edit</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>

@@ -19,7 +19,9 @@ from . import views
 
 urlpatterns = [
     path('accreditationlist/', views.accreditationlist, name='accreditationlist'),
+    path('docuoutlinelist/', views.docuoutlinelist, name='docuoutlinelist'),
     path('announcementlist/', views.announcementlist, name='announcementlist'),
+    path('ongoinglist/', views.ongoinglist, name='ongoinglist'),
     path('assignuser/', views.assignuser, name='assignuser'),
     path('committeelist/', views.committeelist, name='committeelist'),
     path('createperiod/', views.createperiod, name='createperiod'),

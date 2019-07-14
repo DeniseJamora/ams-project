@@ -19,6 +19,9 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
+    path('addfaculty/', views.addfaculty, name="addfaculty"),
+    path('viewprogram/', views.viewprogram, name="viewprogram"),
+    path('programlist/', views.programlist, name="programlist"),
     path('dash/', views.dash, name="dash"),
     path('setup/', include('setup.urls')),
     path('config/', include('configuration.urls')),

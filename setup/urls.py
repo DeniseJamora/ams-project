@@ -20,6 +20,8 @@ from . import views
 urlpatterns = [
     path('addagency/', views.addagency, name='addagency'),
     path('createdocuoutline/', views.createdocuoutline, name='createdocuoutline'),
+    path('viewprogram/', views.viewprogram, name='viewprogram'),
+    path('programlist/', views.programlist, name='programlist'),
     path('addprogram/', views.addprogram, name='addprogram'),
     path('generateform/', views.generateform, name='generateform'),
     path('addqa/', views.addqa, name='addqa'),
