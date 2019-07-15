@@ -27,4 +27,25 @@ def createteam(request):
 def addcommittees(request):
 	return render(request, 'configuration/addcommittees.html')
 
+
+
+
+def viewaccreditation(request):
+	return render(request, 'configuration/viewaccreditation.html')
+
+def viewdocuoutline(request):
+	return render(request, 'configuration/viewdocuoutline.html')
+
+def viewongoing(request):
+	return render(request, 'configuration/viewongoing.html')
+
+def userlist(request):
+	return render(request, 'configuration/userlist.html')
+
+def teamlist(request):
+	return render(request, 'configuration/teamlist.html')
+
+def ansdocu(request):
+	return render(request, 'configuration/ansdocu.html')
+
 # Create your views here.

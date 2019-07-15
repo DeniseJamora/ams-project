@@ -23,12 +23,5 @@ urlpatterns = [
     path('viewprogram/', views.viewprogram, name='viewprogram'),
     path('programlist/', views.programlist, name='programlist'),
     path('addprogram/', views.addprogram, name='addprogram'),
-    path('generateform/', views.generateform, name='generateform'),
-    path('addqa/', views.addqa, name='addqa'),
-    path('addschedules/', views.addschedules, name='addschedules'),
-    path('addteams/', views.addteams, name='addteams'),
-    path('createchecklist/', views.createchecklist, name='createchecklist'),
-    path('createinstrument/', views.createinstrument, name='createinstrument'),
-    path('facultyandstaff/', views.facultyandstaff, name='facultyandstaff'),
 
 ]

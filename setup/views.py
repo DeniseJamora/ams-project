@@ -15,25 +15,4 @@ def createdocuoutline(request):
 def addprogram(request):
 	return render(request, 'setup/addprogram.html')
 
-def generateform(request):
-	return render(request, 'setup/generateform.html')
-
-def addqa(request):
-	return render(request, 'setup/addqa.html')
-
-def addschedules(request):
-	return render(request, 'setup/addschedules.html')
-
-def addteams(request):
-	return render(request, 'setup/addteams.html')
-
-def createchecklist(request):
-	return render(request, 'setup/createchecklist.html')
-
-def createinstrument(request):
-	return render(request, 'setup/createinstrument.html')
-
-def facultyandstaff(request):
-	return render(request, 'setup/facultyandstaff.html')
-
 # Create your views here.

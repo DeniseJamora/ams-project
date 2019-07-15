@@ -28,4 +28,11 @@ urlpatterns = [
     path('createteam/', views.createteam, name='createteam'),
     path('addcommittees/', views.addcommittees, name='addcommittees'),
 
+    path('viewaccreditation/', views.viewaccreditation, name='viewaccreditation'),
+    path('viewdocuoutline/', views.viewdocuoutline, name='viewdocuoutline'),
+    path('viewongoing/', views.viewongoing, name='viewongoing'),
+    path('userlist/', views.userlist, name='userlist'),
+    path('teamlist/', views.teamlist, name='teamlist'),
+    path('ansdocu/', views.ansdocu, name='ansdocu'),
+
 ]
