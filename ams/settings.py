@@ -30,10 +30,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#'setup.apps.SetupConfig',
+#'configuration.apps.ConfigurationConfig',
+#'committee.apps.CommitteeConfig',
+    
 INSTALLED_APPS = [
-    'setup.apps.SetupConfig',
-    'configuration.apps.ConfigurationConfig',
-    'committee.apps.CommitteeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

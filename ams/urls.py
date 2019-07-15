@@ -34,14 +34,12 @@ urlpatterns = [
     path('docuoutlinelist/', views.docuoutlinelist, name='docuoutlinelist'),
     path('announcementlist/', views.announcementlist, name='announcementlist'),
     path('ongoinglist/', views.ongoinglist, name='ongoinglist'),
-    path('assignuser/', views.assignuser, name='assignuser'),
     path('committeelist/', views.committeelist, name='committeelist'),
     path('createperiod/', views.createperiod, name='createperiod'),
     path('createteam/', views.createteam, name='createteam'),
-    path('addcommittees/', views.addcommittees, name='addcommittees'),
 
 
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('dash/', views.dash, name='dash'),
     path('docurepo/', views.docurepo, name='docurepo'),
 
 
