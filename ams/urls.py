@@ -25,35 +25,28 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
-    path('addfaculty/', views.addfaculty, name="addfaculty"),
-    path('viewprogram/', views.viewprogram, name="viewprogram"),
-    path('programlist/', views.programlist, name="programlist"),    
-
-
-    path('accreditationlist/', views.accreditationlist, name='accreditationlist'),
-    path('docuoutlinelist/', views.docuoutlinelist, name='docuoutlinelist'),
-    path('announcementlist/', views.announcementlist, name='announcementlist'),
-    path('ongoinglist/', views.ongoinglist, name='ongoinglist'),
-    path('committeelist/', views.committeelist, name='committeelist'),
-    path('createperiod/', views.createperiod, name='createperiod'),
-    path('createteam/', views.createteam, name='createteam'),
-
+    path('userlist/', views.userlist, name='userlist'),
 
     path('dash/', views.dash, name='dash'),
-    path('docurepo/', views.docurepo, name='docurepo'),
-
 
     path('addagency/', views.addagency, name='addagency'),
+
     path('createdocuoutline/', views.createdocuoutline, name='createdocuoutline'),
-    path('viewprogram/', views.viewprogram, name='viewprogram'),
-    path('programlist/', views.programlist, name='programlist'),
-    path('addprogram/', views.addprogram, name='addprogram'),
-
-
-    path('viewaccreditation/', views.viewaccreditation, name='viewaccreditation'),
+    path('docuoutlinelist/', views.docuoutlinelist, name='docuoutlinelist'),
     path('viewdocuoutline/', views.viewdocuoutline, name='viewdocuoutline'),
-    path('viewongoing/', views.viewongoing, name='viewongoing'),
-    path('userlist/', views.userlist, name='userlist'),
+
+    path('addprogram/', views.addprogram, name='addprogram'),
+    path('programlist/', views.programlist, name="programlist"),  
+    path('viewprogram/', views.viewprogram, name="viewprogram"),  
+
+    path('createperiod/', views.createperiod, name='createperiod'),
+    path('createteam/', views.createteam, name='createteam'),
     path('teamlist/', views.teamlist, name='teamlist'),
+    path('accreditationlist/', views.accreditationlist, name='accreditationlist'),
+    path('viewaccreditation/', views.viewaccreditation, name='viewaccreditation'),
+    path('ongoinglist/', views.ongoinglist, name='ongoinglist'),
+    path('viewongoing/', views.viewongoing, name='viewongoing'),
     path('ansdocu/', views.ansdocu, name='ansdocu'),
+
+    path('docurepo/', views.docurepo, name='docurepo'),
 ]

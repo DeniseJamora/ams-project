@@ -8,9 +8,6 @@ def login(request):
 def register(request):
     return render(request, 'ams/register.html')
 
-def addfaculty(request):
-    return render(request, 'ams/addfaculty.html')
-
 def programlist(request):
     return render(request, 'ams/programlist.html')
 
@@ -28,13 +25,7 @@ def docuoutlinelist(request):
 	return render(request, 'ams/docuoutlinelist.html')
 
 def ongoinglist(request):
-	return render(request, 'ams/ongoinglist.html')
-
-def announcementlist(request):
-	return render(request, 'ams/announcementlist.html')
-
-def committeelist(request):
-	return render(request, 'ams/committeelist.html')
+	return render(request, 'ams/ongoinglist.html') 
 
 def createperiod(request):
 	return render(request, 'ams/createperiod.html')
