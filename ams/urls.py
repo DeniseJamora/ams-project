@@ -25,28 +25,30 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
-    path('userlist/', views.userlist, name='userlist'),
-
     path('dash/', views.dash, name='dash'),
-
     path('addagency/', views.addagency, name='addagency'),
-
     path('createdocuoutline/', views.createdocuoutline, name='createdocuoutline'),
     path('docuoutlinelist/', views.docuoutlinelist, name='docuoutlinelist'),
     path('viewdocuoutline/', views.viewdocuoutline, name='viewdocuoutline'),
-
     path('addprogram/', views.addprogram, name='addprogram'),
     path('programlist/', views.programlist, name="programlist"),  
-    path('viewprogram/', views.viewprogram, name="viewprogram"),  
-
+    path('viewprogram/', views.viewprogram, name="viewprogram"), 
     path('createperiod/', views.createperiod, name='createperiod'),
-    path('createteam/', views.createteam, name='createteam'),
-    path('teamlist/', views.teamlist, name='teamlist'),
+    path('createteam/', views.createteam, name='createteam'), 
     path('accreditationlist/', views.accreditationlist, name='accreditationlist'),
     path('viewaccreditation/', views.viewaccreditation, name='viewaccreditation'),
+    path('teamlist/', views.teamlist, name='teamlist'),
     path('ongoinglist/', views.ongoinglist, name='ongoinglist'),
     path('viewongoing/', views.viewongoing, name='viewongoing'),
     path('ansdocu/', views.ansdocu, name='ansdocu'),
+
+    
+    path('userlist/', views.userlist, name='userlist'),
+
+
+
+
+
 
     path('docurepo/', views.docurepo, name='docurepo'),
 ]

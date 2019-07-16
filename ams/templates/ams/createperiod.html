@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add Accrediting Agency</title>
+    <title>Create Accreditation Period</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -85,8 +85,10 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">New Accreditation Period</li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'dash' %}">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Create Accreditation Period</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -96,7 +98,7 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>New Accreditation Period</strong>
+                    <strong>Create Accreditation Period</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
@@ -209,50 +211,6 @@
       $(document).ready( function () {
         $('#myTable').DataTable();
       } );
-    </script>
-
-    <script>
-      var i = 0;
-
-      // Create a new list item when clicking on the "Add" button
-      function newCriteria() {
-        var item = document.getElementById("criteriaInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("The field is empty!");
-        }
-        else {
-          document.getElementById("criteria").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("criteriaInput").value = "";
-      }
-
-      function newRating() {
-        var item = document.getElementById("ratingInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("The field is empty!");
-        }
-        else {
-          document.getElementById("rating").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("ratingInput").value = "";
-      }
-
-      function newItem() {
-        var item = document.getElementById("checklistInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("The field is empty!");
-        }
-        else {
-          document.getElementById("checklist").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("checklistInput").value = "";
-      }
     </script>
 
   </body>

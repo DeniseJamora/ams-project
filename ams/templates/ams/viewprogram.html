@@ -85,8 +85,13 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Degree Program</li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'dash' %}">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'programlist' %}">Degree Programs</a>
+          </li>
+          <li class="breadcrumb-item active">View Degree Program</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -96,7 +101,7 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>Degree Program</strong>
+                    <strong>BS Information  Technology</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">

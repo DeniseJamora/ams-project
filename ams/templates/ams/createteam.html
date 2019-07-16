@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add Accrediting Agency</title>
+    <title>Create Team</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -85,8 +85,10 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">New Accreditation Period</li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'dash' %}">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Create Team</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -96,7 +98,7 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>New Accreditation Period</strong>
+                    <strong>Create Team</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">

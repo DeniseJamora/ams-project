@@ -85,7 +85,9 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'dash' %}">Dashboard</a>
+          </li>
           <li class="breadcrumb-item active">Add Degree Program</li>
           <!-- Breadcrumb Menu-->
         </ol>
@@ -207,41 +209,6 @@
       $(document).ready( function () {
         $('#myTable').DataTable();
       } );
-    </script>
-
-    <script>
-
-      var i = 1;
-
-      // Create a new list item when clicking on the "Add" button
-      function newAccreditation() {
-        var agency = document.getElementById("agency").value;
-        var level = document.getElementById("level").value;
-        var year = document.getElementById("year").value;
-
-        var x =     '<div class="row" id="inputs">'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ agency + '</p>'+
-                      '</div>'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ level + '</p>'+
-                      '</div>'+
-                      '<div class="col-sm-4">'+
-                        '<p style="text-align: center">'+ year + '</p>'+
-                      '</div>'+
-                    '</div>';
-        //var x = '<li style="padding-bottom: 10px">'+ item +'</li>';
-        if (agency === '' || level === '' || year === '') {
-          alert("You must write something!");
-        }
-        else {
-          document.getElementById("prev").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("agency").value = "";
-        document.getElementById("level").value = "";
-        document.getElementById("year").value = "";
-      }
     </script>
 
     <script>

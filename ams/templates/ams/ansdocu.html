@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>View Degree Program</title>
+    <title>Document</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -85,8 +85,16 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Degree Program</li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'dash' %}">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'ongoinglist' %}">Ongoing Accreditations</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'viewongoing' %}">PAASCU 2015-2020 BS INSYS</a>
+          </li>
+          <li class="breadcrumb-item active">Document</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -96,7 +104,7 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>Degree Program</strong>
+                    <strong>Document</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
@@ -131,7 +139,7 @@
                     <br><hr><br>
                     <div class="row">
                       <div class="col-3">
-                        <div id="spy-example2" data-spy="scroll" data-target="#list-example" data-offset="0" style="height: 400px; overflow: auto">
+                        <div id="spy-example2" data-spy="scroll" data-target="#list-example" data-offset="0" style="height: 460px; overflow: auto">
                           <div class="list-group" id="list-example">
                             <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
                             <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
@@ -193,7 +201,6 @@
                     </div>
                   </div>
                   <div class="card-footer">
-                    <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Go Back</a></button>
                     <button class="btn btn-primary" type="button" onclick="">Save</button>
                   </div>
                 </div>
@@ -232,10 +239,6 @@
       $(document).ready( function () {
         $('#myTable').DataTable();
       } );
-    </script>
-
-    <script>
-
     </script>
 
   </body>

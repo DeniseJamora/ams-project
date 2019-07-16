@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add New Agency</title>
+    <title>Add Accrediting Agency</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -85,8 +85,10 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">Add New Agency</li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'dash' %}">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Add Accrediting Agency</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -96,7 +98,7 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>Add New Agency</strong>
+                    <strong>Add Accrediting Agency</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
@@ -109,7 +111,7 @@
                     </div>
                   </div>
                   <div class="card-footer">
-                    <a href="{% url 'createdocuoutline' %}" style="text-decoration: none; color:white;"><button class="btn btn-primary" type="button">Next</button></a>
+                    <a href="{% url 'addagency' %}" style="text-decoration: none; color:white;"><button class="btn btn-primary" type="button">Add</button></a>
                   </div>
                 </div>
               </div>
@@ -142,45 +144,6 @@
     <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
-    <script>
-      $(document).ready( function () {
-        $('#myTable').DataTable();
-      } );
-    </script>
-
-    <script>
-
-      var i = 0;
-      var j = 0;
-
-      function newChecklistItem() {
-        var item = document.getElementById("checklistInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("You must write something!");
-        }
-        else     {
-          document.getElementById("generalchecklist").insertAdjacentHTML('beforeend', x);
-          i++;
-        }
-        document.getElementById("checklistInput").value = "";
-      }
-
-      // Create a new list item when clicking on the "Add" button
-      function newCriteria() {
-        var item = document.getElementById("criteriaInput").value;
-        var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
-        if (item === '') {
-          alert("You must write something!");
-        }
-        else {
-          document.getElementById("areacriteria").insertAdjacentHTML('beforeend', x);
-          j++;
-        }
-        document.getElementById("criteriaInput").value = "";
-      }
-    </script>
 
   </body>
 </html>

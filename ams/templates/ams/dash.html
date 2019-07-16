@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Add Accrediting Agency</title>
+    <title>Dashboard</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
     <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
@@ -85,67 +85,49 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item active">File Repository</li>
+          <li class="breadcrumb-item active">Dashboard</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
         <div class="container-fluid">
           <div class="animated fadeIn">
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-sm-12">
                 <div class="card">
-                  <div class="card-header">File Repository</div>
+                  <div class="card-header">
+                    <strong>Upcoming Deadlines</strong>
+                  </div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <i><label for="name">Upload File</label></i>
-                          <input id="file-input" type="file" name="file-input">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                          <br>
-                          <button class="btn btn-primary" type="submit"> Upload</button>
-                      </div>
-                    </div>
-                    <br><br>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
+                      <div class="col-sm-12">
+                        <table class="table table-responsive-sm table-striped">
                           <thead>
                             <tr>
-                              <th>File Name</th>
-                              <th>File Type</th>
-                              <th>Version</th>
-                              <th>Date Uploaded</th>
-                              <th>Uploaded by</th>
-                              <th></th>
+                              <th>Subject</th>
+                              <th>Accreditation Period</th>
+                              <th>Deadline</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>faculty_CV</td>
-                              <td>Folder</td>
-                              <td>1.0</td>
-                              <td>May 31, 2019</td>
-                              <td>Eunice Yu</td>
+                              <td>Create Committees</td>
+                              <td>PAASCU for BS Information Systems 2019</td>
                               <td>
-                                <button class="btn btn-secondary" type="reset"> Versions</button>
-                                <button class="btn btn-warning" type="reset"> Check Out</button>
-                                <button class="btn btn-danger" type="reset"> Delete</button>
+                                <span class="badge badge-danger">January 27, 2019</span>
                               </td>
                             </tr>
                             <tr>
-                              <td>random_file.pdf</td>
-                              <td>PDF</td>
-                              <td>2.0</td>
-                              <td>June 17, 2019</td>
-                              <td>Denise Jamora</td>
+                              <td>Create corresponding committees</td>
+                              <td>PAASCU for BS Information Technology 2019</td>
                               <td>
-                                <button class="btn btn-secondary" type="reset"> Versions</button>
-                                <button class="btn btn-success" type="reset"> Check In</button>
-                                <button class="btn btn-danger" type="reset"> Delete</button>
+                                <span class="badge badge-warning">Feb 07, 2019</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>Finish Self-Assessment for Curriculum</td>
+                              <td>PAASCU for BS Information Systems 2019</td>
+                              <td>
+                                <span class="badge badge-secondary">March 22, 2019</span>
                               </td>
                             </tr>
                           </tbody>
@@ -156,6 +138,65 @@
                 </div>
               </div>
             </div>
+            <!--END OF ROW-->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong>Progress</strong>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <table class="table table-responsive-sm">
+                          <thead>
+                            <tr>
+                              <th width="50%">Accreditation Period</th>
+                              <th width="50%">Progress</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>PAASCU for BS Information Systems 2019</td>
+                              <td>
+                                <div class="progress mb-3">
+                                  <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>PAASCU for BS Information Systems 2019</td>
+                              <td>
+                                <div class="progress mb-3">
+                                  <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>PAASCU for BS Information Technology 2019</td>
+                              <td>
+                                <div class="progress mb-3">
+                                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>PAASCU for BS Information Technology 2019</td>
+                              <td>
+                                <div class="progress mb-3">
+                                  <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--END OF ROW-->
           </div>
         </div>
 <!--END OF CONTENT-->
