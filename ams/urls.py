@@ -41,14 +41,6 @@ urlpatterns = [
     path('ongoinglist/', views.ongoinglist, name='ongoinglist'),
     path('viewongoing/', views.viewongoing, name='viewongoing'),
     path('ansdocu/', views.ansdocu, name='ansdocu'),
-
-    
+    path('filerepo/', views.filerepo, name='filerepo'),
     path('userlist/', views.userlist, name='userlist'),
-
-
-
-
-
-
-    path('docurepo/', views.docurepo, name='docurepo'),
 ]

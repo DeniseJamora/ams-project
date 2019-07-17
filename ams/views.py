@@ -56,16 +56,8 @@ def viewongoing(request):
 def ansdocu(request):
 	return render(request, 'ams/ansdocu.html')
 
-
-
-
-def docurepo(request):
-	return render(request, 'ams/docurepo.html')
-
-
-
+def filerepo(request):
+	return render(request, 'ams/filerepo.html')
 
 def userlist(request):
 	return render(request, 'ams/userlist.html')
-
-  
