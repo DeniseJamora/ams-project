@@ -19,10 +19,12 @@ Including another URLconf
     path('committee/', include('committee.urls')),views.accreditationlist, name='accreditationlist'),
 
 """
+from django.contrib import admin
 from . import views
 from django.urls import path, include
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
     path('dash/', views.dash, name='dash'),
