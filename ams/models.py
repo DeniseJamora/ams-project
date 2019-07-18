@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class users(models.Model):
+class user(models.Model):
     user_email = models.EmailField()
     user_password = models.CharField(max_length=60)
     user_givenName = models.CharField(max_length=60)
@@ -9,7 +9,7 @@ class users(models.Model):
     user_surname = models.CharField(max_length=60)
     user_type = models.CharField(max_length=60)
 
-class accrediting_bodies(models.Model):
+"""class accrediting_bodies(models.Model):
     accrediting_body = models.CharField(max_length=60)
 
 class files(models.Model):
@@ -70,6 +70,6 @@ class prev_accreditations(models.Model):
     degree_program_id = models.ForeignKey(degree_programs, default='1', on_delete=models.CASCADE)
     accreditation_agency = models.CharField(max_length=60)
     accreditation_result = models.CharField(max_length=60)
-    accreditation_year = models.CharField(max_length=60)
+    accreditation_year = models.CharField(max_length=60)"""
 
 # Create your models here.

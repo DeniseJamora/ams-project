@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 #'committee.apps.CommitteeConfig',
     
 INSTALLED_APPS = [
+    'ams.apps.AmsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
