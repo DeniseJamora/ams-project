@@ -25,6 +25,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('base/', views.base, name="base"),
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
     path('dash/', views.dash, name='dash'),

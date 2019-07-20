@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v2.1.12
+* @link https://coreui.io
+* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>AMS</title>
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
+    <!-- Icons-->
+    <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/pace-progress/css/pace.min.css' %}" rel="stylesheet">
+
+    <!--PLUGINS AND OTHERS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      // Shared ID
+      gtag('config', 'UA-118965717-3');
+      // Bootstrap ID
+      gtag('config', 'UA-118965717-5');
+    </script>
+
+    <style>
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #888; 
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+    </style>
+
+  </head>
+  <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    <header class="app-header navbar" id="header">
+      <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img class="navbar-brand-full" src="/static/img/brand/logo.svg" width="89" height="25" alt="AMS Logo">
+        <img class="navbar-brand-minimized" src="/static/img/brand/sygnet.svg" width="30" height="30" alt="AMS Logo">
+      </a>
+      <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown" style="color:#73818f">
+            Welcome, Denise Jamora
+        </li>
+      </ul>
+      <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </header>
+    <div class="app-body">
+      <div class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dash' %}">
+                <i class="nav-icon icon-speedometer"></i> Dashboard
+              </a>
+            </li>
+            <li class="nav-title">Setup and Admin</li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon fa fa-institution"></i> Accrediting Agencies</a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'addagency' %}"> Add Agency</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'createdocuoutline' %}"> Create Document Outline</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon fa fa-graduation-cap"></i> Programs</a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'programlist' %}"> Programs</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'addprogram' %}"> Add Degree Program</a>
+                </li>
+              </ul>
+            </li>
+
+
+            <li class="nav-title">Configuration</li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'createperiod' %}">
+                <i class="nav-icon fa fa-plus-square"></i> New Accreditation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'createteam' %}">
+                <i class="nav-icon fa fa-users"></i> Create Teams</a>
+            </li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon fa fa-graduation-cap"></i> Accreditations</a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accreditationlist' %}"> Completed Accreditations</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'docuoutlinelist' %}"> Document Outlines</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'teamlist' %}"> Teams</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-title">Criteria Compliance</li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ongoinglist' %}">
+                <i class="nav-icon fa fa-clipboard"></i> Ongoing Accreditations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="nav-icon fa fa-archive"></i> Evidence List</a>
+            </li>
+
+
+            <li class="nav-title">File Management</li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'filerepo' %}">
+                <i class="nav-icon fa fa-database"></i> File Repository</a>
+            </li>
+
+          </ul>
+        </nav>
+        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+      </div>
+      <main class="main">
+        <!-- Breadcrumb-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">Dashboard</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
+<!--START OF CONTENT-->
+        {% block content %}
+        {% endblock %}
+<!--END OF CONTENT-->
+      </main>
+      <aside class="aside-menu" id="sidemenu">
+        <!-- Tab panes-->
+        <div class="tab-content">
+          <div class="dropdown-header text-center">
+              <strong>Settings</strong>
+          </div>
+          <a class="dropdown-item" href="profile.html">
+            <i class="fa fa-user"></i> Profile
+          </a>
+          <a class="dropdown-item" href="requests.html">
+            <i class="fa fa-bell"></i> Requests
+            <span class="badge badge-primary">1</span>
+          </a>
+          <a class="dropdown-item" href="setpersonaldeadlines.html">
+            <i class="fa fa-clock"></i> Set Personal Deadlines
+          </a>
+          <a class="dropdown-item" href="deadlineslist.html">
+            <i class="fa fa-list"></i> Personal Deadlines
+            <span class="badge badge-primary">1</span>
+          </a>
+          <a class="dropdown-item" href="login.html">
+            <i class="fa fa-lock"></i> Logout
+          </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <footer class="app-footer">
+      <div>
+        <a href="https://coreui.io">CoreUI</a>
+        <span>&copy; 2018 creativeLabs.</span>
+      </div>
+      <div class="ml-auto">
+        <span>Powered by</span>
+        <a href="https://coreui.io">CoreUI</a>
+      </div>
+    </footer>
+    <!-- CoreUI and necessary plugins-->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/util.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <script>
+      $(document).ready( function () {
+        $('#myTable').DataTable();
+      } );
+    </script>
+
+  </body>
+</html>
