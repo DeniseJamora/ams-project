@@ -1,14 +1,11 @@
 from django import forms
-from django.forms import modelformset_factory
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from .models import users, accrediting_body, files, degree_program, document_outline, document_outline_item, \
+from .models import user, accrediting_body, files, degree_program, document_outline, document_outline_item, \
     completed_accreditation, prev_accreditation
 
 
 class UserForm(forms.ModelForm):
     class Meta:
-        model = users
+        model = user
         fields = [
             "user_email",
             "user_password",

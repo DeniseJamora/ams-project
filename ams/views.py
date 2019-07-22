@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
+def base(request):
+    return render(request, 'ams/base.html')
+
 def login(request):
     return render(request, 'ams/login.html')
 
@@ -56,16 +59,11 @@ def viewongoing(request):
 def ansdocu(request):
 	return render(request, 'ams/ansdocu.html')
 
-
-
-
 def docurepo(request):
 	return render(request, 'ams/filerepo.html')
 
-
-
+def filerepo(request):
+	return render(request, 'ams/filerepo.html')
 
 def userlist(request):
 	return render(request, 'ams/userlist.html')
-
-  

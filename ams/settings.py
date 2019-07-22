@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 #'committee.apps.CommitteeConfig',
     
 INSTALLED_APPS = [
+    'ams.apps.AmsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'GMT'
 
 USE_I18N = True
 

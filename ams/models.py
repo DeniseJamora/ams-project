@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class users(models.Model):
+class user(models.Model):
     user_email = models.EmailField()
     user_password = models.CharField(max_length=60)
     user_givenName = models.CharField(max_length=60)
@@ -75,7 +75,7 @@ class team_team(models.Model):
 class user_teams(models.Model):
     accrediting_id = models.ForeignKey(accrediting_body, default='1', on_delete=models.CASCADE)
     teams_id = models.ForeignKey(team, default='1', on_delete=models.CASCADE)
-    user_id = models.ForeignKey(users, default='1', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(user, default='1', on_delete=models.CASCADE)
 
 
 class prev_accreditation(models.Model):

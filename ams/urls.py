@@ -19,10 +19,13 @@ Including another URLconf
     path('committee/', include('committee.urls')),views.accreditationlist, name='accreditationlist'),
 
 """
+from django.contrib import admin
 from . import views
 from django.urls import path, include
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('base/', views.base, name="base"),
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
     path('dash/', views.dash, name='dash'),
@@ -41,14 +44,6 @@ urlpatterns = [
     path('ongoinglist/', views.ongoinglist, name='ongoinglist'),
     path('viewongoing/', views.viewongoing, name='viewongoing'),
     path('ansdocu/', views.ansdocu, name='ansdocu'),
-
-    
+    path('filerepo/', views.filerepo, name='filerepo'),
     path('userlist/', views.userlist, name='userlist'),
-
-
-
-
-
-
-    path('docurepo/', views.docurepo, name='docurepo'),
 ]
