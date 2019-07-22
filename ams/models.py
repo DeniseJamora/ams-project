@@ -66,12 +66,6 @@ class chapter_team(models.Model):
     document_outline_item_id = models.ForeignKey(document_outline_item, default='1', on_delete=models.CASCADE)
 
 
-class team_team(models.Model):
-    accrediting_id = models.ForeignKey(accrediting_body, default='1', on_delete=models.CASCADE)
-    teams_id = models.ForeignKey(team, default='1', on_delete=models.CASCADE)
-    user_teams = models.ForeignKey(team, default='1', on_delete=models.CASCADE)
-
-
 class user_teams(models.Model):
     accrediting_id = models.ForeignKey(accrediting_body, default='1', on_delete=models.CASCADE)
     teams_id = models.ForeignKey(team, default='1', on_delete=models.CASCADE)
