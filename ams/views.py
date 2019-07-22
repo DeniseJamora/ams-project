@@ -60,7 +60,7 @@ def ansdocu(request):
 
 
 def docurepo(request):
-	return render(request, 'ams/docurepo.html')
+	return render(request, 'ams/filerepo.html')
 
 
 
