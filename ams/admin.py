@@ -1,14 +1,14 @@
 from django.contrib import admin
-from .models import user, accrediting_body, files, degree_program, document_outline, document_outline_item, \
-    completed_accreditation, prev_accreditation
+from .models import User, AccreditingBody, Files, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
+    CompletedAccreditation, PrevAccreditation
 
-admin.site.register(user)
-admin.site.register(accrediting_body)
-admin.site.register(files)
-admin.site.register(degree_program)
-admin.site.register(document_outline)
-admin.site.register(document_outline_item)
-admin.site.register(completed_accreditation)
-admin.site.register(prev_accreditation)
+admin.site.register(User)
+admin.site.register(AccreditingBody)
+admin.site.register(Files)
+admin.site.register(DegreeProgram)
+admin.site.register(DocumentOutline)
+admin.site.register(DocumentOutlineItem)
+admin.site.register(CompletedAccreditation)
+admin.site.register(PrevAccreditation)
 
 # Register your models here.

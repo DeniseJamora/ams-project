@@ -21,7 +21,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from . import views
-from django.urls import path, include
+from django.urls import path
+
+app_name = 'ams'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,10 +36,10 @@ urlpatterns = [
     path('docuoutlinelist/', views.docuoutlinelist, name='docuoutlinelist'),
     path('viewdocuoutline/', views.viewdocuoutline, name='viewdocuoutline'),
     path('addprogram/', views.addprogram, name='addprogram'),
-    path('programlist/', views.programlist, name="programlist"),  
-    path('viewprogram/', views.viewprogram, name="viewprogram"), 
+    path('programlist/', views.programlist, name="programlist"),
+    path('viewprogram/', views.viewprogram, name="viewprogram"),
     path('createperiod/', views.createperiod, name='createperiod'),
-    path('createteam/', views.createteam, name='createteam'), 
+    path('createteam/', views.createteam, name='createteam'),
     path('accreditationlist/', views.accreditationlist, name='accreditationlist'),
     path('viewaccreditation/', views.viewaccreditation, name='viewaccreditation'),
     path('teamlist/', views.teamlist, name='teamlist'),

@@ -1,11 +1,11 @@
 from django import forms
-from .models import user, accrediting_body, files, degree_program, document_outline, document_outline_item, \
-    completed_accreditation, prev_accreditation
+from .models import User, AccreditingBody, Files, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
+    CompletedAccreditation, PrevAccreditation
 
 
 class UserForm(forms.ModelForm):
     class Meta:
-        model = user
+        model = User
         fields = [
             "user_email",
             "user_password",
@@ -18,7 +18,7 @@ class UserForm(forms.ModelForm):
 
 class AccreditingBodyForm(forms.ModelForm):
     class Meta:
-        model = accrediting_body
+        model = AccreditingBody
         fields = [
             "accrediting_body",
         ]
@@ -26,7 +26,7 @@ class AccreditingBodyForm(forms.ModelForm):
 
 class FileForm(forms.ModelForm):
     class Meta:
-        model = files
+        model = Files
         fields = [
             "file_name",
             "file_type",
@@ -36,7 +36,7 @@ class FileForm(forms.ModelForm):
 
 class TeamForm(forms.ModelForm):
     class Meta:
-        model = files
+        model = Files
         fields = [
             "team_name",
         ]
@@ -44,7 +44,7 @@ class TeamForm(forms.ModelForm):
 
 class DegreeProgramForm(forms.ModelForm):
     class Meta:
-        Model = degree_program
+        Model = DegreeProgram
         fields = [
             "program_code",
             "program_name",
@@ -55,7 +55,7 @@ class DegreeProgramForm(forms.ModelForm):
 
 class DocumentOutlineForm(forms.ModelForm):
     class Meta:
-        Model = document_outline
+        Model = DocumentOutline
         fields = [
             "document_name",
         ]
@@ -63,7 +63,7 @@ class DocumentOutlineForm(forms.ModelForm):
 
 class DocumentOutlineItemForm(forms.ModelForm):
     class Meta:
-        Model = document_outline_item
+        Model = DocumentOutlineItem
         fields = [
             "item_title",
             "item_type",
@@ -72,7 +72,7 @@ class DocumentOutlineItemForm(forms.ModelForm):
 
 class CompletedAccreditationForm(forms.ModelForm):
     class Meta:
-        Model = completed_accreditation
+        Model = CompletedAccreditation
         fields = [
             "completed_result",
             "completed_year",
@@ -81,7 +81,7 @@ class CompletedAccreditationForm(forms.ModelForm):
 
 class PrevAccreditationForm(forms.ModelForm):
     class Meta:
-        Model = prev_accreditation
+        Model = PrevAccreditation
         fields = [
             "accreditation_agency",
             "accreditation_result",
