@@ -1,5 +1,12 @@
 from django.shortcuts import render
-
+from ams.models import User, AccreditingBody, Files, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
+    CompletedAccreditation, PrevAccreditation
+from ams.forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
+    DocumentOutlineItemForm, \
+    CompletedAccreditationForm, PrevAccreditationForm
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 # Create your views here.
 
@@ -23,9 +30,31 @@ def addagency(request):
     return render(request, 'ams/addagency.html')
 
 
+@csrf_exempt
 def createdocuoutline(request):
-    return render(request, 'ams/createdocuoutline.html')
 
+    accrediting_bodies = AccreditingBody.objects.all()
+
+    def save_section(section_form, document_outline_id, parent):
+        doc_outline_item = DocumentOutlineItem.objects.create(document_outline_id=document_outline_id,
+                                                              parent_document_outline_item_id=parent,
+                                                              item_title=section_form["title"],
+                                                              item_type=section_form["section"])
+
+        for subsection in section_form["subsections"]:
+            save_section(subsection, document_outline_id, doc_outline_item)
+
+    if request.method == 'GET':
+        return render(request, 'ams/createdocuoutline.html', {
+            "accrediting_bodies": accrediting_bodies
+        })
+
+    form = json.loads(request.body)
+    document_outline = DocumentOutline.objects.create(accrediting_body_id=accrediting_bodies.get(id=form["agency"]), document_name=form["title"])
+    for section in form["sections"]:
+        save_section(section, document_outline, None)
+
+    return JsonResponse({}, status=200)
 
 def docuoutlinelist(request):
     return render(request, 'ams/docuoutlinelist.html')

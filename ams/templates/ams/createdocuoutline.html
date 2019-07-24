@@ -1,233 +1,381 @@
 {% extends 'base.html' %}
 {% block content %}
-<!--START OF CONTENT-->
-        <div class="container-fluid">
-          <div class="animated fadeIn">
+    <!--START OF CONTENT-->
+    <div class="container-fluid">
+        <div class="animated fadeIn">
             <div class="row">
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-header">
-                    <strong>Create Document Outline</strong>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <i><label for="name">Accreditating Agency</label></i>
-                          <select class="form-control" id="ccmonth">
-                            <option>Please select an option</option>
-                            <option>PAASCU</option>
-                            <option>ABET</option>
-                            <option>AUN</option>
-                          </select>   
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Create Document Outline</strong>
                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <i><label for="name">Report Title</label></i>
-                          <input class="form-control" id="accreditingbody" type="text" placeholder="e.g. ABET CAC Self Survey Report">
-                        </div>
-                      </div>
-                    </div> 
-                    <br>
-                    <div class="row">
-                      <div class="col-md-12" id="div">
-                        <button class="btn btn-success" type="button" onclick="newChapter()">Add</button>
-                        <br><hr>
-                        <div class="row">
-                          <div class="col-md-12">
+                        <div class="card-body">
                             <div class="row">
-                              <div class="col-sm-1">
-                                <button class="btn btn-success" type="button" onclick="newSection(this.parentElement)">+</button>
-                              </div>
-                              <div class="col-sm-8">
-                                <input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.0 Chapter A">
-                              </div>
-                              <div class="col-sm-2">
-                                <select class="form-control" id="ccmonth">
-                                  <option>Section</option>
-                                  <option>Criteria</option>
-                                  <option>Table</option>
-                                  <option>Figure</option>
-                                </select>                          
-                              </div>
-                              <div class="col-sm-1">
-                                <button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = 'none'">X</button>                         
-                              </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <i><label>Accreditating Agency</label></i>
+                                        <select id="accrediting-agency" class="form-control">
+
+                                            {% for ab in accrediting_bodies %}
+                                                <option value="{{ ab.id }}">{{ ab.accrediting_body }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <i><label>Report Title</label></i>
+                                        <input class="form-control" id="report-title" type="text"
+                                               placeholder="e.g. ABET CAC Self Survey Report">
+                                    </div>
+                                </div>
                             </div>
-                          </div>
+                            <div class="border-top position-relative">
+                                <div class="mt-3 mb-3">
+                                    <button type="button" class="btn btn-outline-primary"
+                                            onclick="createTopLevelParent()">Add Parent Subsection
+                                    </button>
+                                </div>
+
+                                <div id="parent-sections" class="d-flex flex-column">
+
+                                </div>
+                            </div>
                         </div>
-                      </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" type="button" onclick="onSubmitButtonClick()    "><a
+                                    style="text-decoration: none; color:white;">Submit</a>
+                            </button>
+                        </div>
                     </div>
-                  </div>
-                  <div class="card-footer">
-                    <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Save</a></button>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-        
-        <script>
+    </div>
 
-          var i = 0;
-          var j = 0;
+    <div class="d-none">
+        <div id="master-section" class="document-item mt-2 position-relative">
+            <div class="document-item-parent row justify-content-between">
+                <div class="col-1 add-child-button-container">
+                    <button type="button" class="btn btn-outline-primary add-child-subsection-button">+</button>
+                </div>
+                <div class="col-8">
+                    <input class="form-control subsection-title" placeholder="Subsection title"/>
+                </div>
+                <div class="col-2">
+                    <select class="form-control subsection-section">
+                        <option selected>Section</option>
+                        <option>Criteria</option>
+                        <option>Table</option>
+                        <option>Figure</option>
+                    </select>
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-outline-danger remove-subsection-button">Remove</button>
+                </div>
+            </div>
+            <div class="document-item-children d-flex flex-column pl-5 pt-2">
 
-          function newChapter() {
-            var x = '<div class="row">'+
-                              '<div class="col-md-12">'+
-                                '<div class="row" style="margin-top: 15px">'+
-                                  '<div class="col-sm-1">'+
-                                    '<button class="btn btn-success" type="button" onclick="newSection(this.parentElement)">+</button>'+
-                                  '</div>'+
-                                  '<div class="col-sm-8">'+
-                                    '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.0 Introduction">'+
-                                  '</div>'+
-                                  '<div class="col-sm-2">'+
-                                    '<select class="form-control" id="ccmonth">'+
-                                      '<option>Section</option>'+
-                                      '<option>Criteria</option>'+
-                                      '<option>Table</option>'+
-                                      '<option>Figure</option>'+
-                                    '</select>'+                          
-                                  '</div>'+
-                                  '<div class="col-sm-1">'+
-                                    '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'"+ '">X</button>'+                
-                                  '</div>'+
-                                '</div>'+
-                              '</div>'+
-                            '</div>';
-              document.getElementById("div").insertAdjacentHTML('beforeend', x);
-              i++;
-          }
+            </div>
+        </div>
+    </div>
 
-          function newSection(parentDiv) {
-            var x =       '<div class="col-md-12" style="margin-top: 15px;">'+
-                            '<div class="row">'+
-                              '<div class="col-sm-1">'+
-                              '</div>'+
-                              '<div class="col-sm-1">'+
-                                '<button class="btn btn-success" type="button" onclick="newSection2(this.parentElement)">+</button>'+
-                              '</div>'+
-                              '<div class="col-sm-7">'+
-                                '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.1 Chapter B">'+
-                              '</div>'+
-                              '<div class="col-sm-2">'+
-                                '<select class="form-control" id="ccmonth">'+
-                                  '<option>Section</option>'+
-                                  '<option>Criteria</option>'+
-                                  '<option>Table</option>'+
-                                  '<option>Figure</option>'+
-                                '</select>'+                          
-                              '</div>'+
-                              '<div class="col-sm-1">'+
-                                '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>'+                         
-                              '</div>'+
-                            '</div>'+
-                          '</div>';
+    <script>
 
-              var div = parentDiv.parentElement;
+        $(() => {
+            // At page load, create first parent
+            createTopLevelParent();
+        });
 
-              div.insertAdjacentHTML('beforeend', x);
+        function createTopLevelParent() {
+            createSubsection(0, null);
+        }
 
-              i++;
-          }
+        function createSubsection(level, parent) {
+            // No parent means it's a top level element - select the div for
+            // document outline parents
+            if (!parent) {
+                parent = $('#parent-sections');
+            }
 
-          function newSection2(parentDiv) {
-            var x =       '<div class="col-md-12" style="margin-top: 15px">'+
-                            '<div class="row">'+
-                              '<div class="col-sm-2">'+
-                              '</div>'+
-                              '<div class="col-sm-1">'+
-                                '<button class="btn btn-success" type="button" onclick="newSection3(this.parentElement)">+</button>'+
-                              '</div>'+
-                              '<div class="col-sm-6">'+
-                                '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.1.1 Chapter C">'+
-                              '</div>'+
-                              '<div class="col-sm-2">'+
-                                '<select class="form-control" id="ccmonth">'+
-                                  '<option>Section</option>'+
-                                  '<option>Criteria</option>'+
-                                  '<option>Table</option>'+
-                                  '<option>Figure</option>'+
-                                '</select>'+                          
-                              '</div>'+
-                              '<div class="col-sm-1">'+
-                                '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>'+                         
-                              '</div>'+
-                            '</div>'+
-                          '</div>';
-              var div = parentDiv.parentElement;
+            // Clone master document outline form
+            const section = $('#master-section').clone();
 
-              div.insertAdjacentHTML('beforeend', x);
+            // Make sure to leave out the ID
+            section.removeAttr('id');
 
-              i++;
-          }
+            // Level 5 is the maximum - prevent adding children
+            if (level >= 5) {
+                section
+                    .find('.add-child-button-container')
+                    .find('button')
+                    .remove();
+            }
 
-          function newSection3(parentDiv) {
-            var x =       '<div class="col-md-12" style="margin-top: 15px">'+
-                            '<div class="row">'+
-                              '<div class="col-sm-3">'+
-                              '</div>'+
-                              '<div class="col-sm-1">'+
-                                '<button class="btn btn-success" type="button" onclick="newSection4(this.parentElement)">+</button>'+
-                              '</div>'+
-                              '<div class="col-sm-5">'+
-                                '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.1.1.1 Chapter D">'+
-                              '</div>'+
-                              '<div class="col-sm-2">'+
-                                '<select class="form-control" id="ccmonth">'+
-                                  '<option>Section</option>'+
-                                  '<option>Criteria</option>'+
-                                  '<option>Table</option>'+
-                                  '<option>Figure</option>'+
-                                '</select>'+                          
-                              '</div>'+
-                              '<div class="col-sm-1">'+
-                                '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>'+                         
-                              '</div>'+
-                            '</div>'+
-                          '</div>';
+            section
+                .find('.remove-subsection-button')
+                .click(() => {
+                    section.remove();
+                });
 
-              var div = parentDiv.parentElement;
+            section
+                .find('.add-child-subsection-button')
+                .click(() => {
+                    // Select first because .find will find literally ALL document-item-children
+                    const childSubsectionParent = section
+                        .find('.document-item-children')
+                        .first();
+                    createSubsection(level + 1, childSubsectionParent);
+                });
 
-              div.insertAdjacentHTML('beforeend', x);
+            parent.prepend(section);
+        }
 
-              i++;
-          }
 
-          function newSection4(parentDiv) {
-            var x =       '<div class="col-md-12" style="margin-top: 15px">'+
-                            '<div class="row">'+
-                              '<div class="col-sm-4">'+
-                              '</div>'+
-                              '<div class="col-sm-1">'+
-                                '<button class="btn btn-success" type="button" onclick="newSection4(this.parentElement)">+</button>'+
-                              '</div>'+
-                              '<div class="col-sm-4">'+
-                                '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.1.1.1.1 Chapter E">'+
-                              '</div>'+
-                              '<div class="col-sm-2">'+
-                                '<select class="form-control" id="ccmonth">'+
-                                  '<option>Section</option>'+
-                                  '<option>Criteria</option>'+
-                                  '<option>Table</option>'+
-                                  '<option>Figure</option>'+
-                                '</select>'+                          
-                              '</div>'+
-                              '<div class="col-sm-1">'+
-                                '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>'+                         
-                              '</div>'+
-                            '</div>'+
-                          '</div>';
+        /*
+            Section: {
+                title: string,
+                section: string,
+                subsections: [Section]
+            }
+         */
+        function gatherFormData() {
+            function collectSections(sectionItem, level) {
+                let section = {};
 
-              var div = parentDiv.parentElement;
+                section.title = sectionItem
+                    .find("input.subsection-title")
+                    .first()
+                    .val();
 
-              div.insertAdjacentHTML('beforeend', x);
+                section.section = sectionItem
+                    .find("select.subsection-section")
+                    .first()
+                    .val();
 
-              i++;
-          }
-        </script>
-<!--END OF CONTENT-->
+                if (level < 5) {
+                    section.subsections = [];
+                }
+
+                return section;
+            }
+
+            function childrenToSections(children, level) {
+                let sections = [];
+
+                children.each((i, child) => {
+                    child = $(child);
+                    let section = collectSections(child, level);
+                    console.log(section);
+
+
+                    const childChildren = child
+                        .find(".document-item-children")
+                        .first()
+                        .children();
+
+                    if (childChildren.length > 0) {
+                        section.subsections = childrenToSections(childChildren, level + 1);
+                    }
+
+                    sections.push(section);
+                });
+
+                return sections;
+            }
+
+            const topLevelSections = $("#parent-sections").children();
+            return childrenToSections(topLevelSections, 0);
+        }
+
+        function onSubmitButtonClick() {
+            const sections = gatherFormData();
+
+            $.post("/createdocuoutline/", JSON.stringify({
+                agency: $("#accrediting-agency").val(),
+                title: $("#report-title").val(),
+                sections
+            }))
+                .done(() => alert("Submitted"))
+                .fail(() => alert("An error occurred submitting form"));
+
+
+            console.log("Gathering");
+        }
+
+
+        // var i = 0;
+        // var j = 0;
+        //
+        // function submitForm() {
+        //     //TODO:
+        //
+        //     var formItems = [];
+        //
+        // }
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        // function newChapter() {
+        //     var x = '<div class="row">' +
+        //         '<div class="col-md-12">' +
+        //         '<div class="row" style="margin-top: 15px">' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-success" type="button" onclick="newSection(this.parentElement)">+</button>' +
+        //         '</div>' +
+        //         '<div class="col-sm-8">' +
+        //         '<input class="form-control top-level-parent-document-outline" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.0 Introduction">' +
+        //         '</div>' +
+        //         '<div class="col-sm-2">' +
+        //         '<select class="form-control" id="ccmonth">' +
+        //         '<option>Section</option>' +
+        //         '<option>Criteria</option>' +
+        //         '<option>Table</option>' +
+        //         '<option>Figure</option>' +
+        //         '</select>' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>' +
+        //         '</div>' +
+        //         '</div>' +
+        //         '</div>' +
+        //         '</div>';
+        //     document.getElementById("div").insertAdjacentHTML('beforeend', x);
+        //     i++;
+        // }
+        //
+        // function newSection(parentDiv) {
+        //     var x = '<div class="col-md-12" style="margin-top: 15px;">' +
+        //         '<div class="row">' +
+        //         '<div class="col-sm-1">' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //             '<button class="btn btn-success" type="button" onclick="newSection2(this.parentElement)">+</button>' +
+        //         '</div>' +
+        //         '<div class="col-sm-7">' +
+        //         '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.1 Chapter B">' +
+        //         '</div>' +
+        //         '<div class="col-sm-2">' +
+        //         '<select class="form-control" id="ccmonth">' +
+        //         '<option>Section</option>' +
+        //         '<option>Criteria</option>' +
+        //         '<option>Table</option>' +
+        //         '<option>Figure</option>' +
+        //         '</select>' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>' +
+        //         '</div>' +
+        //         '</div>' +
+        //         '</div>';
+        //
+        //     var div = parentDiv.parentElement;
+        //
+        //     div.insertAdjacentHTML('beforeend', x);
+        //
+        //     i++;
+        // }
+        //
+        // function newSection2(parentDiv) {
+        //     var x = '<div class="col-md-12" style="margin-top: 15px">' +
+        //         '<div class="row">' +
+        //         '<div class="col-sm-2">' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-success" type="button" onclick="newSection3(this.parentElement)">+</button>' +
+        //         '</div>' +
+        //         '<div class="col-sm-6">' +
+        //         '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.1.1 Chapter C">' +
+        //         '</div>' +
+        //         '<div class="col-sm-2">' +
+        //         '<select class="form-control" id="ccmonth">' +
+        //         '<option>Section</option>' +
+        //         '<option>Criteria</option>' +
+        //         '<option>Table</option>' +
+        //         '<option>Figure</option>' +
+        //         '</select>' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>' +
+        //         '</div>' +
+        //         '</div>' +
+        //         '</div>';
+        //     var div = parentDiv.parentElement;
+        //
+        //     div.insertAdjacentHTML('beforeend', x);
+        //
+        //     i++;
+        // }
+        //
+        // function newSection3(parentDiv) {
+        //     var x = '<div class="col-md-12" style="margin-top: 15px">' +
+        //         '<div class="row">' +
+        //         '<div class="col-sm-3">' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-success" type="button" onclick="newSection4(this.parentElement)">+</button>' +
+        //         '</div>' +
+        //         '<div class="col-sm-5">' +
+        //         '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.1.1.1 Chapter D">' +
+        //         '</div>' +
+        //         '<div class="col-sm-2">' +
+        //         '<select class="form-control" id="ccmonth">' +
+        //         '<option>Section</option>' +
+        //         '<option>Criteria</option>' +
+        //         '<option>Table</option>' +
+        //         '<option>Figure</option>' +
+        //         '</select>' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>' +
+        //         '</div>' +
+        //         '</div>' +
+        //         '</div>';
+        //
+        //     var div = parentDiv.parentElement;
+        //
+        //     div.insertAdjacentHTML('beforeend', x);
+        //
+        //     i++;
+        // }
+        //
+        // function newSection4(parentDiv) {
+        //     var x = '<div class="col-md-12" style="margin-top: 15px">' +
+        //         '<div class="row">' +
+        //         '<div class="col-sm-4">' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-success" type="button" onclick="newSection4(this.parentElement)">+</button>' +
+        //         '</div>' +
+        //         '<div class="col-sm-4">' +
+        //         '<input class="form-control" style="border: none; border-radius: 2px; border-bottom: 1px solid #e4e7ea;" type="text" placeholder="e.g. 1.1.1.1.1 Chapter E">' +
+        //         '</div>' +
+        //         '<div class="col-sm-2">' +
+        //         '<select class="form-control" id="ccmonth">' +
+        //         '<option>Section</option>' +
+        //         '<option>Criteria</option>' +
+        //         '<option>Table</option>' +
+        //         '<option>Figure</option>' +
+        //         '</select>' +
+        //         '</div>' +
+        //         '<div class="col-sm-1">' +
+        //         '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'" + '">X</button>' +
+        //         '</div>' +
+        //         '</div>' +
+        //         '</div>';
+        //
+        //     var div = parentDiv.parentElement;
+        //
+        //     div.insertAdjacentHTML('beforeend', x);
+        //
+        //     i++;
+        // }
+    </script>
+    <!--END OF CONTENT-->
 {% endblock %}
