@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
-from .models import User, AccreditingBody, Files, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
+from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
     CompletedAccreditation, PrevAccreditation
 from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
     DocumentOutlineItemForm, \
