@@ -173,7 +173,7 @@ class CompletedAccreditation(models.Model):
     class Meta:
         verbose_name_plural = "completed_Accreditations"
 
-   def __str__(self):
+    def __str__(self):
         return self.degree_program_id.program_name + " " + self.accrediting_id.accrediting_body
 
 

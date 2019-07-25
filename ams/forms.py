@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, AccreditingBody, Files, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
+from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
     CompletedAccreditation, PrevAccreditation
 
 
@@ -49,7 +49,7 @@ class PrevAccreditationForm(forms.ModelForm):
 
 class FileForm(forms.ModelForm):
     class Meta:
-        model = Files
+        model = File
         fields = [
             "file_name",
             "file_type",
