@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
+
 # Create your views here.
 
 
@@ -28,14 +29,14 @@ def register(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
-            if request.POST['password'] ==  request.POST['confirm_password']:
+            if request.POST['password'] == request.POST['confirm_password']:
                 form.save()
                 return redirect('login')
             else:
-                return render(request, 'ams/register.html', {'form':form, 'error': 'Passwords do not match'})
+                return render(request, 'ams/register.html', {'form': form, 'error': 'Passwords do not match'})
     else:
         form = UserForm()
-        return render(request, 'ams/register.html', {'form':form})
+        return render(request, 'ams/register.html', {'form': form})
     """if request.method == 'POST':
         if request.POST['password'] == request.POST['confirm_password']:
             u = User(email=request.POST['email'], username=request.POST['username'], type=request.POST['type'], given_name=request.POST['given_name'],
@@ -66,12 +67,11 @@ def addagency(request):
             return redirect('addagency')
     else:
         form = AccreditingBodyForm()
-        return render(request, 'ams/admin/addagency.html', {'form':form})
+        return render(request, 'ams/admin/addagency.html', {'form': form})
 
 
 @csrf_exempt
 def createdocuoutline(request):
-
     accrediting_bodies = AccreditingBody.objects.all()
 
     def save_section(section_form, document_outline_id, parent):
@@ -89,11 +89,13 @@ def createdocuoutline(request):
         })
 
     form = json.loads(request.body)
-    document_outline = DocumentOutline.objects.create(accrediting_body_id=accrediting_bodies.get(id=form["agency"]), document_name=form["title"])
+    document_outline = DocumentOutline.objects.create(accrediting_body_id=accrediting_bodies.get(id=form["agency"]),
+                                                      document_name=form["title"])
     for section in form["sections"]:
         save_section(section, document_outline, None)
 
     return JsonResponse({}, status=200)
+
 
 def docuoutlinelist(request):
     return render(request, 'ams/docuoutlinelist.html')
@@ -116,11 +118,15 @@ def addprogram(request):
                 return redirect('programlist')
     else:
         form = DegreeProgramForm()
-        return render(request, 'ams/admin/addprogram.html', {'form':form})
+        program_form = PrevAccreditationForm()
+        return render(request, 'ams/admin/addprogram.html', {
+            'form': form,
+            'program_form': program_form
+        })
 
 
 def programprev(request, f):
-    programs = Degree_Program.objects.get(program_name=f)
+    programs = DegreeProgram.objects.get(program_name=f)
     if request.method == 'POST':
         form = PrevAccreditationForm(request.POST)
         if form.is_valid():
@@ -129,20 +135,20 @@ def programprev(request, f):
             a.save()
             return redirect('programlist')
     else:
-        form = PrevForm(request.POST)
-        return render(request, 'ams/admin/programprev.html', {'programs':programs, 'form': form})
+        form = PrevAccreditationForm(request.POST)
+        return render(request, 'ams/admin/programprev.html', {'programs': programs, 'form': form})
 
 
 def programlist(request):
     programs = DegreeProgram.objects
-    return render(request, 'ams/admin/programlist.html', {'programs':programs})
+    return render(request, 'ams/admin/programlist.html', {'programs': programs})
 
 
 def viewprogram(request, pk):
     program = DegreeProgram.objects.get(id=pk)
     prevs = PrevAccreditation.objects.filter(degree_program_id=pk)
 
-    return render(request, 'ams/admin/viewprogram.html', {'program':program, 'prevs':prevs})
+    return render(request, 'ams/admin/viewprogram.html', {'program': program, 'prevs': prevs})
 
 
 def createperiod(request):
@@ -150,7 +156,7 @@ def createperiod(request):
 
 
 def createteam(request):
-    return render(request, 'ams/createteam.html')
+    return render(request, 'ams/config/createteam.html')
 
 
 def accreditationlist(request):
