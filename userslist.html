@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--START OF CONTENT-->
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong>Create Team</strong>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="agency">Accrediting Agency</label></i>
+                            <input class="form-control-plaintext" id="agency" type="text" value="ABET" readonly>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="reacc">Type</label></i>
+                          <input class="form-control-plaintext" id="reacc" type="text" value="Reaccreditation" readonly>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="docu">Document</label></i>
+                          <input class="form-control-plaintext" id="docu" type="text" value="ABET CAC Self-Survey Report" readonly>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="prog">Degree Program</label></i>
+                          <input class="form-control-plaintext" id="prog" type="text" value="BS Information Systems" readonly>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <i><label for="teamName">Team Name</label></i>
+                        </div>
+                      </div>
+                       <div class="col-sm-8">
+                        <div class="form-group">
+                          <i><label for="teamMember">Team Members</label></i>
+                        </div>
+                       </div>
+                    </div>
+                        <div class="row">
+                          <div class="col-4">
+                            <div class="list-group" id="list-tab" role="tablist">
+                              <a class="list-group-item list-group-item-action active" id="list-matthew-list" data-toggle="list" href="#list-matthew" role="tab" aria-controls="matthew">Team Matthew</a>
+                              <a class="list-group-item list-group-item-action" id="list-mark-list" data-toggle="list" href="#list-mark" role="tab" aria-controls="mark">Team Mark</a>
+                              <a class="list-group-item list-group-item-action" id="list-luke-list" data-toggle="list" href="#list-luke" role="tab" aria-controls="luke">Team Luke</a>
+                            </div>
+                          </div>
+                          <div class="col-8">
+                            <div class="tab-content" id="nav-tabContent">
+                              <div class="tab-pane fade show active" id="list-matthew" role="tabpanel" aria-labelledby="list-matthew-list">Matthew, Matt</div>
+                              <div class="tab-pane fade" id="list-mark" role="tabpanel" aria-labelledby="list-mark-list">Mark desc</div>
+                              <div class="tab-pane fade" id="list-luke" role="tabpanel" aria-labelledby="list-luke-list">Luke desc</div>
+                            </div>
+                          </div>
+                        </div>
+                  </div>
+                  <br>
+                  <div class="card-footer">
+                    <a href="{% url 'createteam' %}" style="text-decoration: none; color:white;"><button class="btn btn-primary" type="submit"> Create Team</button></a>
+                    <a href="{% url 'assignteam' %}" style="text-decoration: none; color:white;"><button class="btn btn-secondary" type="button"> Assign Team</button></a>
+                    <a href="{% url 'userslist' %}" style="text-decoration: none; color:white;"><button class="btn btn-secondary" type="button"> Users List</button></a>
+                  </div>
+                  </div>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          var i = 0;
+          // Create a new list item when clicking on the "Add" button
+
+          function addItem() {
+            var item = document.getElementById("checklistItem").value;
+            var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+            if (item === 'Select Chapter') {
+              alert("You must select something!");
+            }
+            else {
+              document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+              i++;
+            }
+            document.getElementById("checklistItem").value = "Select Chapter";
+          }
+
+          function addArea() {
+            var item = document.getElementById("area").value;
+            var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+            if (item === 'Select Team') {
+              alert("You must select something!");
+            }
+            else {
+              document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+              i++;
+            }
+            document.getElementById("area").value = "Select Team";
+          }
+
+          function addTeam() {
+            var item = document.getElementById("team").value;
+            var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+            if (item === 'Select User') {
+              alert("You must select something!");
+            }
+            else {
+              document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+              i++;
+            }
+            document.getElementById("checklistItem").value = "Select User";
+          }
+
+          function ValidateSelectUser()
+          {
+              var checkboxes = document.getElementsByName("user");
+              var numberOfCheckedItems = 0;
+              for(var i = 0; i < checkboxes.length; i++)
+              {
+                  if(checkboxes[i].checked)
+                      numberOfCheckedItems++;
+              }
+              if(numberOfCheckedItems > 2)
+              {
+                  alert("You can't select more than two users!");
+                  return false;
+              }
+          }
+
+          function validate()
+          {
+            'use strict';
+            window.addEventListener('load', function() {
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation');
+              // Loop over them and prevent submission
+              var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                }, false);
+              });
+            }, false);
+          };
+        </script>
+<!--END OF CONTENT-->
+{% endblock %}
