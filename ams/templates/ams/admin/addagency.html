@@ -9,19 +9,22 @@
                   <div class="card-header">
                     <strong>Add Accrediting Agency</strong>
                   </div>
+                  <form method="POST">
+                  {% csrf_token %}
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">Accreditating Agency</label></i>
-                          <input class="form-control" id="accreditingbody" type="text" placeholder="Ex. PAASCU">
+                          {{ form.accrediting_body }}
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="card-footer">
-                    <a href="{% url 'addagency' %}" style="text-decoration: none; color:white;"><button class="btn btn-primary" type="button">Add</button></a>
+                    <button class="btn btn-primary" type="submit">Add</button>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>

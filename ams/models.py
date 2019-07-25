@@ -1,17 +1,110 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
+# Create your models here.
+
+class User_Manager(BaseUserManager):
+    def create_user(self, email, username, type, given_name, middle_initial, surname, password=None): 
+        if not email:
+            raise ValueError("Please input email address")
+        if not username:
+            raise ValueError("Please input username")
+        if not type:
+            raise ValueError("Please select user type")
+        if not given_name:
+            raise ValueError("Please input name")
+        if not middle_initial:
+            raise ValueError("Please input middle initial")
+        if not surname:
+            raise ValueError("Please input surname")
+
+        u = self.model(
+            email=self.normalize_email(email),
+            username=username,
+            type=type,
+            given_name=given_name,
+            middle_initial=middle_initial,
+            surname=surname,
+        )
+
+        u.set_password(password)
+        u.save(using=self._db)
+        return u
+
+    def create_superuser(self, email, username, type, given_name, middle_initial, surname, password=None): 
+        u = self.create_user(
+            email=self.normalize_email(email),
+            username=username,
+            password=password,
+            type=type,
+            given_name=given_name,
+            middle_initial=middle_initial,
+            surname=surname,
+            )
+        u.is_admin = True
+        u.is_staff = True
+        u.is_superuser = True
+        u.save(using=self._db)
+        return u
 
 
-class User(models.Model):
-    user_email = models.EmailField()
-    user_password = models.CharField(max_length=60)
-    user_givenName = models.CharField(max_length=60)
-    user_middleInitial = models.CharField(max_length=60)
-    user_surname = models.CharField(max_length=60)
-    user_type = models.CharField(max_length=60)
+class User(AbstractBaseUser):
+    email = models.EmailField(verbose_name='email', unique=True)
+    username = models.CharField(max_length=60, unique=True)
+    given_name = models.CharField(max_length=60)
+    middle_initial = models.CharField(max_length=60)
+    surname = models.CharField(max_length=60)
+    type = models.CharField(max_length=60)
+    date_joined = models.DateTimeField(verbose_name='date_joined', auto_now_add=True)
+    last_login = models.DateTimeField(verbose_name='last_login', auto_now=True)
+    is_admin = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'given_name', 'middle_initial', 'surname', 'type']
+
+    def __str__(self):
+        return self.surname + ", " + self.given_name + " " + self.middle_initial + "."
+
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
+
+    def has_module_perms(self, app_label):
+        return True
+
+    objects = User_Manager()
 
 
 class AccreditingBody(models.Model):
     accrediting_body = models.CharField(max_length=60)
+
+    class Meta:
+        verbose_name_plural = "accreditingBodies"
+
+    def __str__(self):
+        return self.accrediting_body
+
+
+class DegreeProgram(models.Model):
+    program_code = models.CharField(max_length=60)
+    program_name = models.CharField(max_length=60)
+    program_est = models.CharField(max_length=60)
+    program_grads = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.program_name
+
+
+class PrevAccreditation(models.Model):
+    degree_program_id = models.ForeignKey(DegreeProgram, default='1', on_delete=models.CASCADE)
+    accreditation_agency = models.CharField(max_length=60)
+    accreditation_result = models.CharField(max_length=60)
+    accreditation_year = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.degree_program_id.program_code + " " + self.accreditation_agency + " " + self.accreditation_year
 
 
 class Files(models.Model):
@@ -22,13 +115,6 @@ class Files(models.Model):
 
 class Team(models.Model):
     team_name = models.CharField(max_length=60)
-
-
-class DegreeProgram(models.Model):
-    program_code = models.CharField(max_length=60)
-    program_name = models.CharField(max_length=60)
-    program_est = models.CharField(max_length=60)
-    program_grads = models.CharField(max_length=60)
 
 
 class DocumentOutline(models.Model):
@@ -72,10 +158,5 @@ class UserTeams(models.Model):
     user_id = models.ForeignKey(User, default='1', on_delete=models.CASCADE)
 
 
-class PrevAccreditation(models.Model):
-    degree_program_id = models.ForeignKey(DegreeProgram, default='1', on_delete=models.CASCADE)
-    accreditation_agency = models.CharField(max_length=60)
-    accreditation_result = models.CharField(max_length=60)
-    accreditation_year = models.CharField(max_length=60)
 
 # Create your models here.

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--START OF CONTENT-->
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong>{{ programs.program_name }} Previous Accreditations</strong>
+                  </div>
+                  <div class="card-body">
+                  <form method="POST">
+                  {% csrf_token %}
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <button class="btn btn-success" type="button" onclick="newAccreditation()">Add</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" id="inputs">
+                      <div class="col-md-12" id="prev">
+                        <div class="row">
+                          <div class="form-group col-sm-4">
+                            <i><p style="text-align: center">Agency</p></i>
+                          </div>
+                          <div class="form-group col-sm-4">
+                            <i><p style="text-align: center">Level or Result</p></i>
+                          </div>
+                          <div class="form-group col-sm-3">
+                            <i><p style="text-align: center">Year</p></i>
+                          </div>
+                          <div class="form-group col-sm-1">
+                          </div>
+                        </div>
+                      </div>
+                      <br><br>
+                    </div>
+                    <div class="row" id="inputs" style="padding-bottom: 15px">
+                      <div class="col-sm-4">
+                        {{ form.accreditation_agency }}
+                      </div>
+                      <div class="col-sm-4">
+                        {{ form.accreditation_result }}
+                      </div>
+                      <div class="col-sm-3">
+                        {{ form.accreditation_year }}
+                      </div>
+                      <div class="col-sm-1">
+                        <button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display='none'">X</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                  </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          var start = 1900;
+          var end = new Date().getFullYear();
+          var options = "";
+          var a = "<option>Please Select Year</option>";
+          for(var year = start ; year <=end; year++){
+            options += "<option value='"+ year + "'>" + year + "</option>";
+          }
+          document.getElementById("year").innerHTML = a + options;
+        </script>
+        
+        <script>
+          var i = 2;
+          // Create a new list item when clicking on the "Add" button
+          function newAccreditation() {
+            var x =     '<div class="row" id="inputs" style="padding-bottom: 15px">'+
+                          '<div class="col-sm-4">'+
+                            '<input class="form-control" name="accrediting_agency" type="text" placeholder="Agency">'+
+                          '</div>'+
+                          '<div class="col-sm-4">'+
+                            '<input class="form-control" name="accrediting_result" type="text" placeholder="Level/Result">'+
+                          '</div>'+
+                          '<div class="col-sm-3">'+
+                            '<input class="form-control" name="accrediting_year" type="text" placeholder="Year Accredited">'+
+                          '</div>'+
+                          '<div class="col-sm-1">'+
+                            '<button class="btn btn-danger" type="button" onclick="this.parentElement.parentElement.style.display = ' + "'" + 'none' + "'"+ '">X</button>'+
+                          '</div>'+
+                        '</div>';
+            //var x = '<li style="padding-bottom: 10px">'+ item +'</li>';
+            document.getElementById("prev").insertAdjacentHTML('beforeend', x);
+            i++;
+          }
+        </script>
+
+        <script>
+          function showHide(checked) {
+            if (checked == true)
+              $('#inputs').hide();
+            else
+              $('#inputs').show();
+          }
+        </script>
+<!--END OF CONTENT-->
+{% endblock %}

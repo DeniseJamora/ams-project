@@ -21,26 +21,17 @@
                             </tr>
                           </thead>
                           <tbody>
+                            {% for program in programs.all %}
                             <tr>
-                              <td>BS Computer Science</td>
-                              <td>BS CS</td>
-                              <td>2005</td>
-                              <td>10</td>
+                              <td>{{ program.program_name }}</td>
+                              <td>{{ program.program_code }}</td>
+                              <td>{{ program.program_est }}</td>
+                              <td>{{ program.program_grads }} years of graduates</td>
                               <td>
-                                <button class="btn btn-primary" type="submit">View</button>
+                                <a href="{%  url 'viewprogram' pk=program.id %}" style="text-decoration: none; color: white"><button class="btn btn-primary" type="">View</button></a>
                               </td>
                             </tr>
-                          </tbody>
-                          <tbody>
-                            <tr>
-                              <td>BS Information Technology</td>
-                              <td>BS IT</td>
-                              <td>2010</td>
-                              <td>5</td>
-                              <td>
-                                <button class="btn btn-primary" type="submit">View</button>
-                              </td>
-                            </tr>
+                            {% endfor %}
                           </tbody>
                         </table>
                       </div>

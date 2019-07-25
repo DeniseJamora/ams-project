@@ -7,34 +7,34 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>BS Information  Technology</strong>
+                    <strong>{{ program.program_name }}</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="pName">Program Name</label>
-                            <p><strong id="pName">BS Information Technology</strong></p>
+                          <i><label for="pName">Program Name</label></i>
+                          <p><strong id="pName">{{ program.program_name }}</strong></p>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="pCode">Program Code</label>
-                          <p><strong id="pCode">BS IT</strong></p>
+                          <i><label for="pCode">Program Code</label></i>
+                          <p><strong id="pCode">{{ program.program_code }}</strong></p>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="pStartDate">Date Started</label>
-                          <p><strong id="pStartDate">June 2015</strong></p>
+                          <i><label for="pStartDate">Year Established</label></i>
+                          <p><strong id="pStartDate">{{ program.program_est }}</strong></p>
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="pGraduates">No of years with graduates</label>
-                          <p><strong id="pGraduates">1</strong></p>
+                          <i><label for="pGraduates">No of years with graduates</label></i>
+                          <p><strong id="pGraduates">{{ program.program_grads }} years with graduates</strong></p>
                         </div>
                       </div>
                     </div>
@@ -51,14 +51,16 @@
                             </tr>
                           </thead>
                           <tbody>
+                            {% for prev in prevs.all %}
                             <tr>
-                              <td>PAASCU</td>
-                              <td>Level IV</td>
-                              <td>2018</td>
+                              <td>{{ prev.accreditation_agency }}</td>
+                              <td>{{ prev.accreditation_result }}</td>
+                              <td>{{ prev.accreditation_year }}</td>
                               <td>
                                 <button class="btn btn-primary" type="reset"> Edit</button>
                               </td>
                             </tr>
+                            {% endfor %}
                           </tbody>
                         </table>
                       </div>
