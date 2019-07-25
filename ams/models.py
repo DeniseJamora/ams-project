@@ -118,6 +118,8 @@ class File(models.Model):
     file_type = models.CharField(max_length=30)
     file_document = models.FileField(max_length=250)
 
+    def __str__(self):
+        return self.file_name
 
 class Team(models.Model):
     team_name = models.CharField(max_length=60)
@@ -130,6 +132,10 @@ class DocumentOutline(models.Model):
     class Meta:
         verbose_name_plural = "document_Outlines"
 
+    def __str__(self):
+        return self.document_name
+
+
 class DocumentOutlineItem(models.Model):
     document_outline_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
     parent_document_outline_item_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
@@ -139,21 +145,27 @@ class DocumentOutlineItem(models.Model):
     class Meta:
         verbose_name_plural = "document_Outline_Items"
 
+    def __str__(self):
+        return self.document_outline_id.document_name + " " + self.id
+
 
 class OngoingAccreditation(models.Model):
     accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
     degree_program_id = models.ForeignKey(DegreeProgram, default='1', on_delete=models.CASCADE)
-    teams_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
+    team_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
     document_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "ongoing_Accreditations"
 
+    def __str__(self):
+        return self.degree_program_id.program_name + " " + self.accrediting_id.accrediting_body
+
 
 class CompletedAccreditation(models.Model):
     accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
     degree_program_id = models.ForeignKey(DegreeProgram, default='1', on_delete=models.CASCADE)
-    teams_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
+    team_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
     document_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
     completed_result = models.CharField(max_length=60)
     completed_year = models.CharField(max_length=60)
@@ -161,24 +173,33 @@ class CompletedAccreditation(models.Model):
     class Meta:
         verbose_name_plural = "completed_Accreditations"
 
+   def __str__(self):
+        return self.degree_program_id.program_name + " " + self.accrediting_id.accrediting_body
+
 
 class ChapterTeam(models.Model):
     accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
-    teams_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
+    team_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
     document_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
     document_outline_item_id = models.ForeignKey(DocumentOutlineItem, default='1', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "team_Chapters"
 
+    def __str__(self):
+        return self.team_id.team_name + " " + self.document_id.document_name + " " + self.document_outline_item_id.item_title
 
-class UserTeams(models.Model):
+
+class UserTeam(models.Model):
     accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
-    teams_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
+    team_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, default='1', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "team_Members"
+
+    def __str__(self):
+        return self.team_id.team_name + " " + self.user_id.given_name + " " + self.user_id.surname
 
 
 
