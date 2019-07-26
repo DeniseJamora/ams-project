@@ -168,7 +168,9 @@ def viewaccreditation(request):
 
 
 def teamlist(request):
-    return render(request, 'ams/teamlist.html')
+    teams = Team.objects
+    members = UserTeam.objects
+    return render(request, 'ams/config/teamlist.html', {'teams':teams, 'members':members})
 
 
 def ongoinglist(request):
@@ -192,4 +194,6 @@ def filerepo(request):
 
 
 def userlist(request):
-    return render(request, 'ams/userlist.html')
+    users = User.objects
+    teams = UserTeam.objects
+    return render(request, 'ams/admin/userlist.html', {'users':users}, {'teams':teams})

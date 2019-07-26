@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+          <li class="breadcrumb-item active">Users</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
 <!--START OF CONTENT-->
         <div class="container-fluid">
           <div class="animated fadeIn">
@@ -28,9 +31,13 @@
                           <td>{{ user.email }}</td>
                           <td>{{ user.username }}</td>
                           <td>ABET BS Information System 2019<br>PAASCU Information Technology 2019<br>AUN BS Computer Studies 2020</td>
-                          <td>Team A<br>Team B<br>Team C</td>
                           <td>
-                            <button class="btn btn-danger" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">Deactivate</a></button>
+                            {% for team in teams.all %}
+                             {{ team.team_id.team_name }}
+                            {% endfor %}
+                          </td>
+                          <td>
+                            <button class="btn btn-danger" type=""><a href="accreditationlist.html" style="text-decoration: none; color: white;">Deactivate</a></button>
                           </td>
                         </tr>
                         {% endfor %}

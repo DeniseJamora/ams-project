@@ -188,12 +188,12 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item active">Dashboard</li>
+          <a href="{% url 'dash' %"><li class="breadcrumb-item">Dashboard |&nbsp;</li></a>
+    {% block content %}
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
-        {% block content %}
-        {% endblock %}
+    {% endblock %}
 <!--END OF CONTENT-->
       </main>
       <aside class="aside-menu" id="sidemenu">

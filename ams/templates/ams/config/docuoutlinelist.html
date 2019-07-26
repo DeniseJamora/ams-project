@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+          <li class="breadcrumb-item active">Document Outlines</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
 <!--START OF CONTENT-->
         <div class="container-fluid">
           <div class="animated fadeIn">
@@ -17,13 +20,15 @@
                         </tr>
                       </thead>
                       <tbody>
+                        {% for outline in outlines.all %}
                         <tr>
-                          <td>ABET</td>
-                          <td>ABET CAC Self Survey Report 2019</td>
+                          <td>{{ outline.accrediting_body_id.accrediting_body }}</td>
+                          <td>{{ outline.document_name }}</td>
                           <td>
                             <button class="btn btn-primary" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">Edit</a></button>
                           </td>
                         </tr>
+                        {% endfor %}
                       </tbody>
                     </table>
                   </div>
