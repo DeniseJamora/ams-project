@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-    CompletedAccreditation, PrevAccreditation
+    CompletedAccreditation, PrevAccreditation, UserTeam
 from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
     DocumentOutlineItemForm, \
     CompletedAccreditationForm, PrevAccreditationForm
@@ -37,16 +37,6 @@ def register(request):
     else:
         form = UserForm()
         return render(request, 'ams/register.html', {'form': form})
-    """if request.method == 'POST':
-        if request.POST['password'] == request.POST['confirm_password']:
-            u = User(email=request.POST['email'], username=request.POST['username'], type=request.POST['type'], given_name=request.POST['given_name'],
-                     middle_initial=request.POST['middle_initial'], surname=request.POST['surname'],
-                     password=request.POST['password'])
-            u.save()
-            return redirect('login')
-        else:
-    else:
-        return render(request, 'ams/register.html')"""
 
 
 def logout(request):
@@ -98,11 +88,12 @@ def createdocuoutline(request):
 
 
 def docuoutlinelist(request):
-    return render(request, 'ams/docuoutlinelist.html')
+    outlines = DocumentOutline.objects
+    return render(request, 'ams/config/docuoutlinelist.html', {'outlines':outlines})
 
 
 def viewdocuoutline(request):
-    return render(request, 'ams/viewdocuoutline.html')
+    return render(request, 'ams/config/viewdocuoutline.html')
 
 
 def addprogram(request):
@@ -152,19 +143,23 @@ def viewprogram(request, pk):
 
 
 def createperiod(request):
-    return render(request, 'ams/createperiod.html')
+    return render(request, 'ams/config/createperiod.html')
 
 
 def createteam(request):
     return render(request, 'ams/config/createteam.html')
 
 
+def accreditationbase(request):
+    return render(request, 'ams/accreditationbase.html')
+
+
 def accreditationlist(request):
-    return render(request, 'ams/accreditationlist.html')
+    return render(request, 'ams/config/accreditationlist.html')
 
 
 def viewaccreditation(request):
-    return render(request, 'ams/viewaccreditation.html')
+    return render(request, 'ams/config/viewaccreditation.html')
 
 
 def teamlist(request):
@@ -174,19 +169,15 @@ def teamlist(request):
 
 
 def ongoinglist(request):
-    return render(request, 'ams/ongoinglist.html')
+    return render(request, 'ams/config/ongoinglist.html')
 
 
 def viewongoing(request):
-    return render(request, 'ams/viewongoing.html')
+    return render(request, 'ams/config/viewongoing.html')
 
 
 def ansdocu(request):
     return render(request, 'ams/ansdocu.html')
-
-
-def docurepo(request):
-    return render(request, 'ams/filerepo.html')
 
 
 def filerepo(request):

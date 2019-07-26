@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+          <!-- Breadcrumb Menu-->
+        </ol>
 <!--START OF CONTENT-->
         <div class="container-fluid">
           <div class="animated fadeIn">
@@ -7,68 +9,40 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header">
-                    <strong>Document</strong>
+                    <strong>Accrediting Period | Criteria Name</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-12">
                         <div class="form-group">
-                          <label for="pName">Accrediting Agency</label>
-                            <p><strong id="pName">PAASCU</strong></p>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="pCode"> Degree Program</label>
-                          <p><strong id="pCode">BS Information Systems</strong></p>
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="pStartDate">Type</label>
-                          <p><strong id="pStartDate">Reaccreditation</strong></p>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="pGraduates">Year Started - Estimated End Date</label>
-                          <p><strong id="pGraduates">October 2015 - October 2020</strong></p>
-                        </div>
-                      </div>
-                    </div>
-                    <br><hr><br>
-                    <div class="row">
-                      <div class="col-3">
-                        <div id="spy-example2" data-spy="scroll" data-target="#list-example" data-offset="0" style="height: 460px; overflow: auto">
-                          <div class="list-group" id="list-example">
-                            <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-9">
-                        <div class="form-group">
-                          <p>Chapter Name</p>
+                          <i><p>Criteria Description here</p></i>
                           <br>
                           <label for="pGraduates">Narrative</label>
                           <textarea class="form-control" id="textarea-input" name="textarea-input" rows="9" placeholder="Content.."></textarea>
+                        </div>
+                        <div class="form-group">
+                          <p>Evidence List</p>
+                          <br>
+                          <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Evidence</th>
+                                <th>Assigned Member</th>
+                                <th>Deadline</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Picture of classroom layout</td>
+                                <td>Denise Jamora</td>
+                                <td>August 2, 2019</td>
+                                <td>
+                                  <button class="btn btn-primary" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">Upload</a></button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                         <div class="form-group">
                           <p>Appendices and Exhibits</p>
@@ -92,13 +66,11 @@
                                 <td>Picture of all computer laboratories in gokongwei building</td>
                                 <td>layout.png</td>
                                 <td>
-                                  <button class="btn btn-primary" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">Edit</a></button>
                                   <button class="btn btn-danger" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">Remove</a></button>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                          <button class="btn btn-primary" type="button" onclick="">Add</button>
                         </div>
                       </div>
                     </div>

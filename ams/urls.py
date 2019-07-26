@@ -38,6 +38,7 @@ urlpatterns = [
     path('viewprogram/<int:pk>/', views.viewprogram, name="viewprogram"), 
     path('createperiod/', views.createperiod, name='createperiod'),
     path('createteam/', views.createteam, name='createteam'), 
+    path('accreditationbase/', views.accreditationbase, name='accreditationbase'),
     path('accreditationlist/', views.accreditationlist, name='accreditationlist'),
     path('viewaccreditation/', views.viewaccreditation, name='viewaccreditation'),
     path('teamlist/', views.teamlist, name='teamlist'),
