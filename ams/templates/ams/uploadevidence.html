@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+          <li class="breadcrumb-item">New Accreditation</li>
+          <li class="breadcrumb-item active">Assign Criteria</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
+    <!--START OF CONTENT-->
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Accreditation + Document Outline + Criteria Name</strong>
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <i><label for="pName">Evidence Name</label></i>
+                                                    <input class="form-control" type="text" placeholder="1. ABCD">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <i><label for="pName">Description</label></i>
+                                                    <input class="form-control" type="text" placeholder="1. ABCD">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="score">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <i><label for="pName">Evidence Type</label></i>
+                                                    <select class="form-control" id="rating" onchange="scoring()">
+                                                        <option>Select Type</option>
+                                                        <option>Appendix</option>
+                                                        <option>Exhibit</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <i><label for="pName">File</label></i><br>
+                                                    <input id="file-input" type="file">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary" onclick="onSubmitButtonClick()">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END OF CONTENT-->
+{% endblock %}

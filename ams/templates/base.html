@@ -188,7 +188,7 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <a href="{% url 'dash' %"><li class="breadcrumb-item">Dashboard &nbsp;</li></a>
+          <li class="breadcrumb-item"><a href="{% url 'dash' %">Dashboard</a></li>
     {% block content %}
           <!-- Breadcrumb Menu-->
         </ol>
@@ -202,6 +202,9 @@
           <div class="dropdown-header text-center">
               <strong>Settings</strong>
           </div>
+          <a class="dropdown-item" href="{% url 'deadlines' %}">
+            <i class="fa fa-calendar"></i> Deadlines
+          </a>
           <a class="dropdown-item" href="profile.html">
             <i class="fa fa-user"></i> Profile
           </a>
@@ -211,7 +214,18 @@
               <i class="fa fa-lock"></i> Logout
             </a>
           </form>
+          <div class="dropdown-header text-center">
+              <strong>Notifications</strong>
           </div>
+              <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
+                <div>Submit
+                  <strong>Evidence A</strong>
+                </div>
+                <small class="text-muted mr-3">
+                  <i class="icon-calendar"></i>  August 2, 2019</small>
+                <small class="text-muted">
+                  <i class="icon-user"></i>  Team Head</small>
+              </div>
         </div>
       </aside>
     </div>

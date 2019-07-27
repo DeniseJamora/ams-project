@@ -87,6 +87,10 @@ def createdocuoutline(request):
     return JsonResponse({}, status=200)
 
 
+def setcriteria(request):
+    return render(request, 'ams/admin/setcriteria.html')
+
+
 def docuoutlinelist(request):
     outlines = DocumentOutline.objects
     return render(request, 'ams/config/docuoutlinelist.html', {'outlines':outlines})
@@ -150,6 +154,10 @@ def createteam(request):
     return render(request, 'ams/config/createteam.html')
 
 
+def assigncriteria(request):
+    return render(request, 'ams/config/assigncriteria.html')
+
+
 def accreditationbase(request):
     return render(request, 'ams/accreditationbase.html')
 
@@ -178,6 +186,18 @@ def viewongoing(request):
 
 def ansdocu(request):
     return render(request, 'ams/ansdocu.html')
+
+
+def uploadevidence(request):
+    return render(request, 'ams/uploadevidence.html')
+
+
+def approveevidence(request):
+    return render(request, 'ams/approveevidence.html')
+
+
+def deadlines(request):
+    return render(request, 'ams/deadlines.html')
 
 
 def filerepo(request):
