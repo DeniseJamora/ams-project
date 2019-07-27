@@ -88,25 +88,6 @@
 
             </div>
         </div>
-
-
-        <div id="master-criteria-form"
-             class="document-item-criteria-field d-flex flex-row flex-nowrap justify-content-between">
-            <div class="col-1"></div>
-            <div class="col-8">
-                        <textarea class="md-textarea form-control mt-2 criteria-description" rows="3"
-                                  placeholder="Description"></textarea>
-            </div>
-            <div class="col-2">
-                          <textarea class="md-textarea form-control mt-2 bg-white criteria-evidences" rows="3"
-                                    placeholder="Evidences" disabled></textarea>
-            </div>
-            <div class="col-1">
-                <button type="button" class="btn btn-primary mt-2">
-                    <small>Add Evidences</small>
-                </button>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -211,11 +192,9 @@
                                 removeAllChildren(subsection);
                                 lockSectionToSection(subsection);
                                 disableAddingChildren(subsection);
-                                showCriteriaFields(subsection)
                             } else {
                                 unlockSection(subsection);
                                 enableAddingChildren(subsection);
-                                removeCriteriaFields(subsection)
                             }
                         });
                 });
