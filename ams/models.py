@@ -151,6 +151,14 @@ class DocumentOutlineItem(models.Model):
         return self.document_outline_id.document_name + " " + self.id
 
 
+class SetCriteria(models.Model):
+    document_outline_item_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
+    evidences_set_criteria_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    criteria_rating = models.CharField(max_length=128)
+    criteria_description = models.CharField(max_length=512)
+    criteria_evidence = models.CharField(max_length=256)
+
+
 class OngoingAccreditation(models.Model):
     accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
     degree_program_id = models.ForeignKey(DegreeProgram, default='1', on_delete=models.CASCADE)
