@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+          <li class="breadcrumb-item">Create Document Outline</li>
+          <li class="breadcrumb-item active">Set Criteria</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
+    <!--START OF CONTENT-->
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Docu Outline</strong>
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <i><label for="pName">Section Title</label></i>
+                                                    <input class="form-control" type="text" placeholder="1. ABCD">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <i><label for="pName">Rating/Score Type</label></i>
+                                                    <input class="form-control" type="text" placeholder="1. ABCD">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <i><label for="pName">Description</label></i>
+                                                    <textarea class="form-control" id="textarea-input" name="textarea-input" rows="2" placeholder="Content.."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                    <i><label for="pName">Evidence</label></i>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" placeholder="Evidence">
+                                                    <span class="input-group-append">
+                                                        <button class="btn btn-primary" type="button">Add</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" id="evidence">
+                                            </div>
+                                        </div>
+                                        <div class="row" id="score">
+                                        </div>
+
+                                        <div class="row">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary" onclick="onSubmitButtonClick()">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var i = 0;
+          // Create a new list item when clicking on the "Add" button
+
+            function scoring() {
+                var item = document.getElementById("rating").value;
+                var x = '<div class="col-sm-4">'+
+                            '<div class="form-group">'+
+                                '<i><label for="pName">Lowest Score</label></i>'+
+                                '<input class="form-control" type="text" placeholder="1. ABCD">'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col-sm-4">'+
+                            '<div class="form-group">'+
+                                '<i><label for="pName">Highest Score</label></i>'+
+                                '<input class="form-control" type="text" placeholder="1. ABCD">'+
+                            '</div>'+
+                        '</div>';
+
+                var y = '<div class="col-sm-8">'+
+                            '<div class="form-group">'+
+                                '<i><label for="pName">Alphanumeric</label></i>'+
+                                '<input class="form-control" type="text" placeholder="1. ABCD">'+
+                            '</div>'+
+                        '</div>';
+
+                if (item === 'Select Score') {
+                  alert("You must select something!");
+                }
+                else if (item == 'Numeric'){
+                  document.getElementById("score").insertAdjacentHTML('beforeend', x);
+                  i++;
+                }
+                else if (item == 'Alphanumeric'){
+                  document.getElementById("score").insertAdjacentHTML('beforeend', y);
+                  i++;
+                }
+                else {
+                  i++;
+                }
+
+                document.getElementById("rating").value = "Select Score";
+        }
+    </script>
+    <!--END OF CONTENT-->
+{% endblock %}

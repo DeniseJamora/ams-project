@@ -93,14 +93,11 @@ def createdocuoutline(request):
     return JsonResponse({}, status=200)
 
 
-<<<<<<< HEAD
 def setcriteria(request):
     return render(request, 'ams/admin/setcriteria.html')
 
 
-=======
 @login_required
->>>>>>> d49e569fc185660701ed61bf66e8ad55329ff1e8
 def docuoutlinelist(request):
     outlines = DocumentOutline.objects
     return render(request, 'ams/config/docuoutlinelist.html', {'outlines': outlines})
@@ -171,14 +168,11 @@ def createteam(request):
     return render(request, 'ams/config/createteam.html')
 
 
-<<<<<<< HEAD
 def assigncriteria(request):
     return render(request, 'ams/config/assigncriteria.html')
 
 
-=======
 @login_required
->>>>>>> d49e569fc185660701ed61bf66e8ad55329ff1e8
 def accreditationbase(request):
     return render(request, 'ams/accreditationbase.html')
 
@@ -215,7 +209,6 @@ def ansdocu(request):
     return render(request, 'ams/ansdocu.html')
 
 
-<<<<<<< HEAD
 def uploadevidence(request):
     return render(request, 'ams/uploadevidence.html')
 
@@ -228,14 +221,7 @@ def deadlines(request):
     return render(request, 'ams/deadlines.html')
 
 
-=======
 @login_required
-def docurepo(request):
-    return render(request, 'ams/filerepo.html')
-
-
-@login_required
->>>>>>> d49e569fc185660701ed61bf66e8ad55329ff1e8
 def filerepo(request):
     return render(request, 'ams/filerepo.html')
 
