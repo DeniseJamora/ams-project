@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Breadcrumb Menu-->
+    </ol>
+    <!--START OF CONTENT-->
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">BSINSYS PAASCU 2019</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Criteria</th>
+                                            <th>Assigned Team</th>
+                                            <th>Assigned Members</th>
+                                            <th>Evidence List</th>
+                                            <th>Deadline</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>A.1 Criteria Name</td>
+                                            <td>Team A</td>
+                                            <td>Denise Jamora<br>Clifford Martinez<br>Eunice Yu</td>
+                                            <td>Evidence A<br>Evidence B<br>Evidence C</td>
+                                            <td>August 2, 2019</td>
+                                            <td>
+                                                <a href="{% url 'ansdocu' %}">
+                                                    <button class="btn btn-primary" type="reset"> View</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END OF CONTENT-->
+{% endblock %}

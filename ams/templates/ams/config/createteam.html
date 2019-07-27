@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+          <li class="breadcrumb-item active">Create Team</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
 <!--START OF CONTENT-->
         <div class="container-fluid">
           <div class="animated fadeIn">
@@ -11,61 +14,51 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-12">
                         <div class="form-group">
-                          <i><label for="name">Accrediting Agency</label></i>
+                          <i><label for="name">Accreditation Period</label></i>
                           <select class="form-control" id="agency" disabled="">
                             <option>Please Select</option>
-                            <option value="PAASCU">PAASCU</option>
-                            <option value="PACUCOA">PACUCOA</option>
-                            <option value="AUN" selected="">AUN</option>
-                            <option value="ABET">ABET</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <i><label for="name">Type</label></i>
-                          <select class="form-control" id="select" disabled="">
-                            <option>Please Select</option>
-                            <option selected="">Initial Application</option>
-                            <option>Reaccreditation</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <i><label for="name">Document</label></i>
-                          <select class="form-control" id="select" disabled="">
-                            <option>Please Select</option>
-                            <option selected="">ABET CAC Self-Survey Report</option>
-                            <option>ABET ANSAC Self-Survey Report</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <i><label for="name">Degree Program</label></i>
-                          <select class="form-control" id="select" disabled="">
-                            <option>Please Select</option>
-                            <option selected="">BS Information Systems</option>
-                            <option>BS Information Technology</option>
+                            <option value="PAASCU">BS INSYS PAASCU 2019</option>
                           </select>
                         </div>
                       </div>
                     </div>
                     <br><hr>
                     <div class="row">
-                      <div class="col-sm-4">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">Team Name</label></i>
                           <input class="form-control" id="committeeName" type="text" placeholder="Committee Name">
                         </div>
                       </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <i><label for="name">Team Head</label></i>
+                          <select class="form-control" id="committee">
+                            <option>Select User</option>
+                            <option>Juan Dela Cruz</option>
+                            <option>Juan Dela Cruz</option>
+                            <option>Juan Dela Cruz</option>
+                            <option>Juan Dela Cruz</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                     <br>
-                    <div id="addAssignments">
-                      <i><p>Team Assignments:</p></i>
+                    <div class="row" id="addAssignments">
+                      <div class="col-sm-4 text-center" id="criteria">
+                        Criteria
+                        <br><br>
+                      </div>
+                      <div class="col-sm-4 text-center" id="team">
+                        Team
+                        <br><br>
+                      </div>
+                      <div class="col-sm-4 text-center" id="member">
+                        Member
+                        <br><br>
+                      </div>
                     </div>
                     <br>
                     <div class="row">
@@ -97,12 +90,12 @@
                       </div>
                       <div class="col-sm-3">
                         <select class="form-control" id="committee">
-                            <option>Select User</option>
-                            <option>Juan Dela Cruz</option>
-                            <option>Juan Dela Cruz</option>
-                            <option>Juan Dela Cruz</option>
-                            <option>Juan Dela Cruz</option>
-                          </select>
+                          <option>Select User</option>
+                          <option>Juan Dela Cruz</option>
+                          <option>Juan Dela Cruz</option>
+                          <option>Juan Dela Cruz</option>
+                          <option>Juan Dela Cruz</option>
+                        </select>
                       </div>
                       <div class="col-sm-1">
                         <div class="form-group">
@@ -130,12 +123,21 @@
 
           function addItem() {
             var item = document.getElementById("checklistItem").value;
-            var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+            var x = '<div class="row">'+
+                      '<div class="col-sm-10">'+
+                        '<input class="form-control" type="text" disabled="" value="' + item +' ">'+
+                      '</div>'+
+                      '<div class="col-sm-1">'+
+                        '<div class="form-group">'+
+                          '<button class="btn btn-danger" type="button">X</button>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>';
             if (item === 'Select Chapter') {
               alert("You must select something!");
             }
             else {
-              document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+              document.getElementById("criteria").insertAdjacentHTML('beforeend', x);
               i++;
             }
             document.getElementById("checklistItem").value = "Select Chapter";
@@ -143,12 +145,21 @@
 
           function addArea() {
             var item = document.getElementById("area").value;
-            var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+            var x = '<div class="row">'+
+                      '<div class="col-sm-10">'+
+                        '<input class="form-control" type="text" disabled="" value="' + item +' ">'+
+                      '</div>'+
+                      '<div class="col-sm-1">'+
+                        '<div class="form-group">'+
+                          '<button class="btn btn-danger" type="button">X</button>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>';
             if (item === 'Select Team') {
               alert("You must select something!");
             }
             else {
-              document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+              document.getElementById("team").insertAdjacentHTML('beforeend', x);
               i++;
             }
             document.getElementById("area").value = "Select Team";
@@ -156,12 +167,21 @@
 
           function addCommittee() {
             var item = document.getElementById("committee").value;
-            var x = '<p><input type="checkbox" name=""> '+ item +'</p>';
+            var x = '<div class="row">'+
+                      '<div class="col-sm-10">'+
+                        '<input class="form-control" type="text" disabled="" value="' + item +' ">'+
+                      '</div>'+
+                      '<div class="col-sm-1">'+
+                        '<div class="form-group">'+
+                          '<button class="btn btn-danger" type="button">X</button>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>';
             if (item === 'Select User') {
               alert("You must select something!");
             }
             else {
-              document.getElementById("addAssignments").insertAdjacentHTML('beforeend', x);
+              document.getElementById("member").insertAdjacentHTML('beforeend', x);
               i++;
             }
             document.getElementById("checklistItem").value = "Select User";

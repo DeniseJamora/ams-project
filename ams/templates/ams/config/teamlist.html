@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+          <li class="breadcrumb-item active">Teams</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
 <!--START OF CONTENT-->
         <div class="container-fluid">
           <div class="animated fadeIn">
@@ -22,8 +25,9 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Team 1</td>
-                          <td>ABET BS Information Systems 2019</td>
+                        {% for member in members.all %}
+                          <td>{{ member.team_id.team_name }}</td>
+                          <td>{{ member.accrediting_id.accrediting_body }}</td>
                           <td>ABET CAC Self Survey Report 2019-2020</td>
                           <td>Juan Dela Cruz<br>Maria Dela Cruz</td>
                           <td>1.0 Introduction<br>2.0 History</td>
@@ -32,6 +36,7 @@
                             <button class="btn btn-primary" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">View</a></button>
                           </td>
                         </tr>
+                        {% endfor %}
                       </tbody>
                     </table>
                   </div>

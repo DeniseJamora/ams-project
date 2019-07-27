@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-    CompletedAccreditation, PrevAccreditation
+    CompletedAccreditation, PrevAccreditation, UserTeam
 from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
     DocumentOutlineItemForm, \
     CompletedAccreditationForm, PrevAccreditationForm
@@ -25,16 +25,6 @@ def register(request):
     else:
         form = UserForm()
         return render(request, 'ams/register.html', {'form': form})
-    """if request.method == 'POST':
-        if request.POST['password'] == request.POST['confirm_password']:
-            u = User(email=request.POST['email'], username=request.POST['username'], type=request.POST['type'], given_name=request.POST['given_name'],
-                     middle_initial=request.POST['middle_initial'], surname=request.POST['surname'],
-                     password=request.POST['password'])
-            u.save()
-            return redirect('login')
-        else:
-    else:
-        return render(request, 'ams/register.html')"""
 
 
 def login(request):
@@ -105,12 +95,13 @@ def createdocuoutline(request):
 
 @login_required
 def docuoutlinelist(request):
-    return render(request, 'ams/docuoutlinelist.html')
+    outlines = DocumentOutline.objects
+    return render(request, 'ams/config/docuoutlinelist.html', {'outlines': outlines})
 
 
 @login_required
 def viewdocuoutline(request):
-    return render(request, 'ams/viewdocuoutline.html')
+    return render(request, 'ams/config/viewdocuoutline.html')
 
 
 @login_required
@@ -165,7 +156,7 @@ def viewprogram(request, pk):
 
 @login_required
 def createperiod(request):
-    return render(request, 'ams/createperiod.html')
+    return render(request, 'ams/config/createperiod.html')
 
 
 @login_required
@@ -174,28 +165,35 @@ def createteam(request):
 
 
 @login_required
+def accreditationbase(request):
+    return render(request, 'ams/accreditationbase.html')
+
+
+@login_required
 def accreditationlist(request):
-    return render(request, 'ams/accreditationlist.html')
+    return render(request, 'ams/config/accreditationlist.html')
 
 
 @login_required
 def viewaccreditation(request):
-    return render(request, 'ams/viewaccreditation.html')
+    return render(request, 'ams/config/viewaccreditation.html')
 
 
 @login_required
 def teamlist(request):
-    return render(request, 'ams/teamlist.html')
+    teams = Team.objects
+    members = UserTeam.objects
+    return render(request, 'ams/config/teamlist.html', {'teams': teams, 'members': members})
 
 
 @login_required
 def ongoinglist(request):
-    return render(request, 'ams/ongoinglist.html')
+    return render(request, 'ams/config/ongoinglist.html')
 
 
 @login_required
 def viewongoing(request):
-    return render(request, 'ams/viewongoing.html')
+    return render(request, 'ams/config/viewongoing.html')
 
 
 @login_required
@@ -215,4 +213,7 @@ def filerepo(request):
 
 @login_required
 def userlist(request):
-    return render(request, 'ams/userlist.html')
+    users = User.objects
+    teams = UserTeam.objects
+    context = {'users': users}, {'teams': teams}
+    return render(request, 'ams/admin/userlist.html', context)
