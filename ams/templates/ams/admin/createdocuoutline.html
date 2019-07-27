@@ -58,27 +58,53 @@
 
     <div class="d-none">
         <div id="master-section" class="document-item mt-2 position-relative">
-            <div class="document-item-parent row justify-content-between">
-                <div class="col-1 add-child-button-container">
-                    <button type="button" class="btn btn-outline-primary add-child-subsection-button">+</button>
+            <div class="card p-3">
+                <div class="document-item-parent row justify-content-between">
+                    <div class="col-1 add-child-button-container">
+                        <button type="button" class="btn btn-outline-primary add-child-subsection-button">+</button>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control subsection-title" placeholder="Section title"/>
+
+                    </div>
+                    <div class="col-2">
+                        <select class="form-control subsection-section">
+                            <option selected>Section</option>
+                            <option>Criteria</option>
+                            <option>Table</option>
+                            <option>Figure</option>
+                        </select>
+
+
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-danger remove-subsection-button">Remove</button>
+                    </div>
+
                 </div>
-                <div class="col-8">
-                    <input class="form-control subsection-title" placeholder="Section title"/>
-                </div>
-                <div class="col-2">
-                    <select class="form-control subsection-section">
-                        <option selected>Section</option>
-                        <option>Criteria</option>
-                        <option>Table</option>
-                        <option>Figure</option>
-                    </select>
-                </div>
-                <div class="col-1">
-                    <button type="button" class="btn btn-outline-danger remove-subsection-button">Remove</button>
-                </div>
+                <div class="criteria-form-container"></div>
             </div>
             <div class="document-item-children d-flex flex-column pl-5 pt-2">
 
+            </div>
+        </div>
+
+
+        <div id="master-criteria-form"
+             class="document-item-criteria-field d-flex flex-row flex-nowrap justify-content-between">
+            <div class="col-1"></div>
+            <div class="col-8">
+                        <textarea class="md-textarea form-control mt-2 criteria-description" rows="3"
+                                  placeholder="Description"></textarea>
+            </div>
+            <div class="col-2">
+                          <textarea class="md-textarea form-control mt-2 bg-white criteria-evidences" rows="3"
+                                    placeholder="Evidences" disabled></textarea>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-primary mt-2">
+                    <small>Add Evidences</small>
+                </button>
             </div>
         </div>
     </div>
@@ -123,6 +149,17 @@
                     select = $(select);
                     select.prop("disabled", false);
                 })
+        }
+
+        function showCriteriaFields(section) {
+            const criteriaForm = $("#master-criteria-form").clone();
+            criteriaForm.removeAttr("id");
+
+            section.find("div.criteria-form-container").prepend(criteriaForm);
+        }
+
+        function removeCriteriaFields(section) {
+            section.find("div.criteria-form-container").empty();
         }
 
         function enableAddingChildren(section) {
@@ -174,9 +211,11 @@
                                 removeAllChildren(subsection);
                                 lockSectionToSection(subsection);
                                 disableAddingChildren(subsection);
+                                showCriteriaFields(subsection)
                             } else {
                                 unlockSection(subsection);
                                 enableAddingChildren(subsection);
+                                removeCriteriaFields(subsection)
                             }
                         });
                 });
@@ -202,6 +241,8 @@
                     .find("select.subsection-section")
                     .prop("disabled", true)
                     .val("Criteria");
+
+                showCriteriaFields(section);
             }
 
             parent.prepend(section);

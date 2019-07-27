@@ -2,15 +2,13 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/ams/views.py" line="92" />
-    <bookmark url="file://$PROJECT_DIR$/ams/views.py" line="145" />
+    <bookmark url="file://$PROJECT_DIR$/ams/views.py" line="146" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45cced06-ee20-4752-b363-56213c391f4b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ams/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ams/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html" beforeDir="false" afterPath="$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html" beforeDir="false" afterPath="$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ams/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ams/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +23,7 @@
     <favorites_list name="ams-project" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5991957">
+    <splitter split-orientation="horizontal" split-proportion="0.7533512">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -40,8 +38,41 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="239">
-                  <caret line="179" column="29" selection-start-line="179" selection-start-column="29" selection-end-line="179" selection-end-column="29" />
+                <state relative-caret-position="880">
+                  <caret line="244" column="44" selection-start-line="244" selection-start-column="44" selection-end-line="244" selection-end-column="44" />
+                  <folding>
+                    <element signature="n#style#0;n#a#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="17" selection-start-line="17" selection-end-line="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ams/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="7">
+                  <caret line="219" column="15" selection-start-line="219" selection-start-column="15" selection-end-line="219" selection-end-column="15" />
+                  <folding>
+                    <element signature="e#0#65#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ams/forms.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="91">
+                  <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
@@ -50,7 +81,7 @@
             <entry file="file://$PROJECT_DIR$/ams/models.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="253">
-                  <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
+                  <caret line="148" selection-start-line="148" selection-end-line="148" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
@@ -65,10 +96,9 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-81">
-                  <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+                <state>
                   <folding>
-                    <element signature="n#div#0;n#!!top" />
+                    <element signature="n#style#0;n#a#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -129,9 +159,9 @@
         <option value="$PROJECT_DIR$/ams/templates/ams/register.html" />
         <option value="$PROJECT_DIR$/ams/templates/ams/accreditationbase.html" />
         <option value="$PROJECT_DIR$/ams/templates/ams/login.html" />
+        <option value="$PROJECT_DIR$/ams/models.py" />
         <option value="$PROJECT_DIR$/ams/views.py" />
         <option value="$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html" />
-        <option value="$PROJECT_DIR$/ams/models.py" />
         <option value="$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html" />
       </list>
     </option>
@@ -196,7 +226,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sdrc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -321,12 +351,12 @@
       <workItem from="1564069850731" duration="554000" />
       <workItem from="1564139196202" duration="4580000" />
       <workItem from="1564161324611" duration="5164000" />
-      <workItem from="1564205589455" duration="10651000" />
+      <workItem from="1564205589455" duration="19457000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58967000" />
+    <option name="totallyTimeSpent" value="67773000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -339,8 +369,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49655172" weight="0.19101876" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49655172" weight="0.1347185" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50344825" side_tool="true" weight="0.17560321" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -349,9 +380,9 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3297587" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32863188" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.2651622" />
-      <window_info active="true" anchor="bottom" x="67" y="494" width="1449" height="275" id="Terminal" order="8" visible="true" weight="0.21297602" />
+      <window_info active="true" anchor="bottom" x="67" y="494" width="1449" height="275" id="Terminal" order="8" visible="true" weight="0.042313118" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.37376586" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -444,13 +475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ams/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ams/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -509,7 +533,7 @@
     <entry file="file://$PROJECT_DIR$/ams/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
+          <caret line="148" selection-start-line="148" selection-end-line="148" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -537,23 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ams/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="108" column="29" lean-forward="true" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="871">
-          <caret line="166" column="13" selection-start-line="166" selection-start-column="13" selection-end-line="166" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ams/templates/ams/accreditationbase.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -561,10 +568,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ams/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7">
+          <caret line="219" column="15" selection-start-line="219" selection-start-column="15" selection-end-line="219" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ams/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="179" column="29" selection-start-line="179" selection-start-column="29" selection-end-line="179" selection-end-column="29" />
+        <state relative-caret-position="880">
+          <caret line="244" column="44" selection-start-line="244" selection-start-column="44" selection-end-line="244" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -141,22 +141,18 @@ class DocumentOutline(models.Model):
 class DocumentOutlineItem(models.Model):
     document_outline_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
     parent_document_outline_item_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    evidences_set_criteria_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     item_title = models.CharField(max_length=60)
     item_type = models.CharField(max_length=60)
+    criteria_rating = models.CharField(max_length=128)
+    criteria_description = models.CharField(max_length=512)
+    criteria_evidence = models.CharField(max_length=256)
 
     class Meta:
         verbose_name_plural = "document_Outline_Items"
 
     def __str__(self):
         return self.document_outline_id.document_name + " " + self.id
-
-
-class SetCriteria(models.Model):
-    document_outline_item_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
-    evidences_set_criteria_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
-    criteria_rating = models.CharField(max_length=128)
-    criteria_description = models.CharField(max_length=512)
-    criteria_evidence = models.CharField(max_length=256)
 
 
 class OngoingAccreditation(models.Model):
