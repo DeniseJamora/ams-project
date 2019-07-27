@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+          <li class="breadcrumb-item active">Create Team</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
+<!--START OF CONTENT-->
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong>Create Team</strong>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <i><label for="name">Accreditation Period</label></i>
+                          <select class="form-control" id="agency" disabled="">
+                            <option>Please Select</option>
+                            <option value="PAASCU">BS INSYS PAASCU 2019</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <br><hr>
+                    <div class="row">
+                      <div class="col-sm-12" id="add">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <i><label for="name">Criteria</label></i>
+                              <select class="form-control" id="users">
+                                <option>Select Criteria</option>
+                                <option>Criteria 1</option>
+                                <option>Criteria 2</option>
+                                <option>Criteria 3</option>
+                                <option>Criteria 4</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <i><label for="name">Evidence</label></i>
+                              <input class="form-control" id="committeeName" type="text" placeholder="Evidence">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <i><label for="name">Member</label></i>
+                              <select class="form-control" id="users">
+                                <option>Select Member</option>
+                                <option>Person 1</option>
+                                <option>Person 2</option>
+                                <option>Person 3</option>
+                                <option>Person 4</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <i><label for="name">Deadline</label></i>
+                              <input class="form-control" id="committeeName" type="date" placeholder="Team Name">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <br>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-primary" type="submit"> Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!--END OF CONTENT-->
+{% endblock %}
