@@ -88,10 +88,28 @@
 
             </div>
         </div>
+
+
+        <div id="master-criteria-form"
+             class="document-item-criteria-field d-flex flex-row flex-nowrap justify-content-between">
+            <div class="col-1"></div>
+            <div class="col-8">
+                        <textarea class="md-textarea form-control mt-2 criteria-description" rows="3"
+                                  placeholder="Description"></textarea>
+            </div>
+            <div class="col-2">
+                          <textarea class="md-textarea form-control mt-2 bg-white criteria-evidences" rows="3"
+                                    placeholder="Evidences" disabled></textarea>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-primary mt-2">
+                    <small>Add Evidences</small>
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
-
         $(() => {
             // At page load, create first parent
             createTopLevelParent();
@@ -135,7 +153,6 @@
         function showCriteriaFields(section) {
             const criteriaForm = $("#master-criteria-form").clone();
             criteriaForm.removeAttr("id");
-
             section.find("div.criteria-form-container").prepend(criteriaForm);
         }
 
@@ -155,13 +172,10 @@
             if (!parent) {
                 parent = $('#parent-sections');
             }
-
             // Clone master document outline form
             const section = $('#master-section').clone();
-
             // Make sure to leave out the ID
             section.removeAttr('id');
-
             // Level 5 is the maximum - prevent adding children
             if (level >= 5) {
                 section
@@ -169,36 +183,32 @@
                     .find('button')
                     .remove();
             }
-
             section
                 .find('.remove-subsection-button')
                 .click(() => {
                     section.remove();
                 });
-
             section
                 .find('select.subsection-section')
                 .change(function () {
                     const sectionSection = $(this).val();
-
-
                     section
                         .find('> div.document-item-children > div.document-item')
                         .each((idx, subsection) => {
                             console.log(idx, subsection);
                             subsection = $(subsection);
-
                             if (sectionSection === "Criteria") {
                                 removeAllChildren(subsection);
                                 lockSectionToSection(subsection);
                                 disableAddingChildren(subsection);
+                                showCriteriaFields(subsection)
                             } else {
                                 unlockSection(subsection);
                                 enableAddingChildren(subsection);
+                                removeCriteriaFields(subsection)
                             }
                         });
                 });
-
             section
                 .find('.add-child-subsection-button')
                 .click(() => {
@@ -206,27 +216,21 @@
                     const childSubsectionParent = section
                         .find('.document-item-children')
                         .first();
-
                     const isCriteria = section.find("select.subsection-section").val() === "Criteria";
                     createSubsection(level + 1, childSubsectionParent, isCriteria);
                 });
-
             if (isCriteria) {
                 section
                     .find(".add-child-subsection-button")
                     .prop("disabled", true);
-
                 section
                     .find("select.subsection-section")
                     .prop("disabled", true)
                     .val("Criteria");
-
                 showCriteriaFields(section);
             }
-
             parent.prepend(section);
         }
-
 
         /*
             Section: {
@@ -238,45 +242,35 @@
         function gatherFormData() {
             function collectSections(sectionItem, level) {
                 let section = {};
-
                 section.title = sectionItem
                     .find("input.subsection-title")
                     .first()
                     .val();
-
                 section.section = sectionItem
                     .find("select.subsection-section")
                     .first()
                     .val();
-
                 if (level < 5) {
                     section.subsections = [];
                 }
-
                 return section;
             }
 
             function childrenToSections(children, level) {
                 let sections = [];
-
                 children.each((i, child) => {
                     child = $(child);
                     let section = collectSections(child, level);
                     console.log(section);
-
-
                     const childChildren = child
                         .find(".document-item-children")
                         .first()
                         .children();
-
                     if (childChildren.length > 0) {
                         section.subsections = childrenToSections(childChildren, level + 1);
                     }
-
                     sections.push(section);
                 });
-
                 return sections;
             }
 
@@ -286,7 +280,6 @@
 
         function onSubmitButtonClick() {
             const sections = gatherFormData();
-
             $.post("/createdocuoutline/", JSON.stringify({
                 agency: $("#accrediting-agency").val(),
                 title: $("#report-title").val(),
@@ -294,11 +287,8 @@
             }))
                 .done(() => alert("Submitted"))
                 .fail(() => alert("An error occurred submitting form"));
-
-
             console.log("Gathering");
         }
-
     </script>
     <!--END OF CONTENT-->
 {% endblock %}

@@ -5,7 +5,9 @@
     <bookmark url="file://$PROJECT_DIR$/ams/views.py" line="146" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45cced06-ee20-4752-b363-56213c391f4b" name="Default Changelist" comment="" />
+    <list default="true" id="45cced06-ee20-4752-b363-56213c391f4b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html" beforeDir="false" afterPath="$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +33,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4880">
-                  <caret line="244" column="44" selection-start-line="244" selection-start-column="44" selection-end-line="244" selection-end-column="44" />
-                  <folding>
-                    <element signature="n#style#0;n#a#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                  </folding>
+                <state relative-caret-position="39">
+                  <caret line="281" column="46" lean-forward="true" selection-start-line="281" selection-start-column="46" selection-end-line="281" selection-end-column="46" />
                 </state>
               </provider>
             </entry>
@@ -73,11 +72,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ams/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="10">
-                  <caret line="145" column="47" selection-start-line="145" selection-start-column="47" selection-end-line="145" selection-end-column="47" />
+                <state>
+                  <caret line="145" selection-start-line="145" selection-end-line="145" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
@@ -346,7 +345,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68586000" />
+    <option name="totallyTimeSpent" value="69746000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -360,7 +359,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49655172" weight="0.1347185" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49655172" visible="true" weight="0.13404825" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50344825" side_tool="true" weight="0.17560321" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -371,7 +370,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32863188" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.2651622" />
-      <window_info active="true" anchor="bottom" x="67" y="494" width="1449" height="275" id="Terminal" order="8" visible="true" weight="0.9026798" />
+      <window_info active="true" anchor="bottom" x="67" y="494" width="1449" height="275" id="Terminal" order="8" visible="true" weight="0.7658674" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.37376586" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -515,8 +514,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ams/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="145" column="47" selection-start-line="145" selection-start-column="47" selection-end-line="145" selection-end-column="47" />
+        <state>
+          <caret line="145" selection-start-line="145" selection-end-line="145" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -576,7 +575,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="281" column="46" lean-forward="true" selection-start-line="281" selection-start-column="46" selection-end-line="281" selection-end-column="46" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
