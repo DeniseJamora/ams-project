@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+
 # Create your models here.
 
 class User_Manager(BaseUserManager):
-    def create_user(self, email, username, type, given_name, middle_initial, surname, password=None): 
+    def create_user(self, email, username, type, given_name, middle_initial, surname, password=None):
         if not email:
             raise ValueError("Please input email address")
         if not username:
@@ -31,7 +32,7 @@ class User_Manager(BaseUserManager):
         u.save(using=self._db)
         return u
 
-    def create_superuser(self, email, username, type, given_name, middle_initial, surname, password=None): 
+    def create_superuser(self, email, username, type, given_name, middle_initial, surname, password=None):
         u = self.create_user(
             email=self.normalize_email(email),
             username=username,
@@ -40,7 +41,7 @@ class User_Manager(BaseUserManager):
             given_name=given_name,
             middle_initial=middle_initial,
             surname=surname,
-            )
+        )
         u.is_admin = True
         u.is_staff = True
         u.is_superuser = True
@@ -121,6 +122,7 @@ class File(models.Model):
     def __str__(self):
         return self.file_name
 
+
 class Team(models.Model):
     team_name = models.CharField(max_length=60)
 
@@ -200,7 +202,5 @@ class UserTeam(models.Model):
 
     def __str__(self):
         return self.team_id.team_name + " " + self.user_id.given_name + " " + self.user_id.surname
-
-
 
 # Create your models here.

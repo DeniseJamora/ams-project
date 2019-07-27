@@ -8,22 +8,10 @@ from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProg
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-
-
-def login(request):
-    if request.method == 'POST':
-        u = auth.authenticate(email=request.POST.get('email'), password=request.POST.get('password'))
-        if u is not None:
-            auth.login(request, u)
-            return redirect('dash')
-        else:
-            return render(request, 'ams/login.html', {'error': 'Email or password is incorrect'})
-    else:
-        return render(request, 'ams/login.html')
-
 
 def register(request):
     if request.method == "POST":
@@ -39,16 +27,33 @@ def register(request):
         return render(request, 'ams/register.html', {'form': form})
 
 
+def login(request):
+    if request.method == 'POST':
+        u = auth.authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
+        if u is not None:
+            auth.login(request, u)
+            return redirect('dash')
+        else:
+            return render(request, 'ams/login.html', {'error': 'Username or password is incorrect'})
+    else:
+        return render(request, 'ams/login.html')
+
+
+@login_required
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         return redirect('login')
 
 
+@login_required
 def dash(request):
-    return render(request, 'ams/dash.html')
+    user = User.objects.all()
+    context = {'username': user}
+    return render(request, 'ams/dash.html', context)
 
 
+@login_required
 def addagency(request):
     if request.method == "POST":
         form = AccreditingBodyForm(request.POST)
@@ -60,6 +65,7 @@ def addagency(request):
         return render(request, 'ams/admin/addagency.html', {'form': form})
 
 
+@login_required
 @csrf_exempt
 def createdocuoutline(request):
     accrediting_bodies = AccreditingBody.objects.all()
@@ -87,19 +93,25 @@ def createdocuoutline(request):
     return JsonResponse({}, status=200)
 
 
+<<<<<<< HEAD
 def setcriteria(request):
     return render(request, 'ams/admin/setcriteria.html')
 
 
+=======
+@login_required
+>>>>>>> d49e569fc185660701ed61bf66e8ad55329ff1e8
 def docuoutlinelist(request):
     outlines = DocumentOutline.objects
-    return render(request, 'ams/config/docuoutlinelist.html', {'outlines':outlines})
+    return render(request, 'ams/config/docuoutlinelist.html', {'outlines': outlines})
 
 
+@login_required
 def viewdocuoutline(request):
     return render(request, 'ams/config/viewdocuoutline.html')
 
 
+@login_required
 def addprogram(request):
     if request.method == "POST":
         form = DegreeProgramForm(request.POST)
@@ -120,6 +132,7 @@ def addprogram(request):
         })
 
 
+@login_required
 def programprev(request, f):
     programs = DegreeProgram.objects.get(program_name=f)
     if request.method == 'POST':
@@ -134,11 +147,13 @@ def programprev(request, f):
         return render(request, 'ams/admin/programprev.html', {'programs': programs, 'form': form})
 
 
+@login_required
 def programlist(request):
     programs = DegreeProgram.objects
     return render(request, 'ams/admin/programlist.html', {'programs': programs})
 
 
+@login_required
 def viewprogram(request, pk):
     program = DegreeProgram.objects.get(id=pk)
     prevs = PrevAccreditation.objects.filter(degree_program_id=pk)
@@ -146,48 +161,61 @@ def viewprogram(request, pk):
     return render(request, 'ams/admin/viewprogram.html', {'program': program, 'prevs': prevs})
 
 
+@login_required
 def createperiod(request):
     return render(request, 'ams/config/createperiod.html')
 
 
+@login_required
 def createteam(request):
     return render(request, 'ams/config/createteam.html')
 
 
+<<<<<<< HEAD
 def assigncriteria(request):
     return render(request, 'ams/config/assigncriteria.html')
 
 
+=======
+@login_required
+>>>>>>> d49e569fc185660701ed61bf66e8ad55329ff1e8
 def accreditationbase(request):
     return render(request, 'ams/accreditationbase.html')
 
 
+@login_required
 def accreditationlist(request):
     return render(request, 'ams/config/accreditationlist.html')
 
 
+@login_required
 def viewaccreditation(request):
     return render(request, 'ams/config/viewaccreditation.html')
 
 
+@login_required
 def teamlist(request):
     teams = Team.objects
     members = UserTeam.objects
-    return render(request, 'ams/config/teamlist.html', {'teams':teams, 'members':members})
+    return render(request, 'ams/config/teamlist.html', {'teams': teams, 'members': members})
 
 
+@login_required
 def ongoinglist(request):
     return render(request, 'ams/config/ongoinglist.html')
 
 
+@login_required
 def viewongoing(request):
     return render(request, 'ams/config/viewongoing.html')
 
 
+@login_required
 def ansdocu(request):
     return render(request, 'ams/ansdocu.html')
 
 
+<<<<<<< HEAD
 def uploadevidence(request):
     return render(request, 'ams/uploadevidence.html')
 
@@ -200,11 +228,21 @@ def deadlines(request):
     return render(request, 'ams/deadlines.html')
 
 
+=======
+@login_required
+def docurepo(request):
+    return render(request, 'ams/filerepo.html')
+
+
+@login_required
+>>>>>>> d49e569fc185660701ed61bf66e8ad55329ff1e8
 def filerepo(request):
     return render(request, 'ams/filerepo.html')
 
 
+@login_required
 def userlist(request):
     users = User.objects
     teams = UserTeam.objects
-    return render(request, 'ams/admin/userlist.html', {'users':users}, {'teams':teams})
+    context = {'users': users}, {'teams': teams}
+    return render(request, 'ams/admin/userlist.html', context)
