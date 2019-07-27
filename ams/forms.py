@@ -89,3 +89,13 @@ class CompletedAccreditationForm(forms.ModelForm):
             "completed_result",
             "completed_year",
         ]
+
+"""class StudentForm(forms.ModelForm):
+    name = forms.CharField(widget=forms.TextInput())
+    house = forms.ModelChoiceField(queryset=House.objects.all(), initial=0)
+ 
+    class Meta:
+        model = Student
+        fields = [
+             “name”,”house”,
+        ]"""
