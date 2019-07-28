@@ -18,6 +18,8 @@ def register(request):
         form = UserForm(request.POST)
         if form.is_valid():
             if request.POST['password'] == request.POST['confirm_password']:
+                form = form.save()
+                form.set_password(request.POST['password'])
                 form.save()
                 return redirect('login')
             else:
