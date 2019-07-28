@@ -92,44 +92,49 @@
             </div>
         </div>
 
-        <div id="master-criteria-grade-form" class="criteria-grade-form d-flex flex-row flex-nowrap mt-2 d-none">
+        <div id="master-criteria-grade-form" class="criteria-grade-form d-flex flex-row flex-nowrap mt-2">
             <input class="form-control mr-1 criteria-lowest-grade" placeholder="Lowest Grade"/>
             <input class="form-control ml-1 criteria-highest-grade" placeholder="Highest Grade"/>
         </div>
 
-        <div id="master-criteria-min-max" class="criteria-min-max-container d-flex flex-row flex-nowrap mt-2 d-none">
+        <div id="master-criteria-min-max" class="criteria-min-max-container d-flex flex-row flex-nowrap mt-2">
             <input class="form-control mr-1 criteria-min" placeholder="Minimum"/>
             <input class="form-control ml-1 criteria-max" placeholder="Maximum"/>
         </div>
 
         <div id="master-criteria-form"
-             class="document-item-criteria-field d-flex row flex-nowrap justify-content-between">
+             class="document-item-criteria-field d-flex flex-row flex-nowrap">
             <div class="col-1"></div>
-            <div class="col-8">
-                        <textarea class="md-textarea form-control mt-2 criteria-description" rows="3"
-                                  placeholder="Description"></textarea>
-            </div>
-            <div class="col-2">
-                          <textarea class="md-textarea form-control mt-2 bg-white criteria-evidences" rows="3"
-                                    placeholder="Evidences" disabled></textarea>
-            </div>
-            <div class="col-1">
-                <button type="button" class="btn btn-primary mt-2" onclick="onAddEvidencesClick()">
-                    <small>Add Evidences</small>
-                </button>
+            <div class="col-8 pl-0 d-flex flex-column">
+                <div class="mt-3">
+                    <h6>Description</h6>
+                    <textarea class="md-textarea form-control mt-2 criteria-description" rows="3"
+                              placeholder="Description"></textarea>
+                </div>
+                <div class="mt-3">
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                        <h6>Evidences</h6>
+                        <button class="btn btn-sm btn-outline-primary add-evidence-button">Add evidence</button>
+                    </div>
+                    <div class="d-flex flex-column mt-3 evidences-list">
+
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div id="master-evidence-form" class="d-flex flex-row mb-2">
+            <textarea class="form-control evidence-textarea mr-2" placeholder="Evidence"></textarea>
+            <button class="remove-evidence-button btn btn-outline-danger">Remove</button>
+        </div>
     </div>
+
 
     <script>
         $(() => {
             // At page load, create first parent
             createTopLevelParent();
         });
-
-        function onAddEvidencesClick() {
-            prompt("Enter evidence:");
-        }
 
         function createTopLevelParent() {
             createSubsection(0, null);
@@ -166,6 +171,20 @@
                 })
         }
 
+        function addEvidence(criteriaForm) {
+            const evidenceField = $("#master-evidence-form").clone();
+            evidenceField.removeAttr("id");
+
+            evidenceField.find("button.remove-evidence-button").click(() => {
+                evidenceField.remove();
+            });
+
+            criteriaForm
+                .find("div.evidences-list")
+                .first()
+                .prepend(evidenceField);
+        }
+
         function showCriteriaFields(section) {
             const criteriaFormContainer = section.find("div.criteria-form-container");
             const criteriaFieldsAlreadyShowing = criteriaFormContainer.children().length > 0;
@@ -178,6 +197,13 @@
             const criteriaForm = $("#master-criteria-form").clone();
             criteriaForm.removeAttr("id");
             criteriaFormContainer.prepend(criteriaForm);
+
+            criteriaForm
+                .find("button.add-evidence-button")
+                .first()
+                .click(() => addEvidence(criteriaForm));
+
+            addEvidence(criteriaForm);
         }
 
         function removeCriteriaFields(section) {
@@ -193,7 +219,6 @@
         function showCriteriaNumberMinMax(section) {
             const criteriaMinMax = $("#master-criteria-min-max").clone();
             criteriaMinMax.removeAttr("id");
-            criteriaMinMax.removeClass("d-none");
 
             section
                 .find("div.section-title-container")
@@ -212,7 +237,6 @@
         function showCriteriaGradeForm(section) {
             const criteriaGradeForm = $("#master-criteria-grade-form").clone();
             criteriaGradeForm.removeAttr("id");
-            criteriaGradeForm.removeClass("d-none");
 
             section
                 .find("div.section-title-container")
