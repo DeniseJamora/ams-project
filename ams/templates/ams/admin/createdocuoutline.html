@@ -280,17 +280,17 @@
                 .change(function () {
                     const sectionSection = $(this).val();
 
-                    if (sectionSection === "Criteria Numbers") {
-                        showCriteriaNumberMinMax(section);
-                    } else {
-                        removeCriteriaNumberMinMax(section);
-                    }
+                    {#if (sectionSection === "Criteria Numbers") {#}
+                    {#    showCriteriaNumberMinMax(section);#}
+                    {# else #}
+                    {#    removeCriteriaNumberMinMax(section);#}
 
-                    if (sectionSection === "Criteria Letters") {
-                        showCriteriaGradeForm(section);
-                    } else {
-                        removeCriteriaGradeForm(section);
-                    }
+                    {##}
+                    {#if (sectionSection === "Criteria Letters") {#}
+                    {#    showCriteriaGradeForm(section);#}
+                    {# else #}
+                    {#    removeCriteriaGradeForm(section);#}
+
 
 
                     section
@@ -299,16 +299,16 @@
                             console.log(idx, subsection);
                             subsection = $(subsection);
 
-                            if (sectionSection.includes("Criteria")) {
-                                removeAllChildren(subsection);
-                                lockSectionToSection(subsection);
-                                disableAddingChildren(subsection);
-                                showCriteriaFields(subsection)
-                            } else {
-                                unlockSection(subsection);
-                                enableAddingChildren(subsection);
-                                removeCriteriaFields(subsection);
-                            }
+                            {#if (sectionSection.includes("Criteria")) {#}
+                            {#    removeAllChildren(subsection);#}
+                            {#    lockSectionToSection(subsection);#}
+                            {#    disableAddingChildren(subsection);#}
+                            {#    showCriteriaFields(subsection)#}
+                            {# else #}
+                            {#    unlockSection(subsection);#}
+                            {#    enableAddingChildren(subsection);#}
+                            {#    removeCriteriaFields(subsection);#}
+
                         });
                 });
 
