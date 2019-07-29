@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--START OF CONTENT-->
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-header">File Repository</div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <i><label for="name">Upload File</label></i>
+                          <input id="file-input" type="file" name="file-input">
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                          <br>
+                          <button class="btn btn-primary" type="submit"> Upload</button>
+                      </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Criteria</th>
+                              <th>Evidence Name</th>
+                              <th>Evidence Type</th>
+                              <th>File</th>
+                              <th>Uploaded by</th>
+                              <th>Date Uploaded</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>A.1 Criteria Name</td>
+                              <td><a href="{% url 'filerepo' %}">Picture of Gokongwei Bldg</a></td>
+                              <td>Appendix</td>
+                              <td><a href="{% url 'filerepo' %}">gox.jpg</a></td>
+                              <td>Denise Jamora</td>
+                              <td>August 3, 2019</td>
+                              <td>Pending Approval</td>
+                            </tr>
+                            <tr>
+                              <td>A.2 Criteria Name</td>
+                              <td><a href="{% url 'filerepo' %}">Picture of Classroom Layout</a></td>
+                              <td>Appendix</td>
+                              <td><a href="{% url 'filerepo' %}">layout.jpg</a></td>
+                              <td>Clifford Martinez</td>
+                              <td>July 6, 2019</td>
+                              <td>Approved</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!--END OF CONTENT-->
+{% endblock %}

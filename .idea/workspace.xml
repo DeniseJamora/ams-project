@@ -21,90 +21,135 @@
     <favorites_list name="ams-project" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7533512">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ams/templates/ams/register.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1420">
-                  <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="39">
-                  <caret line="281" column="46" lean-forward="true" selection-start-line="281" selection-start-column="46" selection-end-line="281" selection-end-column="46" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="17" selection-start-line="17" selection-end-line="17" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ams/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4180">
-                  <caret line="219" column="15" selection-start-line="219" selection-start-column="15" selection-end-line="219" selection-end-column="15" />
-                  <folding>
-                    <element signature="e#0#65#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ams/forms.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="280">
-                  <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ams/models.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="145" selection-start-line="145" selection-end-line="145" />
-                  <folding>
-                    <element signature="e#0#28#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="182" column="43" lean-forward="true" selection-start-line="182" selection-start-column="43" selection-end-line="182" selection-end-column="43" />
+              <folding>
+                <element signature="e#184#2790#0#HTML" />
+                <element signature="e#222#2779#0#HTML" />
+                <element signature="e#264#2764#0#HTML" />
+                <element signature="e#298#2745#0#HTML" />
+                <element signature="e#342#2722#0#HTML" />
+                <element signature="e#385#510#0#HTML" />
+                <element signature="e#535#2372#0#HTML" />
+                <element signature="e#587#1778#0#HTML" />
+                <element signature="e#637#1277#0#HTML" />
+                <element signature="e#696#1238#0#HTML" />
+                <element signature="e#844#1195#0#HTML" />
+                <element signature="n#for#0;n#!!top" />
+                <element signature="e#1310#1743#0#HTML" />
+                <element signature="e#1369#1704#0#HTML" />
+                <element signature="e#1509#1661#0#HTML" />
+                <element signature="e#1807#2341#0#HTML" />
+                <element signature="e#1882#2179#0#HTML" />
+                <element signature="e#1942#2140#0#HTML" />
+                <element signature="e#2213#2306#0#HTML" />
+                <element signature="e#2397#2695#0#HTML" />
+                <element signature="e#2451#2664#0#HTML" />
+                <element signature="e#2533#2626#0#HTML" />
+                <element signature="e#2825#4258#0#HTML" />
+                <element signature="e#2908#4087#0#HTML" />
+                <element signature="e#2987#3169#0#HTML" />
+                <element signature="e#3186#3324#0#HTML" />
+                <element signature="e#3341#3902#0#HTML" />
+                <element signature="e#3381#3878#0#HTML" />
+                <element signature="e#3512#3753#0#HTML" />
+                <element signature="e#3919#4067#0#HTML" />
+                <element signature="e#4158#4243#0#HTML" />
+                <element signature="e#4319#4397#0#HTML" />
+                <element signature="e#4287#4540#0#HTML" />
+                <element signature="e#5242#5391#0#HTML" />
+                <element signature="e#5154#5250#0#HTML" />
+                <element signature="e#5294#5344#0#HTML" />
+                <element signature="e#5390#5499#0#HTML" />
+                <element signature="e#5548#5825#0#HTML" />
+                <element signature="e#5660#5814#0#HTML" />
+                <element signature="e#5875#6007#0#HTML" />
+                <element signature="e#6049#6283#0#HTML" />
+                <element signature="e#6161#6272#0#HTML" />
+                <element signature="e#6581#6657#0#HTML" />
+                <element signature="e#6706#6839#0#HTML" />
+                <element signature="e#7181#7205#0#HTML" />
+                <element signature="e#7600#7624#0#HTML" />
+                <element signature="e#8550#8574#0#HTML" />
+                <element signature="e#6902#9857#0#HTML" />
+                <element signature="e#6916#6980#0#HTML" />
+                <element signature="e#7046#7109#0#HTML" />
+                <element signature="e#7393#7556#0#HTML" />
+                <element signature="e#7657#7714#0#HTML" />
+                <element signature="e#7824#8869#0#HTML" />
+                <element signature="e#10269#10351#0#HTML" />
+                <element signature="e#9068#9168#0#HTML" />
+                <element signature="e#10417#10465#0#HTML" />
+                <element signature="e#10502#10560#0#HTML" />
+                <element signature="e#8045#8849#0#HTML" />
+                <element signature="e#8306#8596#0#HTML" />
+                <element signature="e#8602#8823#0#HTML" />
+                <element signature="e#8975#9431#0#HTML" />
+                <element signature="e#9462#9810#0#HTML" />
+                <element signature="e#9867#10021#0#HTML" />
+                <element signature="e#10056#11484#0#HTML" />
+                <element signature="e#10115#10604#0#HTML" />
+                <element signature="e#10493#10558#0#HTML" />
+                <element signature="e#10663#11342#0#HTML" />
+                <element signature="e#10744#11293#0#HTML" />
+                <element signature="e#11116#11231#0#HTML" />
+                <element signature="e#11525#11947#0#HTML" />
+                <element signature="e#11631#11776#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ams/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3160">
+              <caret line="168" column="14" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#65#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ams/templates/ams/config/createteam.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ams/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ams/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1880">
+              <caret line="154" column="47" lean-forward="true" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>accreditingbody</find>
-      <find>admin</find>
-      <find>find</find>
-      <find>.children</find>
-      <find>createTopLevel</find>
-      <find>documentoutline</find>
       <find>paascu</find>
       <find>accrediting_body</find>
       <find>document-outline-parents</find>
@@ -125,6 +170,16 @@
       <find>accreditation</find>
       <find>set</find>
       <find>button</find>
+      <find>team</find>
+      <find>degre</find>
+      <find>document-item-crit</find>
+      <find>document-item-criteria</find>
+      <find>document-item</find>
+      <find>removeallchil</find>
+      <find>Criteria</find>
+      <find>add e</find>
+      <find>d-none</find>
+      <find>prepend</find>
     </findStrings>
     <replaceStrings>
       <replace>parent-sections</replace>
@@ -148,9 +203,10 @@
         <option value="$PROJECT_DIR$/ams/templates/ams/register.html" />
         <option value="$PROJECT_DIR$/ams/templates/ams/accreditationbase.html" />
         <option value="$PROJECT_DIR$/ams/templates/ams/login.html" />
-        <option value="$PROJECT_DIR$/ams/models.py" />
         <option value="$PROJECT_DIR$/ams/views.py" />
         <option value="$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html" />
+        <option value="$PROJECT_DIR$/ams/templates/ams/config/createteam.html" />
+        <option value="$PROJECT_DIR$/ams/models.py" />
         <option value="$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html" />
       </list>
     </option>
@@ -200,6 +256,14 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="ams" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ams-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ams-project" type="462c0819:PsiDirectoryNode" />
+              <item name="ams" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="ams" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ams-project" type="b2602c69:ProjectViewProjectNode" />
@@ -341,11 +405,14 @@
       <workItem from="1564139196202" duration="4580000" />
       <workItem from="1564161324611" duration="5164000" />
       <workItem from="1564205589455" duration="19457000" />
+      <workItem from="1564291358791" duration="3744000" />
+      <workItem from="1564303175732" duration="1948000" />
+      <workItem from="1564305459573" duration="4667000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69746000" />
+    <option name="totallyTimeSpent" value="80105000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -358,8 +425,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49655172" visible="true" weight="0.13404825" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49655172" weight="0.1930295" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50344825" side_tool="true" weight="0.17560321" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -370,7 +438,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32863188" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.2651622" />
-      <window_info active="true" anchor="bottom" x="67" y="494" width="1449" height="275" id="Terminal" order="8" visible="true" weight="0.7658674" />
+      <window_info anchor="bottom" x="67" y="494" width="1449" height="275" id="Terminal" order="8" weight="0.25246826" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.37376586" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -512,27 +580,10 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ams/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="145" selection-start-line="145" selection-end-line="145" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ams/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-509">
           <caret line="92" column="13" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ams/templates/ams/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1420">
-          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -550,10 +601,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ams/templates/ams/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1420">
+          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ams/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4180">
-          <caret line="219" column="15" selection-start-line="219" selection-start-column="15" selection-end-line="219" selection-end-column="15" />
+        <state relative-caret-position="3160">
+          <caret line="168" column="14" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="14" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
           </folding>
@@ -567,17 +632,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/setcriteria.html">
+    <entry file="file://$PROJECT_DIR$/ams/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="1880">
+          <caret line="154" column="47" lean-forward="true" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ams/templates/ams/config/createteam.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ams/templates/ams/admin/createdocuoutline.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="281" column="46" lean-forward="true" selection-start-line="281" selection-start-column="46" selection-end-line="281" selection-end-column="46" />
+        <state relative-caret-position="230">
+          <caret line="182" column="43" lean-forward="true" selection-start-line="182" selection-start-column="43" selection-end-line="182" selection-end-column="43" />
+          <folding>
+            <element signature="e#184#2790#0#HTML" />
+            <element signature="e#222#2779#0#HTML" />
+            <element signature="e#264#2764#0#HTML" />
+            <element signature="e#298#2745#0#HTML" />
+            <element signature="e#342#2722#0#HTML" />
+            <element signature="e#385#510#0#HTML" />
+            <element signature="e#535#2372#0#HTML" />
+            <element signature="e#587#1778#0#HTML" />
+            <element signature="e#637#1277#0#HTML" />
+            <element signature="e#696#1238#0#HTML" />
+            <element signature="e#844#1195#0#HTML" />
+            <element signature="n#for#0;n#!!top" />
+            <element signature="e#1310#1743#0#HTML" />
+            <element signature="e#1369#1704#0#HTML" />
+            <element signature="e#1509#1661#0#HTML" />
+            <element signature="e#1807#2341#0#HTML" />
+            <element signature="e#1882#2179#0#HTML" />
+            <element signature="e#1942#2140#0#HTML" />
+            <element signature="e#2213#2306#0#HTML" />
+            <element signature="e#2397#2695#0#HTML" />
+            <element signature="e#2451#2664#0#HTML" />
+            <element signature="e#2533#2626#0#HTML" />
+            <element signature="e#2825#4258#0#HTML" />
+            <element signature="e#2908#4087#0#HTML" />
+            <element signature="e#2987#3169#0#HTML" />
+            <element signature="e#3186#3324#0#HTML" />
+            <element signature="e#3341#3902#0#HTML" />
+            <element signature="e#3381#3878#0#HTML" />
+            <element signature="e#3512#3753#0#HTML" />
+            <element signature="e#3919#4067#0#HTML" />
+            <element signature="e#4158#4243#0#HTML" />
+            <element signature="e#4319#4397#0#HTML" />
+            <element signature="e#4287#4540#0#HTML" />
+            <element signature="e#5242#5391#0#HTML" />
+            <element signature="e#5154#5250#0#HTML" />
+            <element signature="e#5294#5344#0#HTML" />
+            <element signature="e#5390#5499#0#HTML" />
+            <element signature="e#5548#5825#0#HTML" />
+            <element signature="e#5660#5814#0#HTML" />
+            <element signature="e#5875#6007#0#HTML" />
+            <element signature="e#6049#6283#0#HTML" />
+            <element signature="e#6161#6272#0#HTML" />
+            <element signature="e#6581#6657#0#HTML" />
+            <element signature="e#6706#6839#0#HTML" />
+            <element signature="e#7181#7205#0#HTML" />
+            <element signature="e#7600#7624#0#HTML" />
+            <element signature="e#8550#8574#0#HTML" />
+            <element signature="e#6902#9857#0#HTML" />
+            <element signature="e#6916#6980#0#HTML" />
+            <element signature="e#7046#7109#0#HTML" />
+            <element signature="e#7393#7556#0#HTML" />
+            <element signature="e#7657#7714#0#HTML" />
+            <element signature="e#7824#8869#0#HTML" />
+            <element signature="e#10269#10351#0#HTML" />
+            <element signature="e#9068#9168#0#HTML" />
+            <element signature="e#10417#10465#0#HTML" />
+            <element signature="e#10502#10560#0#HTML" />
+            <element signature="e#8045#8849#0#HTML" />
+            <element signature="e#8306#8596#0#HTML" />
+            <element signature="e#8602#8823#0#HTML" />
+            <element signature="e#8975#9431#0#HTML" />
+            <element signature="e#9462#9810#0#HTML" />
+            <element signature="e#9867#10021#0#HTML" />
+            <element signature="e#10056#11484#0#HTML" />
+            <element signature="e#10115#10604#0#HTML" />
+            <element signature="e#10493#10558#0#HTML" />
+            <element signature="e#10663#11342#0#HTML" />
+            <element signature="e#10744#11293#0#HTML" />
+            <element signature="e#11116#11231#0#HTML" />
+            <element signature="e#11525#11947#0#HTML" />
+            <element signature="e#11631#11776#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>

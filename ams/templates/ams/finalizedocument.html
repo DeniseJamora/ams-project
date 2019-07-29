@@ -15,29 +15,31 @@
                         <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
                           <thead>
                             <tr>
-                              <th>Criteria</th>
-                              <th>Assigned Team</th>
-                              <th>Assigned Members</th>
-                              <th>Evidence</th>
-                              <th>File Uploaded</th>
+                              <th>Section</th>
+                              <th>Team/s</th>
+                              <th>Member/s</th>
+                              <th>Evidences</th>
                               <th></th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>A.1 Criteria Name</td>
+                              <td>I. Section Area Name</td>
                               <td>Team A</td>
-                              <td>Denise Jamora</td>
-                              <td>Picture of Gokongwei Bldg</td>
-                              <td>gox.jpg</td>
+                              <td>Denise Jamora<br> Clifford Martinez<br>Eunice Yu</td>
+                              <td>Evidence 1<br>Evidence 1<br>Evidence 1</td>
                               <td>
-                                <a href="{% url 'ansdocu' %}"><button class="btn btn-primary" type="reset"> Finalize</button></a>
+                                <a href="{% url 'accreditationbase' %}"><button class="btn btn-primary" type="reset">View</button></a>
                               </td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-primary" type="button" onclick="">Save</button>
+                    <button class="btn btn-success" type="button" onclick="">Complete</button>
                   </div>
                 </div>
               </div>

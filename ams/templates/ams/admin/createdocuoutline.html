@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" type="button" onclick="onSubmitButtonClick()    "><a
+                            <button class="btn btn-primary" type="button" onclick="onSubmitButtonClick()"><a
                                     style="text-decoration: none; color:white;">Submit</a>
                             </button>
                         </div>
@@ -58,56 +58,77 @@
 
     <div class="d-none">
         <div id="master-section" class="document-item mt-2 position-relative">
-            <div class="card p-3">
-                <div class="document-item-parent row justify-content-between">
-                    <div class="col-1 add-child-button-container">
-                        <button type="button" class="btn btn-outline-primary add-child-subsection-button">+</button>
-                    </div>
-                    <div class="col-8">
-                        <input class="form-control subsection-title" placeholder="Section title"/>
-
-                    </div>
-                    <div class="col-2">
-                        <select class="form-control subsection-section">
-                            <option selected>Section</option>
-                            <option>Criteria</option>
-                            <option>Table</option>
-                            <option>Figure</option>
-                        </select>
-
-
-                    </div>
-                    <div class="col-1">
-                        <button type="button" class="btn btn-danger remove-subsection-button">Remove</button>
-                    </div>
+            <div class="document-item-parent row justify-content-between">
+                <div class="col-1 add-child-button-container">
+                    <button type="button" class="btn btn-outline-primary add-child-subsection-button">+</button>
+                </div>
+                <div class="col-8 d-flex flex-column section-title-container">
+                    <input class="form-control subsection-title" placeholder="Section title"/>
 
                 </div>
-                <div class="criteria-form-container"></div>
+                <div class="col-2">
+                    <select class="form-control subsection-section">
+                        <option selected>Section</option>
+                        <optgroup label="Criteria">
+                            <option>Criteria</option>
+                            <option>Criteria Numbers</option>
+                            <option>Criteria Letters</option>
+                        </optgroup>
+                        <option>Table</option>
+                        <option>Figure</option>
+                    </select>
+
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-danger remove-subsection-button">Remove</button>
+                </div>
+
             </div>
+            <div class="criteria-form-container"></div>
+
+
             <div class="document-item-children d-flex flex-column pl-5 pt-2">
 
             </div>
         </div>
 
+        <div id="master-criteria-grade-form" class="criteria-grade-form d-flex flex-row flex-nowrap mt-2">
+            <input class="form-control mr-1 criteria-lowest-grade" placeholder="Lowest Grade"/>
+            <input class="form-control ml-1 criteria-highest-grade" placeholder="Highest Grade"/>
+        </div>
+
+        <div id="master-criteria-min-max" class="criteria-min-max-container d-flex flex-row flex-nowrap mt-2">
+            <input class="form-control mr-1 criteria-min" placeholder="Minimum"/>
+            <input class="form-control ml-1 criteria-max" placeholder="Maximum"/>
+        </div>
 
         <div id="master-criteria-form"
-             class="document-item-criteria-field d-flex flex-row flex-nowrap justify-content-between">
+             class="document-item-criteria-field d-flex flex-row flex-nowrap">
             <div class="col-1"></div>
-            <div class="col-8">
-                        <textarea class="md-textarea form-control mt-2 criteria-description" rows="3"
-                                  placeholder="Description"></textarea>
-            </div>
-            <div class="col-2">
-                          <textarea class="md-textarea form-control mt-2 bg-white criteria-evidences" rows="3"
-                                    placeholder="Evidences" disabled></textarea>
-            </div>
-            <div class="col-1">
-                <button type="button" class="btn btn-primary mt-2">
-                    <small>Add Evidences</small>
-                </button>
+            <div class="col-8 pl-0 d-flex flex-column">
+                <div class="mt-3">
+                    <h6>Description</h6>
+                    <textarea class="md-textarea form-control mt-2 criteria-description" rows="3"
+                              placeholder="Description"></textarea>
+                </div>
+                <div class="mt-3">
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                        <h6>Evidences</h6>
+                        <button class="btn btn-sm btn-outline-primary add-evidence-button">Add evidence</button>
+                    </div>
+                    <div class="d-flex flex-column mt-3 evidences-list">
+
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div id="master-evidence-form" class="d-flex flex-row mb-2">
+            <textarea class="form-control evidence-textarea mr-2" placeholder="Evidence"></textarea>
+            <button class="remove-evidence-button btn btn-outline-danger">Remove</button>
+        </div>
     </div>
+
 
     <script>
         $(() => {
@@ -150,10 +171,39 @@
                 })
         }
 
+        function addEvidence(criteriaForm) {
+            const evidenceField = $("#master-evidence-form").clone();
+            evidenceField.removeAttr("id");
+
+            evidenceField.find("button.remove-evidence-button").click(() => {
+                evidenceField.remove();
+            });
+
+            criteriaForm
+                .find("div.evidences-list")
+                .first()
+                .prepend(evidenceField);
+        }
+
         function showCriteriaFields(section) {
+            const criteriaFormContainer = section.find("div.criteria-form-container");
+            const criteriaFieldsAlreadyShowing = criteriaFormContainer.children().length > 0;
+
+            if (criteriaFieldsAlreadyShowing) {
+                // Nothing to do here
+                return;
+            }
+
             const criteriaForm = $("#master-criteria-form").clone();
             criteriaForm.removeAttr("id");
-            section.find("div.criteria-form-container").prepend(criteriaForm);
+            criteriaFormContainer.prepend(criteriaForm);
+
+            criteriaForm
+                .find("button.add-evidence-button")
+                .first()
+                .click(() => addEvidence(criteriaForm));
+
+            addEvidence(criteriaForm);
         }
 
         function removeCriteriaFields(section) {
@@ -164,6 +214,42 @@
             section
                 .find("button.add-child-subsection-button")
                 .prop("disabled", false);
+        }
+
+        function showCriteriaNumberMinMax(section) {
+            const criteriaMinMax = $("#master-criteria-min-max").clone();
+            criteriaMinMax.removeAttr("id");
+
+            section
+                .find("div.section-title-container")
+                .first()
+                .append(criteriaMinMax);
+        }
+
+        function removeCriteriaNumberMinMax(section) {
+            section
+                .find("div.section-title-container")
+                .first()
+                .find("div.criteria-min-max-container")
+                .remove();
+        }
+
+        function showCriteriaGradeForm(section) {
+            const criteriaGradeForm = $("#master-criteria-grade-form").clone();
+            criteriaGradeForm.removeAttr("id");
+
+            section
+                .find("div.section-title-container")
+                .first()
+                .append(criteriaGradeForm);
+        }
+
+        function removeCriteriaGradeForm(section) {
+            section
+                .find("div.section-title-container")
+                .first()
+                .find("div.criteria-grade-form")
+                .remove();
         }
 
         function createSubsection(level, parent, isCriteria) {
@@ -188,16 +274,32 @@
                 .click(() => {
                     section.remove();
                 });
+
             section
                 .find('select.subsection-section')
                 .change(function () {
                     const sectionSection = $(this).val();
+
+                    if (sectionSection === "Criteria Numbers") {
+                        showCriteriaNumberMinMax(section);
+                    } else {
+                        removeCriteriaNumberMinMax(section);
+                    }
+
+                    if (sectionSection === "Criteria Letters") {
+                        showCriteriaGradeForm(section);
+                    } else {
+                        removeCriteriaGradeForm(section);
+                    }
+
+
                     section
                         .find('> div.document-item-children > div.document-item')
                         .each((idx, subsection) => {
-                            console.log(idx, subsection);
+                            // console.log(idx, subsection);
                             subsection = $(subsection);
-                            if (sectionSection === "Criteria") {
+
+                            if (sectionSection.includes("Criteria")) {
                                 removeAllChildren(subsection);
                                 lockSectionToSection(subsection);
                                 disableAddingChildren(subsection);
@@ -205,10 +307,11 @@
                             } else {
                                 unlockSection(subsection);
                                 enableAddingChildren(subsection);
-                                removeCriteriaFields(subsection)
+                                removeCriteriaFields(subsection);
                             }
                         });
                 });
+
             section
                 .find('.add-child-subsection-button')
                 .click(() => {
@@ -216,9 +319,15 @@
                     const childSubsectionParent = section
                         .find('.document-item-children')
                         .first();
-                    const isCriteria = section.find("select.subsection-section").val() === "Criteria";
+
+                    const isCriteria = section
+                        .find("select.subsection-section")
+                        .val()
+                        .includes("Criteria");
+
                     createSubsection(level + 1, childSubsectionParent, isCriteria);
                 });
+
             if (isCriteria) {
                 section
                     .find(".add-child-subsection-button")
@@ -252,6 +361,26 @@
                     .val();
                 if (level < 5) {
                     section.subsections = [];
+                }
+                
+                if(section.section == 'Criteria') {
+                    const criteriaChildren = sectionItem
+                    .find( "> .criteria-form-container" )
+                    .children();
+
+                    if (criteriaChildren.length > 0) {
+                        var evidences = [];
+
+                        $(criteriaChildren).find('.evidences-list .evidence-textarea').each(function () {
+                            evidences.push($(this).val());
+                        });
+
+                        section.criteria = {
+                            'title'             : criteriaChildren.parent().prev('.document-item-parent').find("input.subsection-title").first().val(),
+                            'description'       : criteriaChildren.find("textarea.criteria-description").first().val(),
+                            'evidences'         : evidences
+                        }
+                    }
                 }
                 return section;
             }
@@ -287,7 +416,7 @@
             }))
                 .done(() => alert("Submitted"))
                 .fail(() => alert("An error occurred submitting form"));
-            console.log("Gathering");
+            // console.log("Gathering");
         }
     </script>
     <!--END OF CONTENT-->

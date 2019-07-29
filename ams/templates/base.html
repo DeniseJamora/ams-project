@@ -52,6 +52,12 @@
       } );
     </script>
 
+    <script>
+      $(document).ready( function () {
+        $('#myTable2').DataTable();
+      } );
+    </script>
+
     <style>
       /* width */
       ::-webkit-scrollbar {
@@ -111,17 +117,27 @@
             <li class="nav-title">Setup and Admin</li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'userlist' %}">
-                <i class="nav-icon fa fa-user"></i> Users</a>
+                <i class="nav-icon fa fa-users"></i> Users</a>
             </li>
             <li class="nav-item nav-dropdown">
               <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="nav-icon fa fa-institution"></i> Accrediting Agencies</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'addagency' %}"> Add Agency</a>
+                  <a class="nav-link" href="{% url 'addagency' %}">
+                    <i class="nav-icon fa fa-institution"></i> Agencies</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'createdocuoutline' %}"> Create Document Outline</a>
+                  <a class="nav-link" href="{% url 'addagency' %}">
+                    <i class="nav-icon fa fa-institution"></i> Add Agency</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'addagency' %}">
+                    <i class="nav-icon fa fa-institution"></i> Documents</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'createdocuoutline' %}">
+                  <i class="nav-icon fa fa-graduation-cap"></i> Add Document</a>
                 </li>
               </ul>
             </li>
@@ -133,7 +149,7 @@
                   <a class="nav-link" href="{% url 'programlist' %}"> Programs</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'addprogram' %}"> Add Degree Program</a>
+                  <a class="nav-link" href="{% url 'addprogram' %}"> Add Program</a>
                 </li>
               </ul>
             </li>
@@ -144,10 +160,10 @@
               <a class="nav-link" href="{% url 'createperiod' %}">
                 <i class="nav-icon fa fa-plus-square"></i> New Accreditation</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="{% url 'createteam' %}">
                 <i class="nav-icon fa fa-users"></i> Create Teams</a>
-            </li>
+            </li> -->
             <li class="nav-item nav-dropdown">
               <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="nav-icon fa fa-graduation-cap"></i> Accreditations</a>
@@ -156,12 +172,17 @@
                   <a class="nav-link" href="{% url 'accreditationlist' %}"> Completed Accreditations</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'docuoutlinelist' %}"> Document Outlines</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'teamlist' %}"> Teams</a>
+                  <a class="nav-link" href="{% url 'ongoinglist' %}"> Ongoing Accreditations</a>
                 </li>
               </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ongoinglist' %}">
+                <i class="nav-icon fa fa-clipboard"></i> Documents</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ongoinglist' %}">
+                <i class="nav-icon fa fa-clipboard"></i> Teams</a>
             </li>
 
             <li class="nav-title">Criteria Compliance</li>

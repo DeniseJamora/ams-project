@@ -29,12 +29,10 @@ class AccreditingBodyForm(forms.ModelForm):
 class DegreeProgramForm(forms.ModelForm):
     program_code = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'e.g. BS INSYS',}))
     program_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'e.g. BS Information Systems',}))
-    program_est = forms.CharField(widget=forms.Select(attrs={'class':'form-control', 'id':'year',}))
-    program_grads = forms.CharField(widget=forms.NumberInput(attrs={'class':'form-control', 'placeholder':'e.g. 5',}))
 
     class Meta:
         model = DegreeProgram
-        fields = ('program_code', 'program_name', 'program_est', 'program_grads',)
+        fields = ('program_code', 'program_name',)
 
 
 class PrevAccreditationForm(forms.ModelForm):

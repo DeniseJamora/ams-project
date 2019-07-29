@@ -91,8 +91,6 @@ class AccreditingBody(models.Model):
 class DegreeProgram(models.Model):
     program_code = models.CharField(max_length=60)
     program_name = models.CharField(max_length=60)
-    program_est = models.CharField(max_length=60)
-    program_grads = models.CharField(max_length=60)
 
     class Meta:
         verbose_name_plural = "degree_Programs"
@@ -141,6 +139,10 @@ class DocumentOutline(models.Model):
 class DocumentOutlineItem(models.Model):
     document_outline_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
     parent_document_outline_item_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    criteria_description = models.CharField(max_length=512)
+    criteria_evidences = models.CharField(max_length=256)
+    criteria_minimum = models.CharField(max_length=60)
+    criteria_maximum = models.CharField(max_length=60)
     item_title = models.CharField(max_length=60)
     item_type = models.CharField(max_length=60)
 
@@ -148,7 +150,7 @@ class DocumentOutlineItem(models.Model):
         verbose_name_plural = "document_Outline_Items"
 
     def __str__(self):
-        return self.document_outline_id.document_name + " " + self.id
+        return self.document_outline_id.document_name
 
 
 class OngoingAccreditation(models.Model):
@@ -203,4 +205,19 @@ class UserTeam(models.Model):
     def __str__(self):
         return self.team_id.team_name + " " + self.user_id.given_name + " " + self.user_id.surname
 
+class Evidences(models.Model):
+    evidences_text = models.CharField(max_length=512)
+    document_outline_item = models.ForeignKey(DocumentOutlineItem, default='1', on_delete=models.CASCADE)
+
+class OutlineCriteria(models.Model):
+    outline_criteria_text = models.CharField(max_length=512)
+    document_outline = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
+    document_outline_item = models.ForeignKey(DocumentOutlineItem, default='1', on_delete=models.CASCADE)
+
+class AccreditationPeriod(models.Model):
+    agency_id = models.IntegerField()
+    type = models.CharField(max_length=128)
+    document_id = models.IntegerField()
+    degree_program_id = models.IntegerField()
+    end_date = models.DateField(blank=True)
 # Create your models here.

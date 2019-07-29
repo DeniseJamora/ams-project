@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-    CompletedAccreditation, PrevAccreditation, UserTeam
+    CompletedAccreditation, PrevAccreditation, UserTeam, Evidences, AccreditationPeriod, OutlineCriteria
 from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
     DocumentOutlineItemForm, \
     CompletedAccreditationForm, PrevAccreditationForm
@@ -81,6 +81,16 @@ def createdocuoutline(request):
         for subsection in section_form["subsections"]:
             save_section(subsection, document_outline_id, doc_outline_item)
 
+            if(subsection.get("section") == 'Criteria'):
+                OutlineCriteria.objects.create(outline_criteria_text=subsection.get("title"), document_outline=document_outline_id, document_outline_item=doc_outline_item)
+
+            if(subsection.get("criteria")):
+                criteria = subsection.get("criteria")
+                if(criteria.get("evidences")):
+                    evidences = criteria.get("evidences")
+                    for evidence in evidences:
+                        Evidences.objects.create(evidences_text=evidence, document_outline_item=doc_outline_item)
+
     if request.method == 'GET':
         return render(request, 'ams/admin/createdocuoutline.html', {
             "accrediting_bodies": accrediting_bodies
@@ -117,13 +127,8 @@ def addprogram(request):
     if request.method == "POST":
         form = DegreeProgramForm(request.POST)
         if form.is_valid():
-            if request.POST['prev_acc'] == "Yes":
-                f = request.POST['program_name']
-                form.save()
-                return redirect('programprev', f)
-            else:
-                form.save()
-                return redirect('programlist')
+            form.save()
+            return redirect('programlist')
     else:
         form = DegreeProgramForm()
         program_form = PrevAccreditationForm()
@@ -131,21 +136,6 @@ def addprogram(request):
             'form': form,
             'program_form': program_form
         })
-
-
-@login_required
-def programprev(request, f):
-    programs = DegreeProgram.objects.get(program_name=f)
-    if request.method == 'POST':
-        form = PrevAccreditationForm(request.POST)
-        if form.is_valid():
-            a = form.save(commit=False)
-            a.degree_program_id = programs.id
-            a.save()
-            return redirect('programlist')
-    else:
-        form = PrevAccreditationForm(request.POST)
-        return render(request, 'ams/admin/programprev.html', {'programs': programs, 'form': form})
 
 
 @login_required
@@ -164,17 +154,41 @@ def viewprogram(request, pk):
 
 @login_required
 def createperiod(request):
-    return render(request, 'ams/config/createperiod.html')
+    if request.method == "POST":
+        accreditation_period_id = AccreditationPeriod.objects.create(
+                                                agency_id=request.POST['agency'],
+                                                type=request.POST['accred_type'],
+                                                document_id=request.POST['document'],
+                                                degree_program_id=request.POST['program'],
+                                                end_date=request.POST['end_date'])
+        users = User.objects.all()
+        documents = DocumentOutlineItem.objects.filter(document_outline_id_id=request.POST['document']).filter(item_type='Criteria')
+        # outline_criteria = OutlineCriteria.objects.filter(outline_criteria_text=subsection.get("title"), document_outline=document_outline_id, document_outline_item=doc_outline_item)
+        return render(request, 'ams/config/createteam.html', {'accreditation': accreditation_period_id, 'users': users, 'documents': documents})
+    else:
+        agency = AccreditingBody.objects.all()
+        outlines = DocumentOutline.objects.all()
+        programs = DegreeProgram.objects.all()
+
+        return render(request, 'ams/config/createperiod.html', {'agency': agency, 'outlines': outlines, 'programs': programs})
 
 
 @login_required
 def createteam(request):
-    return render(request, 'ams/config/createteam.html')
+    if request.method == "POST":
+        return render(request, 'ams/config/createteam.html')
+    else:
+        return render(request, 'ams/config/createteam.html')
 
 
 @login_required
 def assigncriteria(request):
     return render(request, 'ams/config/assigncriteria.html')
+
+
+@login_required
+def setdeadlines(request):
+    return render(request, 'ams/config/setdeadlines.html')
 
 
 @login_required
@@ -210,6 +224,11 @@ def viewongoing(request):
 
 
 @login_required
+def evidencelist(request):
+    return render(request, 'ams/evidencelist.html')
+
+
+@login_required
 def ansdocu(request):
     return render(request, 'ams/ansdocu.html')
 
@@ -237,6 +256,11 @@ def docurepo(request):
 @login_required
 def filerepo(request):
     return render(request, 'ams/filerepo.html')
+
+
+@login_required
+def finalizedocument(request):
+    return render(request, 'ams/finalizedocument.html')
 
 
 @login_required

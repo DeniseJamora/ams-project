@@ -8,78 +8,81 @@
           <div class="animated fadeIn">
             <div class="row">
               <div class="col-sm-12">
+              <form method="POST">
+                  {% csrf_token %}
                 <div class="card">
                   <div class="card-header">
                     <strong>Create Accreditation Period</strong>
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">Accrediting Agency</label></i>
-                          <select class="form-control" id="agency">
+                          <select class="form-control" name="agency" id="agency">
                             <option>Please Select</option>
-                            <option onclick="accreditationType()" value="PAASCU">PAASCU</option>
-                            <option onclick="accreditationType()" value="PACUCOA">PACUCOA</option>
-                            <option onclick="accreditationType()" value="AUN">AUN</option>
-                            <option onclick="accreditationType()" value="ABET">ABET</option>
+                            {% for ab in agency %}
+                              <option value="{{ ab.id }}">{{ ab.accrediting_body }}</option>
+                            {% endfor %}
                           </select>
                         </div>
                       </div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">Type</label></i>
-                          <select class="form-control" id="select">
+                          <select class="form-control" name="accred_type" id="select">
                             <option>Please Select</option>
                             <option>Initial Application</option>
                             <option>Reaccreditation</option>
                           </select>
                         </div>
                       </div>
-                      <div class="col-sm-3">
+                    </div><br>
+                    <div class="row">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">Document</label></i>
-                          <select class="form-control" id="select">
+                          <select class="form-control" name="document" id="select">
                             <option>Please Select</option>
-                            <option>ABET CAC Self-Survey Report</option>
-                            <option>ABET ANSAC Self-Survey Report</option>
+                            {% for o in outlines %}
+                              <option value="{{ o.id }}">{{ o.document_name }}</option>
+                            {% endfor %}
                           </select>
                         </div>
                       </div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-6">
                         <div class="form-group">
                           <i><label for="name">Degree Program</label></i>
-                          <select class="form-control" id="select">
+                          <select class="form-control" name="program" id="select">
                             <option>Please Select</option>
-                            <option>BS Information Systems</option>
-                            <option>BS Information Technology</option>
+                            {% for p in programs %}
+                              <option value="{{ p.id }}">{{ p.program_name }}</option>
+                            {% endfor %}
                           </select>
                         </div>
                       </div>
-                    </div>
-                    <br><hr><br>
+                    </div><br>
                     <div class="row">
-                      <div class="col-sm-12">
-                        <div class="row">
-                          <i><label class="col-md-12 col-form-label">Accreditation Period</label></i>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <i><label for="name">Final Submission Date</label></i>
+                          <input class="form-control" id="" type="date" name="end_date" placeholder="">
                         </div>
-                        <br>
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <i><label for="name">Estimated End Date</label></i>
-                              <input class="form-control" id="" type="date" name="" placeholder="">
-                            </div>
-                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <i><label for="name">Estimated On-Site Visit</label></i>
+                          <input class="form-control" id="" type="date" name="end_date" placeholder="">
                         </div>
                       </div>
                     </div>
                   </div>
                   <br>
                   <div class="card-footer">
-                    <a href="{% url 'createteam' %}" style="text-decoration: none; color:white;"><button class="btn btn-primary" type="button"> Next</button></a>
+                    <button class="btn btn-primary" type="submit"> Next</button>
                   </div>
                   </div>
+              </form>
                   <br>
                 </div>
               </div>
