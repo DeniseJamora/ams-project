@@ -14,9 +14,9 @@
                     <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Accrediting Body</th>
+                          <th>Accrediting Agency</th>
                           <th>Document Name</th>
-                          <th></th>
+                          <th width="20%"></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -25,7 +25,9 @@
                           <td>{{ outline.accrediting_body_id.accrediting_body }}</td>
                           <td>{{ outline.document_name }}</td>
                           <td>
-                            <button class="btn btn-primary" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">Edit</a></button>
+                            <a href=""><button class="btn btn-primary" type="submit">View</button></a>
+                            <a href=""><button class="btn btn-success" type="submit">Edit</button></a>
+                            <a href=""><button class="btn btn-danger" type="submit">Delete</button></a>
                           </td>
                         </tr>
                         {% endfor %}

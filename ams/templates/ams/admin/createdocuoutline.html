@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" type="button" onclick="onSubmitButtonClick()    "><a
+                            <button class="btn btn-primary" type="button" onclick="onSubmitButtonClick()"><a
                                     style="text-decoration: none; color:white;">Submit</a>
                             </button>
                         </div>
@@ -296,7 +296,7 @@
                     section
                         .find('> div.document-item-children > div.document-item')
                         .each((idx, subsection) => {
-                            console.log(idx, subsection);
+                            // console.log(idx, subsection);
                             subsection = $(subsection);
 
                             {#if (sectionSection.includes("Criteria")) {#}
@@ -362,6 +362,26 @@
                 if (level < 5) {
                     section.subsections = [];
                 }
+                
+                if(section.section == 'Criteria') {
+                    const criteriaChildren = sectionItem
+                    .find( "> .criteria-form-container" )
+                    .children();
+
+                    if (criteriaChildren.length > 0) {
+                        var evidences = [];
+
+                        $(criteriaChildren).find('.evidences-list .evidence-textarea').each(function () {
+                            evidences.push($(this).val());
+                        });
+
+                        section.criteria = {
+                            'title'             : criteriaChildren.parent().prev('.document-item-parent').find("input.subsection-title").first().val(),
+                            'description'       : criteriaChildren.find("textarea.criteria-description").first().val(),
+                            'evidences'         : evidences
+                        }
+                    }
+                }
                 return section;
             }
 
@@ -396,7 +416,7 @@
             }))
                 .done(() => alert("Submitted"))
                 .fail(() => alert("An error occurred submitting form"));
-            console.log("Gathering");
+            // console.log("Gathering");
         }
     </script>
     <!--END OF CONTENT-->

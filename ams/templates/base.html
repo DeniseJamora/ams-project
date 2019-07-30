@@ -8,7 +8,7 @@
 -->
 {% load staticfiles %}
 <html lang="en">
-  <head>
+<head>
     <base href="./">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,161 +34,185 @@
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      // Shared ID
-      gtag('config', 'UA-118965717-3');
-      // Bootstrap ID
-      gtag('config', 'UA-118965717-5');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        // Shared ID
+        gtag('config', 'UA-118965717-3');
+        // Bootstrap ID
+        gtag('config', 'UA-118965717-5');
     </script>
 
     <script>
-      $(document).ready( function () {
-        $('#myTable').DataTable();
-      } );
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myTable2').DataTable();
+        });
     </script>
 
     <style>
-      /* width */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
 
-      /* Track */
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1; 
-      }
-       
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: #888; 
-      }
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
 
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555; 
-      }
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     </style>
 
-  </head>
-  <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-    <header class="app-header navbar" id="header">
-      <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<header class="app-header navbar" id="header">
+    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">
+    </button>
+    <a class="navbar-brand" href="#">
         <img class="navbar-brand-full" src="/static/img/brand/logo.svg" width="89" height="25" alt="AMS Logo">
         <img class="navbar-brand-minimized" src="/static/img/brand/sygnet.svg" width="30" height="30" alt="AMS Logo">
-      </a>
-      <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+    </a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <ul class="nav navbar-nav ml-auto">
+    </button>
+    <ul class="nav navbar-nav ml-auto">
         <li class="nav-item dropdown" style="color:#73818f">
-            Welcome, {{ user.username }}
+            Welcome, {{ user.given_name }} {{ user.surname }}
         </li>
-      </ul>
-      <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+    </ul>
+    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+    </button>
+    <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
         <span class="navbar-toggler-icon"></span>
-      </button>
-    </header>
-    <div class="app-body">
-      <div class="sidebar" id="sidebar">
+    </button>
+</header>
+<div class="app-body">
+    <div class="sidebar" id="sidebar">
         <nav class="sidebar-nav">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'dash' %}">
-                <i class="nav-icon icon-speedometer"></i> Dashboard
-              </a>
-            </li>
-            <li class="nav-title">Setup and Admin</li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'userlist' %}">
-                <i class="nav-icon fa fa-user"></i> Users</a>
-            </li>
-            <li class="nav-item nav-dropdown">
-              <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon fa fa-institution"></i> Accrediting Agencies</a>
-              <ul class="nav-dropdown-items">
+            <ul class="nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'addagency' %}"> Add Agency</a>
+                    <a class="nav-link" href="{% url 'dash' %}">
+                        <i class="nav-icon fa fa-tachometer"></i> Dashboard
+                    </a>
                 </li>
+                <li class="nav-title">Setup and Admin</li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'createdocuoutline' %}"> Create Document Outline</a>
+                    <a class="nav-link" href="{% url 'userlist' %}">
+                        <i class="nav-icon fa fa-users"></i> Users</a>
                 </li>
-              </ul>
-            </li>
-            <li class="nav-item nav-dropdown">
-              <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon fa fa-graduation-cap"></i> Programs</a>
-              <ul class="nav-dropdown-items">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'programlist' %}"> Programs</a>
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="nav-icon fa fa-institution"></i> Accrediting Agencies</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addagency' %}">
+                                <i class="nav-icon fa fa-institution"></i> Agencies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addagency' %}">
+                                <i class="nav-icon fa fa-institution"></i> Documents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addagency' %}">
+                                <i class="nav-icon fa fa-institution"></i> Add Agency</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'createdocuoutline' %}">
+                                <i class="nav-icon fa fa-institution"></i> Add Document</a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'addprogram' %}"> Add Degree Program</a>
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="nav-icon fa fa-graduation-cap"></i> Programs</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'programlist' %}">
+                                <i class="nav-icon fa fa-graduation-cap"></i> Programs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'addprogram' %}">
+                                <i class="nav-icon fa fa-graduation-cap"></i> Add Program</a>
+                        </li>
+                    </ul>
                 </li>
-              </ul>
-            </li>
 
 
-            <li class="nav-title">Configuration</li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'createperiod' %}">
-                <i class="nav-icon fa fa-plus-square"></i> New Accreditation</a>
-            </li>
-            <li class="nav-item">
+                <li class="nav-title">Configuration</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'createperiod' %}">
+                        <i class="nav-icon fa fa-plus-square"></i> New Accreditation</a>
+                </li>
+                <!-- <li class="nav-item">
               <a class="nav-link" href="{% url 'createteam' %}">
                 <i class="nav-icon fa fa-users"></i> Create Teams</a>
-            </li>
-            <li class="nav-item nav-dropdown">
-              <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon fa fa-graduation-cap"></i> Accreditations</a>
-              <ul class="nav-dropdown-items">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'accreditationlist' %}"> Completed Accreditations</a>
+            </li> -->
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="nav-icon fa fa-graduation-cap"></i> Accreditations</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accreditationlist' %}"> Completed Accreditations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ongoinglist' %}"> Ongoing Accreditations</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'docuoutlinelist' %}"> Document Outlines</a>
+                    <a class="nav-link" href="{% url 'ongoinglist' %}">
+                        <i class="nav-icon fa fa-clipboard"></i> Documents</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'teamlist' %}"> Teams</a>
+                    <a class="nav-link" href="{% url 'ongoinglist' %}">
+                        <i class="nav-icon fa fa-clipboard"></i> Teams</a>
                 </li>
-              </ul>
-            </li>
 
-            <li class="nav-title">Criteria Compliance</li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'ongoinglist' %}">
-                <i class="nav-icon fa fa-clipboard"></i> Ongoing Accreditations</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="nav-icon fa fa-archive"></i> Evidence List</a>
-            </li>
+                <li class="nav-title">Criteria Compliance</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ongoinglist' %}">
+                        <i class="nav-icon fa fa-clipboard"></i> Ongoing Accreditations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon fa fa-archive"></i> Evidence List</a>
+                </li>
 
 
-            <li class="nav-title">File Management</li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'filerepo' %}">
-                <i class="nav-icon fa fa-database"></i> File Repository</a>
-            </li>
+                <li class="nav-title">File Management</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'filerepo' %}">
+                        <i class="nav-icon fa fa-database"></i> File Repository</a>
+                </li>
 
-          </ul>
+            </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-      </div>
-      <main class="main">
+    </div>
+    <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'dash' %">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dash' %}">Dashboard</a></li>
     {% block content %}
           <!-- Breadcrumb Menu-->
         </ol>
@@ -196,56 +220,65 @@
     {% endblock %}
 <!--END OF CONTENT-->
       </main>
-      <aside class="aside-menu" id="sidemenu">
-        <!-- Tab panes-->
-        <div class="tab-content">
-          <div class="dropdown-header text-center">
-              <strong>Settings</strong>
-          </div>
-          <a class="dropdown-item" href="{% url 'deadlines' %}">
-            <i class="fa fa-calendar"></i> Deadlines
-          </a>
-          <a class="dropdown-item" href="profile.html">
-            <i class="fa fa-user"></i> Profile
-          </a>
-          <form id="logout" method="POST" action="{% url 'login' %}">
-            {% csrf_token %}
-            <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">
-              <i class="fa fa-lock"></i> Logout
-            </a>
-          </form>
-          <div class="dropdown-header text-center">
-              <strong>Notifications</strong>
-          </div>
-              <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
-                <div>Submit
-                  <strong>Evidence A</strong>
+      <aside class=" aside-menu" id="sidemenu">
+                <!-- Tab panes-->
+                <div class="tab-content">
+                    <div class="dropdown-header text-center">
+                        <strong>Settings</strong>
+                    </div>
+                    <a class="dropdown-item" href="{% url 'deadlines' %}">
+                        <i class="fa fa-calendar"></i> Deadlines
+                    </a>
+                    <a class="dropdown-item" href="profile.html">
+                        <i class="fa fa-user"></i> Profile
+                    </a>
+                    <form id="logout" method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">
+                            <i class="fa fa-sign-out"></i> Logout
+                        </a>
+                    </form>
+                    <div class="dropdown-header text-center">
+                        <strong>Notifications</strong>
+                    </div>
+                    <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
+                        <div>Submit
+                            <strong>Evidence A</strong>
+                        </div>
+                        <small class="text-muted mr-3">
+                            <i class="icon-calendar"></i>  August 2, 2019
+                        </small>
+                        <small class="text-muted">
+                            <i class="icon-user"></i>  Team Head
+                        </small>
+                    </div>
                 </div>
-                <small class="text-muted mr-3">
-                  <i class="icon-calendar"></i>  August 2, 2019</small>
-                <small class="text-muted">
-                  <i class="icon-user"></i>  Team Head</small>
-              </div>
-        </div>
-      </aside>
-    </div>
-    <footer class="app-footer">
-      <div>
+                </aside>
+</div>
+<footer class="app-footer">
+    <div>
         <a href="https://coreui.io">CoreUI</a>
         <span>&copy; 2018 creativeLabs.</span>
-      </div>
-      <div class="ml-auto">
+    </div>
+    <div class="ml-auto">
         <span>Powered by</span>
         <a href="https://coreui.io">CoreUI</a>
-      </div>
-    </footer>
-    <!-- CoreUI and necessary plugins-->
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/util.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+    </div>
+</footer>
+<!-- CoreUI and necessary plugins-->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/util.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-  </body>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+</body>
 </html>

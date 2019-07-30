@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <li class="breadcrumb-item active">Create Team Head</li>
+    <li class="breadcrumb-item active">Create Team</li>
     <!-- Breadcrumb Menu-->
     </ol>
     <!--START OF CONTENT-->
@@ -10,129 +10,75 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Create Team Head</strong>
+                            <strong>Create Team <!--{{ accreditation.document_id }}--></strong>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <i><label for="name">Accreditation Period</label></i>
-                                        <select class="form-control" id="agency" disabled="">
-                                            <option>Please Select</option>
-                                            <option value="PAASCU">BS INSYS PAASCU 2019</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-12" id="add">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <i><label for="name">Team Name</label></i>
-                                                <input class="form-control" id="committeeName" type="text"
-                                                       value="Team A" disabled="">
+                                                <input class="form-control" id="committeeName" name="team_name" type="text"
+                                                       placeholder="Team A">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <i><label for="name">Team Head</label></i>
-                                                <select class="form-control">
-                                                    <option>Select User</option>
-                                                    <option>Juan Dela Cruz</option>
-                                                    <option>Juan Dela Cruz</option>
-                                                    <option>Juan Dela Cruz</option>
-                                                    <option>Juan Dela Cruz</option>
+                                                <select class="form-control" name="team_head" id="team_head">
+                                                    <option value>Select User</option>
+                                                    {% for ab in users %}
+                                                        <option value="{{ ab.id }}">{{ ab }}</option>
+                                                    {% endfor %}
                                                 </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <i><label for="name">Users</label></i>
-                                                <select class="form-control" id="users">
-                                                    <option>Select User</option>
-                                                    <option>Juan Dela Cruz</option>
-                                                    <option>Juan Dela Cruz</option>
-                                                    <option>Juan Dela Cruz</option>
-                                                    <option>Juan Dela Cruz</option>
-                                                </select>
-                                                <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <button class="btn btn-primary" type="button"
-                                          onclick="addMember()"> Add Member</button>
-                                </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <i><label for="name">Added Members</label></i>
-                                                <select class="form-control" id="multiple-select" size="3" multiple="">
-                                                </select>
-                                                <div class="input-group-prepend">
-                                                    <div class="ml-2">
-                                                        <button class="btn btn-primary" type="button"
-                                                                onclick="addMember()"> Add Member
-                                                        </button>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-12">
+                                    <i><label for="name">Add Members</label></i><hr>
+                                    <div class="row">
+                                        <div class="col-sm-5 text-left">
+                                            <p>Jamora, Ivanna Denise T.</p>
+                                        </div>
+                                        <div class="col-sm-3 text-left">
+                                            <p>Faculty</p>
+                                        </div>
+                                        <div class="col-sm-3 text-left">
+                                            <p>IT Department</p>
+                                        </div>
+                                        <div class="col-sm-1 text-left">
+                                            <p><input type="checkbox" name="vehicle1" value="Bike"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-5 text-left">
+                                            <p>Martinez, Clifford Markus O.</p>
+                                        </div>
+                                        <div class="col-sm-3 text-left">
+                                            <p>Staff</p>
+                                        </div>
+                                        <div class="col-sm-3 text-left">
+                                            <p>ST Department</p>
+                                        </div>
+                                        <div class="col-sm-1 text-left">
+                                            <p><input type="checkbox" name="vehicle1" value="Bike"></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <br>
-                            <button class="btn btn-primary" type="button" onclick="addTeam()"> Add Team</button>
+                            <!-- Temporary hidden to follow-->
+                            <!-- <button class="btn btn-primary" type="button" onclick="addTeam()"> Add Team</button> -->
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" type="submit"> Save</button>
+                            <button class="btn btn-primary" type="submit"> Next</button>
+                            <button class="btn btn-success" type="submit"> Save and Create Another Team</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        var i = 0;
-
-        // Create a new list item when clicking on the "Add" button
-
-        function addTeam() {
-            var x = '<div class="row">' +
-                '<div class="col-sm-6">' +
-                '<div class="form-group">' +
-                '<i><label for="name">Team Name</label></i>' +
-                '<input class="form-control" id="committeeName" type="text" placeholder="Team Name">' +
-                '</div>' +
-                '</div>' +
-                '<div class="col-sm-6">' +
-                '<div class="form-group">' +
-                '<i><label for="name">Team Head</label></i>' +
-                '<select class="form-control" id="users">' +
-                '<option>Select User</option>' +
-                '<option>Juan Dela Cruz</option>' +
-                '<option>Juan Dela Cruz</option>' +
-                '<option>Juan Dela Cruz</option>' +
-                '<option>Juan Dela Cruz</option>' +
-                '</select>' +
-                '</div>' +
-                '</div>' +
-                '</div>';
-
-            document.getElementById("add").insertAdjacentHTML('beforeend', x);
-        }
-
-        function addMember() {
-            item = document.getElementById("users").value();
-            var x = '<option value="1">' + item + '</option>';
-
-            document.getElementById("multiple-select").insertAdjacentHTML('beforeend', x);
-        }
-    </script>
     <!--END OF CONTENT-->
 {% endblock %}

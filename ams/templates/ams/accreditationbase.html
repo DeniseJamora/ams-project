@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <li class="breadcrumb-item active">Document Section</li>
     <!-- Breadcrumb Menu-->
     </ol>
     <!--START OF CONTENT-->
@@ -15,21 +16,17 @@
                                     <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Criteria</th>
-                                            <th>Assigned Team</th>
+                                            <th>Section</th>
                                             <th>Assigned Members</th>
                                             <th>Evidence List</th>
-                                            <th>Deadline</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>A.1 Criteria Name</td>
-                                            <td>Team A</td>
-                                            <td>Denise Jamora<br>Clifford Martinez<br>Eunice Yu</td>
+                                            <td>1.1.1 Sub-Section Name</td>
+                                            <td>Denise Jamora</td>
                                             <td>Evidence A<br>Evidence B<br>Evidence C</td>
-                                            <td>August 2, 2019</td>
                                             <td>
                                                 <a href="{% url 'ansdocu' %}">
                                                     <button class="btn btn-primary" type="reset"> View</button>

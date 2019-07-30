@@ -6,7 +6,7 @@ from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOu
 class UserForm(forms.ModelForm):
 
     email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email',}))
-    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username',}))
+    dept = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Department',}))
     given_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-6', 'placeholder':'Given Name',}))
     middle_initial = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-3', 'placeholder':'Middle Initial',}))
     surname = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-3', 'placeholder':'Surname',}))
@@ -15,7 +15,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'username', 'given_name', 'middle_initial', 'surname', 'password', 'type',)
+        fields = ('email', 'dept', 'given_name', 'middle_initial', 'surname', 'password', 'type',)
 
 
 class AccreditingBodyForm(forms.ModelForm):
@@ -29,12 +29,10 @@ class AccreditingBodyForm(forms.ModelForm):
 class DegreeProgramForm(forms.ModelForm):
     program_code = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'e.g. BS INSYS',}))
     program_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'e.g. BS Information Systems',}))
-    program_est = forms.CharField(widget=forms.Select(attrs={'class':'form-control', 'id':'year',}))
-    program_grads = forms.CharField(widget=forms.NumberInput(attrs={'class':'form-control', 'placeholder':'e.g. 5',}))
 
     class Meta:
         model = DegreeProgram
-        fields = ('program_code', 'program_name', 'program_est', 'program_grads',)
+        fields = ('program_code', 'program_name',)
 
 
 class PrevAccreditationForm(forms.ModelForm):

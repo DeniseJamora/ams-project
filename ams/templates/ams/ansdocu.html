@@ -15,53 +15,46 @@
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="form-group">
-                          <i><p>Criteria Description here</p></i>
-                          <br>
-                          <label for="pGraduates">Score</label>
-                          <select class="form-control" id="committee">
-                            <option>Select Score</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
                           <label for="pGraduates">Narrative</label>
                           <textarea class="form-control" id="textarea-input" name="textarea-input" rows="7" placeholder="Content.."></textarea>
                         </div>
-                        <div class="form-group">
-                          <p>Evidence List</p>
-                          <br>
-                          <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Evidence</th>
-                                <th>Assigned Member</th>
-                                <th>Deadline</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Picture of classroom layout</td>
-                                <td>Denise Jamora</td>
-                                <td>August 2, 2019</td>
-                                <td>
-                                  <button class="btn btn-primary" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">Upload</a></button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                      </div>
+                    </div>
+                        <br>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <p>Comments and Revisions</p>
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="input-group">
+                              <textarea class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor nulla ac mi lobortis, quis pharetra lectus scelerisque. Suspendisse potenti. Vestibulum tristique vitae nisi sit amet porta. Nam in quam et lorem ultrices vehicula. Maecenas nisl metus, luctus sed pharetra in, suscipit id metus.</textarea>
+                              <span class="input-group-append">
+                                <button class="btn btn-primary" type="button" onclick="">Resolve</button>
+                              </span>
+                            </div>
+                          </div>
+                        </div><br><br>
+                        <div class="row">
+                          <div class="col-sm-12">
+                              <div class="input-group">
+                                <textarea class="form-control" id="textarea-input" name="textarea-input" rows="1" placeholder="Comment.."></textarea>
+                                <span class="input-group-append">
+                                  <button class="btn btn-primary" type="button" onclick="">Add Comment</button>
+                                </span>
+                              </div>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <br>
+                        <p>Appendices and Exhibits</p>
                         <div class="form-group">
-                          <p>Appendices and Exhibits</p>
-                          <br>
                           <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
                             <thead>
                               <tr>
-                                <th>Code</th>
                                 <th>Name</th>
                                 <th>Type</th>
                                 <th>Description</th>
@@ -70,24 +63,38 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>1.1</td>
-                                <td>Layout of Computer Laboratories</td>
-                                <td>Appendix</td>
-                                <td>Picture of all computer laboratories in gokongwei building</td>
-                                <td>layout.png</td>
-                                <td>
-                                  <button class="btn btn-danger" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">Remove</a></button>
-                                </td>
-                              </tr>
                             </tbody>
                           </table>
+                          <button class="btn btn-primary" type="button" onclick="">Select from Evidences</button>
+                          <button class="btn btn-success" type="button" onclick="">Upload New Evidence</button>
+                        </div>
+                      </div>
+                    </div>
+                      <br>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <p>Figures and Tables</p>
+                          <table id="myTable2" class="table table-responsive-sm table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>File</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                          </table>
+                          <button class="btn btn-primary" type="button" onclick="">Select from Files</button>
+                          <button class="btn btn-success" type="button" onclick="">Upload New File</button>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="card-footer">
                     <button class="btn btn-primary" type="button" onclick="">Save</button>
+                    <button class="btn btn-success" type="button" onclick="">Complete</button>
                   </div>
                 </div>
               </div>

@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-    OnGoingAccreditation, CompletedAccreditation, PrevAccreditation, UserTeam
+    CompletedAccreditation, PrevAccreditation, UserTeam
 from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
-     DocumentOutlineItemForm, \
+    DocumentOutlineItemForm, \
     CompletedAccreditationForm, PrevAccreditationForm
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -194,20 +194,12 @@ def viewaccreditation(request):
 def teamlist(request):
     teams = Team.objects
     members = UserTeam.objects
-    context = {'teams': teams, 'members': members}
-    return render(request, 'ams/config/teamlist.html', context)
+    return render(request, 'ams/config/teamlist.html', {'teams': teams, 'members': members})
 
 
 @login_required
 def ongoinglist(request):
-    on_going_accreditation = OnGoingAccreditation.objects.all()
-    accrediting_body = AccreditingBody.objects.all()
-    degree_program = DegreeProgram.objects.all()
-    team = Team.objects.all()
-    document_outline = DocumentOutline.objects.all()
-
-    context = {on_going_accreditation: on_going_accreditation, accrediting_body: accrediting_body, degree_program: degree_program, team: team, document_outline: document_outline}
-    return render(request, 'ams/config/ongoinglist.html', context)
+    return render(request, 'ams/config/ongoinglist.html')
 
 
 @login_required

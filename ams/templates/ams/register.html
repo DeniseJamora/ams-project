@@ -65,51 +65,51 @@
                         {% csrf_token %}
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icon-people"></i>
-                  </span>
+                                <span class="input-group-text">
+                                    <i class="icon-people"></i>
+                                </span>
                             </div>
                             {{ form.type }}
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icon-user"></i>
-                  </span>
+                                <span class="input-group-text">
+                                    <i class="icon-user"></i>
+                                </span>
                             </div>
                             {{ form.given_name }}
                             {{ form.middle_initial }}
                             {{ form.surname }}
                         </div>
                         <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="icons cui-user"></i>
+                                </span>
+                            </div>
+                            {{ form.department }}
+                        </div>
+                        <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icons cui-envelope-closed"></i>
-                  </span>
+                                <span class="input-group-text">
+                                    <i class="icons cui-envelope-closed"></i>
+                                </span>
                             </div>
                             {{ form.email }}
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icons cui-user"></i>
-                  </span>
-                            </div>
-                            {{ form.username }}
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icon-lock"></i>
-                  </span>
+                                <span class="input-group-text">
+                                    <i class="icon-lock"></i>
+                                </span>
                             </div>
                             {{ form.password }}
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icon-lock"></i>
-                  </span>
+                                <span class="input-group-text">
+                                    <i class="icon-lock"></i>
+                                </span>
                             </div>
                             <input class="form-control" name="confirm_password" type="password"
                                    placeholder="Repeat password">
@@ -149,8 +149,8 @@
 
 <script>
     var a = "<option>Please Select Type</option>";
-    var b = "<option>Faculty</option>";
-    var c = "<option>Staff</option>";
+    var b = "<option>Survey Executive</option>";
+    var c = "<option>Member</option>";
     document.getElementById("type").innerHTML = a + b + c;
 </script>
 </body>
