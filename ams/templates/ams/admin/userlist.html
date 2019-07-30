@@ -17,10 +17,10 @@
                           <th>Name</th>
                           <th>Type</th>
                           <th>Email</th>
-                          <th>Username</th>
+                          <th>Department</th>
                           <th>Accreditations</th>
                           <th>Teams</th>
-                          <th></th>
+                          <th width="16%"></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -29,14 +29,19 @@
                           <td>{{ user.surname }}, {{ user.given_name }} {{ user.middle_initial }}</td>
                           <td>{{ user.type }}</td>
                           <td>{{ user.email }}</td>
-                          <td>{{ user.username }}</td>
-                          <td>ABET BS Information System 2019<br>PAASCU Information Technology 2019<br>AUN BS Computer Studies 2020</td>
+                          <td>{{ user.dept }}</td>
                           <td>
                             {% for team in teams.all %}
                              {{ team.team_id.team_name }}
                             {% endfor %}
                           </td>
                           <td>
+                            {% for team in teams.all %}
+                             {{ team.team_id.team_name }}
+                            {% endfor %}
+                          </td>
+                          <td>
+                            <button class="btn btn-primary" type=""><a href="accreditationlist.html" style="text-decoration: none; color: white;">Edit</a></button>
                             <button class="btn btn-danger" type=""><a href="accreditationlist.html" style="text-decoration: none; color: white;">Deactivate</a></button>
                           </td>
                         </tr>

@@ -95,7 +95,7 @@
       </button>
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item dropdown" style="color:#73818f">
-            Welcome, {{ user.username }}
+            Welcome, {{ user.given_name }} {{ user.surname }}
         </li>
       </ul>
       <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
@@ -111,7 +111,7 @@
           <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" href="{% url 'dash' %}">
-                <i class="nav-icon icon-speedometer"></i> Dashboard
+                <i class="nav-icon fa fa-tachometer"></i> Dashboard
               </a>
             </li>
             <li class="nav-title">Setup and Admin</li>
@@ -129,15 +129,15 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'addagency' %}">
-                    <i class="nav-icon fa fa-institution"></i> Add Agency</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'addagency' %}">
                     <i class="nav-icon fa fa-institution"></i> Documents</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="{% url 'addagency' %}">
+                    <i class="nav-icon fa fa-institution"></i> Add Agency</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{% url 'createdocuoutline' %}">
-                  <i class="nav-icon fa fa-graduation-cap"></i> Add Document</a>
+                  <i class="nav-icon fa fa-institution"></i> Add Document</a>
                 </li>
               </ul>
             </li>
@@ -146,10 +146,12 @@
                 <i class="nav-icon fa fa-graduation-cap"></i> Programs</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'programlist' %}"> Programs</a>
+                  <a class="nav-link" href="{% url 'programlist' %}"> 
+                    <i class="nav-icon fa fa-graduation-cap"></i> Programs</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'addprogram' %}"> Add Program</a>
+                  <a class="nav-link" href="{% url 'addprogram' %}"> 
+                    <i class="nav-icon fa fa-graduation-cap"></i> Add Program</a>
                 </li>
               </ul>
             </li>
@@ -232,7 +234,7 @@
           <form id="logout" method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">
-              <i class="fa fa-lock"></i> Logout
+              <i class="fa fa-sign-out"></i> Logout
             </a>
           </form>
           <div class="dropdown-header text-center">

@@ -113,8 +113,7 @@ def setcriteria(request):
 @login_required
 def docuoutlinelist(request):
     outlines = DocumentOutline.objects
-    context = {'outlines': outlines}
-    return render(request, 'ams/config/docuoutlinelist.html', context)
+    return render(request, 'ams/config/docuoutlinelist.html', {'outlines': outlines})
 
 
 @login_required
@@ -147,9 +146,7 @@ def programlist(request):
 @login_required
 def viewprogram(request, pk):
     program = DegreeProgram.objects.get(id=pk)
-    prevs = PrevAccreditation.objects.filter(degree_program_id=pk)
-
-    return render(request, 'ams/admin/viewprogram.html', {'program': program, 'prevs': prevs})
+    return render(request, 'ams/admin/viewprogram.html', {'program': program})
 
 
 @login_required
@@ -266,6 +263,10 @@ def finalizedocument(request):
 @login_required
 def userlist(request):
     users = User.objects
-    teams = UserTeam.objects
-    context = {'users': users}, {'teams': teams}
-    return render(request, 'ams/admin/userlist.html', context)
+    return render(request, 'ams/admin/userlist.html', {'users': users})
+
+
+@login_required
+def agencylist(request):
+    agencies = AccreditingBody.objects
+    return render(request, 'ams/admin/agencylist.html', {'agencies': agencies})

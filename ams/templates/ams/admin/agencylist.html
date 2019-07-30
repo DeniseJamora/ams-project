@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-          <li class="breadcrumb-item active">Programs</li>
+          <li class="breadcrumb-item active">Accrediting Agencies</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -9,27 +9,24 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="card">
-                  <div class="card-header">Degree Programs</div>
+                  <div class="card-header">Accrediting Agencies</div>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-12">
                         <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
                           <thead>
                             <tr>
-                              <th>Program Name</th>
-                              <th>Program Code</th>
-                              <th width="20%"></th>
+                              <th>Agency Name</th>
+                              <th width="15%"></th>
                             </tr>
                           </thead>
                           <tbody>
-                            {% for program in programs.all %}
+                            {% for agency in agencies.all %}
                             <tr>
-                              <td>{{ program.program_name }}</td>
-                              <td>{{ program.program_code }}</td>
+                              <td>{{ agency.accrediting_body }}</td>
                               <td>
-                                <a href="{%  url 'viewprogram' pk=program.id %}"><button class="btn btn-primary" type="">View</button></a>
-                                <a href=""><button class="btn btn-success" type="">Edit</button></a>
-                                <a href=""><button class="btn btn-danger" type="">Delete</button></a>
+                                <a href="{%  url 'agencylist' %}"><button class="btn btn-primary" type="">Edit</button></a>
+                                <a href="{%  url 'agencylist' %}"><button class="btn btn-danger" type="">Delete</button></a>
                               </td>
                             </tr>
                             {% endfor %}

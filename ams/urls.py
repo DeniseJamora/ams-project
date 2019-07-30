@@ -30,6 +30,7 @@ urlpatterns = [
     path('dash/', views.dash, name='dash'),
     path('addagency/', views.addagency, name='addagency'),
     path('createdocuoutline/', views.createdocuoutline, name='createdocuoutline'),
+    path('agencylist/', views.agencylist, name='agencylist'),
     path('finalizedocument/', views.finalizedocument, name='finalizedocument'),
     path('setcriteria/', views.setcriteria, name='setcriteria'),
     path('docuoutlinelist/', views.docuoutlinelist, name='docuoutlinelist'),

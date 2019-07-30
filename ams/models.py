@@ -5,11 +5,11 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 class User_Manager(BaseUserManager):
-    def create_user(self, email, username, type, given_name, middle_initial, surname, password=None):
+    def create_user(self, email, dept, type, given_name, middle_initial, surname, password=None):
         if not email:
             raise ValueError("Please input email address")
-        if not username:
-            raise ValueError("Please input username")
+        if not dept:
+            raise ValueError("Please input dept")
         if not type:
             raise ValueError("Please select user type")
         if not given_name:
@@ -21,7 +21,7 @@ class User_Manager(BaseUserManager):
 
         u = self.model(
             email=self.normalize_email(email),
-            username=username,
+            dept=dept,
             type=type,
             given_name=given_name,
             middle_initial=middle_initial,
@@ -32,10 +32,10 @@ class User_Manager(BaseUserManager):
         u.save(using=self._db)
         return u
 
-    def create_superuser(self, email, username, type, given_name, middle_initial, surname, password=None):
+    def create_superuser(self, email, dept, type, given_name, middle_initial, surname, password=None):
         u = self.create_user(
             email=self.normalize_email(email),
-            username=username,
+            dept=dept,
             password=password,
             type=type,
             given_name=given_name,
@@ -51,7 +51,7 @@ class User_Manager(BaseUserManager):
 
 class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='email', unique=True)
-    username = models.CharField(max_length=60, unique=True)
+    dept = models.CharField(max_length=60, unique=True)
     given_name = models.CharField(max_length=60)
     middle_initial = models.CharField(max_length=60)
     surname = models.CharField(max_length=60)
@@ -64,7 +64,7 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'given_name', 'middle_initial', 'surname', 'type']
+    REQUIRED_FIELDS = ['dept', 'given_name', 'middle_initial', 'surname', 'type']
 
     def __str__(self):
         return self.surname + ", " + self.given_name + " " + self.middle_initial + "."

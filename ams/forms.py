@@ -6,7 +6,7 @@ from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOu
 class UserForm(forms.ModelForm):
 
     email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email',}))
-    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username',}))
+    dept = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Department',}))
     given_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-6', 'placeholder':'Given Name',}))
     middle_initial = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-3', 'placeholder':'Middle Initial',}))
     surname = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-3', 'placeholder':'Surname',}))
@@ -15,7 +15,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'username', 'given_name', 'middle_initial', 'surname', 'password', 'type',)
+        fields = ('email', 'dept', 'given_name', 'middle_initial', 'surname', 'password', 'type',)
 
 
 class AccreditingBodyForm(forms.ModelForm):
