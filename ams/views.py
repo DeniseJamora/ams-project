@@ -75,35 +75,35 @@ def createdocuoutline(request):
     def save_section(section_form, document_outline_id, parent):
         doc_outline_item = DocumentOutlineItem.objects.create(document_outline_id=document_outline_id,
                                                               parent_document_outline_item_id=parent,
-                                                              item_title=section_form["title"],
-                                                              item_type=section_form["section"])
+                                                              item_title=section_form["title"])
 
-        for subsection in section_form["subsections"]:
-            save_section(subsection, document_outline_id, doc_outline_item)
+        if(section_form.get("subsections")):
+            for subsection in section_form["subsections"]:
+                save_section(subsection, document_outline_id, doc_outline_item)
 
-            if(subsection.get("section") == 'Criteria'):
-                OutlineCriteria.objects.create(outline_criteria_text=subsection.get("title"), document_outline=document_outline_id, document_outline_item=doc_outline_item)
+            # if(subsection.get("sections") == 'Criteria'):
+            #     OutlineCriteria.objects.create(outline_criteria_text=subsection.get("title"), document_outline=document_outline_id, document_outline_item=doc_outline_item)
 
-            if(subsection.get("criteria")):
-                criteria = subsection.get("criteria")
-                if(criteria.get("evidences")):
-                    evidences = criteria.get("evidences")
-                    for evidence in evidences:
-                        Evidences.objects.create(evidences_text=evidence, document_outline_item=doc_outline_item)
+            # if(subsection.get("criteria")):
+            #     criteria = subsection.get("criteria")
+                # if(criteria.get("evidences")):
+                #     evidences = criteria.get("evidences")
+                #     for evidence in evidences:
+                #         Evidences.objects.create(evidences_text=evidence, document_outline_item=doc_outline_item)
 
-    if request.method == 'GET':
+    if request.method == 'POST':
+        form = json.loads(request.body)
+        document_outline = DocumentOutline.objects.create(accrediting_body_id=accrediting_bodies.get(id=form["agency"]),
+                                                        document_name=form["title"])
+        for section in form["sections"]:
+            save_section(section, document_outline, None)
+
+        return JsonResponse({}, status=200)
+
+    elif request.method == 'GET':
         return render(request, 'ams/admin/createdocuoutline.html', {
             "accrediting_bodies": accrediting_bodies
         })
-
-    form = json.loads(request.body)
-    document_outline = DocumentOutline.objects.create(accrediting_body_id=accrediting_bodies.get(id=form["agency"]),
-                                                      document_name=form["title"])
-    for section in form["sections"]:
-        save_section(section, document_outline, None)
-
-    return JsonResponse({}, status=200)
-
 
 @login_required
 def setcriteria(request):
@@ -157,9 +157,10 @@ def createperiod(request):
                                                 type=request.POST['accred_type'],
                                                 document_id=request.POST['document'],
                                                 degree_program_id=request.POST['program'],
+                                                onsite_date=request.POST['end_date'],
                                                 end_date=request.POST['end_date'])
         users = User.objects.all()
-        documents = DocumentOutlineItem.objects.filter(document_outline_id_id=request.POST['document']).filter(item_type='Criteria')
+        documents = DocumentOutlineItem.objects.filter(document_outline_id_id=request.POST['document'])
         # outline_criteria = OutlineCriteria.objects.filter(outline_criteria_text=subsection.get("title"), document_outline=document_outline_id, document_outline_item=doc_outline_item)
         return render(request, 'ams/config/createteam.html', {'accreditation': accreditation_period_id, 'users': users, 'documents': documents})
     else:

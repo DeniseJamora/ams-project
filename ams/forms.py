@@ -4,14 +4,23 @@ from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOu
 
 
 class UserForm(forms.ModelForm):
-
+    user_type = (
+        ('', 'Please Select Type'),
+        ('survey-executive', 'Survey Executive'),
+        ('member', 'Member'),
+    )
+    departments = (
+        ('', 'Please Select Department'),
+        ('comp-tech', 'Computer Technology Dept'),
+        ('soft-tech', 'Software Technology Dept'),
+    )
     email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email',}))
-    dept = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Department',}))
+    dept = forms.CharField(widget=forms.Select(attrs={'class':'form-control',},choices=departments))
     given_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-6', 'placeholder':'Given Name',}))
     middle_initial = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-3', 'placeholder':'Middle Initial',}))
     surname = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-3', 'placeholder':'Surname',}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Password',}))
-    type = forms.CharField(widget=forms.Select(attrs={'class':'form-control', 'id':'type'}))
+    type = forms.CharField(widget=forms.Select(attrs={'class':'form-control', 'id':'type'},choices=user_type))
 
     class Meta:
         model = User
@@ -76,7 +85,6 @@ class DocumentOutlineItemForm(forms.ModelForm):
         Model = DocumentOutlineItem
         fields = [
             "item_title",
-            "item_type",
         ]
 
 
