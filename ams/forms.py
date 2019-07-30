@@ -1,7 +1,7 @@
 from django import forms
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
      CompletedAccreditation, PrevAccreditation
-
+from django_select2.forms import Select2MultipleWidget
 
 class UserForm(forms.ModelForm):
     user_type = (
@@ -95,6 +95,9 @@ class CompletedAccreditationForm(forms.ModelForm):
             "completed_result",
             "completed_year",
         ]
+
+class MultiSelectUsersForm(forms.Form):
+    Users = forms.ModelMultipleChoiceField(queryset=User.objects.all(), widget=Select2MultipleWidget)
 
 """class StudentForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput())

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{{ form.media.css }}
     <li class="breadcrumb-item active">Create Team</li>
     <!-- Breadcrumb Menu-->
     </ol>
@@ -38,6 +39,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <i><label for="name">Add Members</label></i><hr>
+                                    {{ form }}
                                     <div class="row">
                                         <div class="col-sm-5 text-left">
                                             <p>Jamora, Ivanna Denise T.</p>
@@ -81,4 +83,5 @@
         </div>
     </div>
     <!--END OF CONTENT-->
+{{ form.media.js }}
 {% endblock %}

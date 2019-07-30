@@ -4,7 +4,7 @@ from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOu
     CompletedAccreditation, PrevAccreditation, UserTeam
 from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
     DocumentOutlineItemForm, \
-    CompletedAccreditationForm, PrevAccreditationForm
+    CompletedAccreditationForm, PrevAccreditationForm, MultiSelectUsersForm
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -188,11 +188,12 @@ def createperiod(request):
         agency = AccreditingBody.objects.all()
         outlines = DocumentOutline.objects.all()
         programs = DegreeProgram.objects.all()
-
+        return render(request, 'ams/config/createperiod.html', {'agency': agency, 'outlines': outlines, 'programs': programs})
 
 @login_required
 def createteam(request):
-    return render(request, 'ams/config/createteam.html')
+    form = MultiSelectUsersForm()
+    return render(request, 'ams/config/createteam.html', {'form': form})
 
 
 @login_required
