@@ -1,6 +1,6 @@
 from django import forms
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-    CompletedAccreditation, PrevAccreditation
+     CompletedAccreditation, PrevAccreditation
 
 
 class UserForm(forms.ModelForm):

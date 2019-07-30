@@ -155,8 +155,8 @@ class DocumentOutlineItem(models.Model):
         return self.document_outline_id.document_name
 
 
-class OngoingAccreditation(models.Model):
-    accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
+class OnGoingAccreditation(models.Model):
+    accrediting_body_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
     degree_program_id = models.ForeignKey(DegreeProgram, default='1', on_delete=models.CASCADE)
     team_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
     document_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
@@ -165,11 +165,11 @@ class OngoingAccreditation(models.Model):
         verbose_name_plural = "ongoing_Accreditations"
 
     def __str__(self):
-        return self.degree_program_id.program_name + " " + self.accrediting_id.accrediting_body
+        return self.degree_program_id.program_name + " " + self.accrediting_body_id.accrediting_body
 
 
 class CompletedAccreditation(models.Model):
-    accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
+    accrediting_body_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
     degree_program_id = models.ForeignKey(DegreeProgram, default='1', on_delete=models.CASCADE)
     team_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
     document_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
@@ -180,11 +180,11 @@ class CompletedAccreditation(models.Model):
         verbose_name_plural = "completed_Accreditations"
 
     def __str__(self):
-        return self.degree_program_id.program_name + " " + self.accrediting_id.accrediting_body
+        return self.degree_program_id.program_name + " " + self.accrediting_body_id.accrediting_body
 
 
 class ChapterTeam(models.Model):
-    accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
+    accrediting_body_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
     team_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
     document_id = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
     document_outline_item_id = models.ForeignKey(DocumentOutlineItem, default='1', on_delete=models.CASCADE)
@@ -197,7 +197,7 @@ class ChapterTeam(models.Model):
 
 
 class UserTeam(models.Model):
-    accrediting_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
+    accrediting_body_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
     team_id = models.ForeignKey(Team, default='1', on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, default='1', on_delete=models.CASCADE)
 

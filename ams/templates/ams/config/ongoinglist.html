@@ -1,51 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
-          <li class="breadcrumb-item active">Ongoing Accreditations</li>
-          <!-- Breadcrumb Menu-->
-        </ol>
-<!--START OF CONTENT-->
-        <div class="container-fluid">
-          <div class="animated fadeIn">
+    <li class="breadcrumb-item active">Ongoing Accreditations</li>
+    <!-- Breadcrumb Menu-->
+    </ol>
+    <!--START OF CONTENT-->
+    <div class="container-fluid">
+        <div class="animated fadeIn">
             <div class="row">
-              <div class="col-lg-12">
-                <div class="card">
-                  <div class="card-header">Ongoing Accreditations</div>
-                  <div class="card-body">
-                    <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Accrediting Body</th>
-                          <th>Year</th>
-                          <th>Degree Program</th>
-                          <th>Document</th>
-                          <th>Teams</th>
-                          <th>Progress</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>ABET</td>
-                          <td>2019</td>
-                          <td>BS Information Systems</td>
-                          <td>ABET CAC 2019 Self-Survey Report</td>
-                          <td>Team A<br>Team B<br>Team C</td>
-                          <td>
-                            <div class="progress mb-3" style="margin-top: 1.5em;">
-                              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                <div class="col-lg-12">
+
+                        <div class="card">
+                            <div class="card-header">Ongoing Accreditations</div>
+                            <div class="card-body">
+                                <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Accreditation Body</th>
+                                        <th>Year</th>
+                                        <th>Degree Program</th>
+                                        <th>Document Name</th>
+                                        <th>Teams</th>
+                                        <th>Progress</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    {% for accreditation in on_going_accreditation %}
+                                    <tbody>
+                                    <tr>
+                                        <td>accreditation.accrediting_body_id.accrediting_body/td>
+                                        <td>2019</td>
+                                        <td>accreditation.program_name.degree_program</td>
+                                        <td>accreditation.document_name.document_outline</td>
+                                        <td>Team A<br>Team B<br>Team C</td>
+                                        <td>
+                                            <div class="progress mb-3" style="margin-top: 1.5em;">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%;"
+                                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" type="submit"><a
+                                                    href="accreditationlist.html"
+                                                    style="text-decoration: none; color: white;">View</a></button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                </table>
                             </div>
-                          </td>
-                          <td>
-                            <button class="btn btn-primary" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">View</a></button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+                        </div>
+                        </div>
+
             </div>
-          </div>
         </div>
-<!--END OF CONTENT-->
+    </div>
+    <!--END OF CONTENT-->
 {% endblock %}
