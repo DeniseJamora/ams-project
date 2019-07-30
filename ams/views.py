@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-    CompletedAccreditation, PrevAccreditation, UserTeam, Evidences, AccreditationPeriod, OutlineCriteria
+    CompletedAccreditation, PrevAccreditation, UserTeam
 from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
     DocumentOutlineItemForm, \
     CompletedAccreditationForm, PrevAccreditationForm
@@ -18,8 +18,6 @@ def register(request):
         form = UserForm(request.POST)
         if form.is_valid():
             if request.POST['password'] == request.POST['confirm_password']:
-                form = form.save()
-                form.set_password(request.POST['password'])
                 form.save()
                 return redirect('login')
             else:
@@ -113,7 +111,8 @@ def setcriteria(request):
 @login_required
 def docuoutlinelist(request):
     outlines = DocumentOutline.objects
-    return render(request, 'ams/config/docuoutlinelist.html', {'outlines': outlines})
+    context = {'outlines': outlines}
+    return render(request, 'ams/config/docuoutlinelist.html', context)
 
 
 @login_required
@@ -126,8 +125,13 @@ def addprogram(request):
     if request.method == "POST":
         form = DegreeProgramForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('programlist')
+            if request.POST['prev_acc'] == "Yes":
+                f = request.POST['program_name']
+                form.save()
+                return redirect('programprev', f)
+            else:
+                form.save()
+                return redirect('programlist')
     else:
         form = DegreeProgramForm()
         program_form = PrevAccreditationForm()
@@ -135,6 +139,21 @@ def addprogram(request):
             'form': form,
             'program_form': program_form
         })
+
+
+@login_required
+def programprev(request, f):
+    programs = DegreeProgram.objects.get(program_name=f)
+    if request.method == 'POST':
+        form = PrevAccreditationForm(request.POST)
+        if form.is_valid():
+            a = form.save(commit=False)
+            a.degree_program_id = programs.id
+            a.save()
+            return redirect('programlist')
+    else:
+        form = PrevAccreditationForm(request.POST)
+        return render(request, 'ams/admin/programprev.html', {'programs': programs, 'form': form})
 
 
 @login_required
@@ -146,7 +165,9 @@ def programlist(request):
 @login_required
 def viewprogram(request, pk):
     program = DegreeProgram.objects.get(id=pk)
-    return render(request, 'ams/admin/viewprogram.html', {'program': program})
+    prevs = PrevAccreditation.objects.filter(degree_program_id=pk)
+
+    return render(request, 'ams/admin/viewprogram.html', {'program': program, 'prevs': prevs})
 
 
 @login_required
@@ -168,25 +189,15 @@ def createperiod(request):
         outlines = DocumentOutline.objects.all()
         programs = DegreeProgram.objects.all()
 
-        return render(request, 'ams/config/createperiod.html', {'agency': agency, 'outlines': outlines, 'programs': programs})
-
 
 @login_required
 def createteam(request):
-    if request.method == "POST":
-        return render(request, 'ams/config/createteam.html')
-    else:
-        return render(request, 'ams/config/createteam.html')
+    return render(request, 'ams/config/createteam.html')
 
 
 @login_required
 def assigncriteria(request):
     return render(request, 'ams/config/assigncriteria.html')
-
-
-@login_required
-def setdeadlines(request):
-    return render(request, 'ams/config/setdeadlines.html')
 
 
 @login_required
@@ -222,11 +233,6 @@ def viewongoing(request):
 
 
 @login_required
-def evidencelist(request):
-    return render(request, 'ams/evidencelist.html')
-
-
-@login_required
 def ansdocu(request):
     return render(request, 'ams/ansdocu.html')
 
@@ -257,17 +263,8 @@ def filerepo(request):
 
 
 @login_required
-def finalizedocument(request):
-    return render(request, 'ams/finalizedocument.html')
-
-
-@login_required
 def userlist(request):
     users = User.objects
-    return render(request, 'ams/admin/userlist.html', {'users': users})
-
-
-@login_required
-def agencylist(request):
-    agencies = AccreditingBody.objects
-    return render(request, 'ams/admin/agencylist.html', {'agencies': agencies})
+    teams = UserTeam.objects
+    context = {'users': users}, {'teams': teams}
+    return render(request, 'ams/admin/userlist.html', context)
