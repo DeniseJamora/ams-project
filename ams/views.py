@@ -51,9 +51,7 @@ def logout(request):
 
 @login_required
 def dash(request):
-    user = User.objects.all()
-    context = {'username': user}
-    return render(request, 'ams/dash.html', context)
+    return render(request, 'ams/dash.html')
 
 
 @login_required
@@ -62,7 +60,7 @@ def addagency(request):
         form = AccreditingBodyForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('addagency')
+            return redirect('agencylist')
     else:
         form = AccreditingBodyForm()
         return render(request, 'ams/admin/addagency.html', {'form': form})
@@ -278,6 +276,46 @@ def filerepo(request):
 @login_required
 def userlist(request):
     users = User.objects
-    teams = UserTeam.objects
-    context = {'users': users}, {'teams': teams}
+    context = {'users': users}
     return render(request, 'ams/admin/userlist.html', context)
+
+
+@login_required
+def agencylist(request):
+    agencies = AccreditingBody.objects
+    return render(request, 'ams/admin/agencylist.html', {'agencies': agencies})
+
+
+@login_required
+def completeddoculist(request):
+    return render(request, 'ams/config/completeddoculist.html')
+
+
+@login_required
+def deadlinelist(request):
+    return render(request, 'ams/admin/deadlinelist.html')
+
+
+@login_required
+def finalizedocument(request):
+    return render(request, 'ams/finalizedocument.html')
+
+
+@login_required
+def setdeadlines(request):
+    return render(request, 'ams/config/setdeadlines.html')
+
+
+@login_required
+def evidencelist(request):
+    return render(request, 'ams/evidencelist.html')
+
+
+@login_required
+def selectevidence(request):
+    return render(request, 'ams/selectevidence.html')
+
+
+@login_required
+def viewcompletedreport(request):
+    return render(request, 'ams/config/viewcompletedreport.html')

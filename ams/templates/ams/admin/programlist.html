@@ -18,7 +18,8 @@
                             <tr>
                               <th>Program Name</th>
                               <th>Program Code</th>
-                              <th width="20%"></th>
+                              <th>Accreditations</th>
+                              <th width="15%"></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -26,8 +27,8 @@
                             <tr>
                               <td>{{ program.program_name }}</td>
                               <td>{{ program.program_code }}</td>
+                              <td></td>
                               <td>
-                                <a href="{%  url 'viewprogram' pk=program.id %}"><button class="btn btn-primary" type="">View</button></a>
                                 <a href=""><button class="btn btn-success" type="">Edit</button></a>
                                 <a href=""><button class="btn btn-danger" type="">Delete</button></a>
                               </td>

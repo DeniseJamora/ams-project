@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+          <li class="breadcrumb-item active">Previous Deadlines</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
+<!--START OF CONTENT-->
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-header">Previous Deadlines</div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <table id="myTable" class="table table-responsive-sm table-striped table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Accreditation</th>
+                              <th>Name</th>
+                              <th width="60%">Agenda</th>
+                              <th>Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>BSINSYS PAASCU 2019</td>
+                              <td>Initial Meeting</td>
+                              <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor nulla ac mi lobortis, quis pharetra lectus scelerisque. Suspendisse potenti. Vestibulum tristique vitae nisi sit amet porta. Nam in quam et lorem ultrices vehicula. Maecenas nisl metus, luctus sed pharetra in, suscipit id metus.</td>
+                              <td>August 2, 2019</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-primary" onclick="onSubmitButtonClick()">Finalize Document</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!--END OF CONTENT-->
+{% endblock %}

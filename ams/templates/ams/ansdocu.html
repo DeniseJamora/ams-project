@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+          <li class="breadcrumb-item active">Accrediting Period | Criteria Name</li>
           <!-- Breadcrumb Menu-->
         </ol>
 <!--START OF CONTENT-->
@@ -65,11 +66,13 @@
                             <tbody>
                             </tbody>
                           </table>
-                          <button class="btn btn-primary" type="button" onclick="">Select from Evidences</button>
-                          <button class="btn btn-success" type="button" onclick="">Upload New Evidence</button>
+                          <a href="{% url 'selectevidence' %}"><button class="btn btn-primary" type="button" onclick="">Select from Evidences</button></a>    
+                          <a href="{% url 'uploadevidence' %}"><button class="btn btn-success" type="button" onclick="">Upload New Evidence</button></a>
                         </div>
                       </div>
                     </div>
+
+
                       <br>
                     <div class="row">
                       <div class="col-sm-12">
@@ -87,7 +90,7 @@
                             </tbody>
                           </table>
                           <button class="btn btn-primary" type="button" onclick="">Select from Files</button>
-                          <button class="btn btn-success" type="button" onclick="">Upload New File</button>
+                          <a href="{% url 'filerepo' %}"><button class="btn btn-success" type="button" onclick="">Upload New File</button></a>
                         </div>
                       </div>
                     </div>

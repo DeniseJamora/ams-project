@@ -88,7 +88,7 @@
                         <i class="nav-icon fa fa-tachometer"></i> Dashboard
                     </a>
                 </li>
-                <li class="nav-title">Setup and Admin</li>
+                <li class="nav-title">Administrator</li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'userlist' %}">
                         <i class="nav-icon fa fa-users"></i> Users</a>
@@ -98,11 +98,11 @@
                         <i class="nav-icon fa fa-institution"></i> Accrediting Agencies</a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'addagency' %}">
+                            <a class="nav-link" href="{% url 'agencylist' %}">
                                 <i class="nav-icon fa fa-institution"></i> Agencies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'addagency' %}">
+                            <a class="nav-link" href="{% url 'docuoutlinelist' %}">
                                 <i class="nav-icon fa fa-institution"></i> Documents</a>
                         </li>
                         <li class="nav-item">
@@ -129,48 +129,61 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'deadlinelist' %}">
+                    <i class="nav-icon fa fa-bell"></i> Previous Deadlines</a>
+                </li>
 
 
-                <li class="nav-title">Configuration</li>
+                <li class="nav-title">Survey Executive</li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'createperiod' %}">
                         <i class="nav-icon fa fa-plus-square"></i> New Accreditation</a>
                 </li>
-                <!-- <li class="nav-item">
-              <a class="nav-link" href="{% url 'createteam' %}">
-                <i class="nav-icon fa fa-users"></i> Create Teams</a>
-            </li> -->
                 <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle" href="#">
-                        <i class="nav-icon fa fa-graduation-cap"></i> Accreditations</a>
-                    <ul class="nav-dropdown-items">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accreditationlist' %}"> Completed Accreditations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ongoinglist' %}"> Ongoing Accreditations</a>
-                        </li>
-                    </ul>
+                  <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon fa fa-certificate"></i> Accreditations</a>
+                  <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'accreditationlist' %}"> 
+                        <i class="nav-icon fa fa-certificate"></i> Completed</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'ongoinglist' %}"> 
+                        <i class="nav-icon fa fa-certificate"></i> Ongoing</a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'ongoinglist' %}">
-                        <i class="nav-icon fa fa-clipboard"></i> Documents</a>
+                  <a class="nav-link" href="{% url 'completeddoculist' %}">
+                    <i class="nav-icon fa fa-book"></i> Completed Reports</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'ongoinglist' %}">
-                        <i class="nav-icon fa fa-clipboard"></i> Teams</a>
+                  <a class="nav-link" href="{% url 'teamlist' %}">
+                    <i class="nav-icon fa fa-users"></i> Teams</a>
                 </li>
+
+
+                <li class="nav-title">Ongoing Accreditations</li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'finalizedocument' %}">
+                    <i class="nav-icon fa fa-bookmark"></i> BSINSYS PAASCU</a>
+                </li>
+
 
                 <li class="nav-title">Criteria Compliance</li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'ongoinglist' %}">
-                        <i class="nav-icon fa fa-clipboard"></i> Ongoing Accreditations</a>
+                  <a class="nav-link" href="{% url 'accreditationbase' %}">
+                    <i class="nav-icon fa fa-bookmark"></i> BSINSYS PAASCU</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="nav-icon fa fa-archive"></i> Evidence List</a>
+                  <a class="nav-link" href="{% url 'deadlines' %}">
+                    <i class="nav-icon fa fa-bell"></i> Upcoming Deadlines</a>
                 </li>
-
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'evidencelist' %}">
+                    <i class="nav-icon fa fa-paperclip"></i> Evidence List</a>
+                </li>
 
                 <li class="nav-title">File Management</li>
                 <li class="nav-item">
