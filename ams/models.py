@@ -51,7 +51,7 @@ class User_Manager(BaseUserManager):
 
 class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='email', unique=True)
-    dept = models.CharField(max_length=60, unique=True)
+    dept = models.CharField(max_length=60)
     given_name = models.CharField(max_length=60)
     middle_initial = models.CharField(max_length=60)
     surname = models.CharField(max_length=60)
@@ -120,11 +120,6 @@ class File(models.Model):
     def __str__(self):
         return self.file_name
 
-
-class Team(models.Model):
-    team_name = models.CharField(max_length=60)
-
-
 class DocumentOutline(models.Model):
     accrediting_body_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
     document_name = models.CharField(max_length=120)
@@ -152,6 +147,38 @@ class DocumentOutlineItem(models.Model):
     def __str__(self):
         return self.document_outline_id.document_name
 
+class Evidences(models.Model):
+    evidences_text = models.CharField(max_length=512)
+    document_outline_item = models.ForeignKey(DocumentOutlineItem, default='1', on_delete=models.CASCADE)
+
+class OutlineCriteria(models.Model):
+    outline_criteria_text = models.CharField(max_length=512)
+    document_outline = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
+    document_outline_item = models.ForeignKey(DocumentOutlineItem, default='1', on_delete=models.CASCADE)
+
+class AccreditationPeriod(models.Model):
+    agency_id = models.IntegerField()
+    type = models.CharField(max_length=128)
+    document_id = models.IntegerField()
+    degree_program_id = models.IntegerField()
+    onsite_date = models.DateField(blank=True)
+    end_date = models.DateField(blank=True)
+    
+    def __str__(self):
+        name = ''
+        doc = DocumentOutline.objects.get(id=self.document_id)
+        if self.type == 'initial':
+            name = 'Initial Application'
+        elif self.type == 'reaccreditation':
+            name = 'Reaccreditation'
+        return name + " - " + doc.document_name + " ( " + str(self.onsite_date) + " - " + str(self.end_date) + " ) "
+
+class Team(models.Model):
+    team_name = models.CharField(max_length=60)
+    team_head = models.ForeignKey(User, default='1', on_delete=models.CASCADE)
+    team_role = models.CharField(max_length=160, blank=True)
+    accred_id = models.ForeignKey(AccreditationPeriod, default='1', on_delete=models.CASCADE)
+    members = models.ManyToManyField(User, blank=True, related_name='team_members')
 
 class OnGoingAccreditation(models.Model):
     accrediting_body_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
@@ -164,7 +191,6 @@ class OnGoingAccreditation(models.Model):
 
     def __str__(self):
         return self.degree_program_id.program_name + " " + self.accrediting_body_id.accrediting_body
-
 
 class CompletedAccreditation(models.Model):
     accrediting_body_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
@@ -179,7 +205,6 @@ class CompletedAccreditation(models.Model):
 
     def __str__(self):
         return self.degree_program_id.program_name + " " + self.accrediting_body_id.accrediting_body
-
 
 class ChapterTeam(models.Model):
     accrediting_body_id = models.ForeignKey(AccreditingBody, default='1', on_delete=models.CASCADE)
@@ -204,21 +229,4 @@ class UserTeam(models.Model):
 
     def __str__(self):
         return self.team_id.team_name + " " + self.user_id.given_name + " " + self.user_id.surname
-
-class Evidences(models.Model):
-    evidences_text = models.CharField(max_length=512)
-    document_outline_item = models.ForeignKey(DocumentOutlineItem, default='1', on_delete=models.CASCADE)
-
-class OutlineCriteria(models.Model):
-    outline_criteria_text = models.CharField(max_length=512)
-    document_outline = models.ForeignKey(DocumentOutline, default='1', on_delete=models.CASCADE)
-    document_outline_item = models.ForeignKey(DocumentOutlineItem, default='1', on_delete=models.CASCADE)
-
-class AccreditationPeriod(models.Model):
-    agency_id = models.IntegerField()
-    type = models.CharField(max_length=128)
-    document_id = models.IntegerField()
-    degree_program_id = models.IntegerField()
-    onsite_date = models.DateField(blank=True)
-    end_date = models.DateField(blank=True)
 # Create your models here.

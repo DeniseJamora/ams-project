@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-    CompletedAccreditation, PrevAccreditation, UserTeam
+    CompletedAccreditation, PrevAccreditation, UserTeam, AccreditationPeriod
 from .forms import UserForm, AccreditingBodyForm, FileForm, TeamForm, DegreeProgramForm, DocumentOutlineForm, \
     DocumentOutlineItemForm, \
-    CompletedAccreditationForm, PrevAccreditationForm, MultiSelectUsersForm
+    CompletedAccreditationForm, PrevAccreditationForm
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -18,14 +18,17 @@ def register(request):
         form = UserForm(request.POST)
         if form.is_valid():
             if request.POST['password'] == request.POST['confirm_password']:
+                form = form.save()
+                form.set_password(request.POST['password'])
                 form.save()
                 return redirect('login')
             else:
                 return render(request, 'ams/register.html', {'form': form, 'error': 'Passwords do not match'})
+        else:
+            return render(request, 'ams/register.html', {'form': form, 'error': form.errors})
     else:
         form = UserForm()
         return render(request, 'ams/register.html', {'form': form})
-
 
 def login(request):
     if request.method == 'POST':
@@ -125,13 +128,8 @@ def addprogram(request):
     if request.method == "POST":
         form = DegreeProgramForm(request.POST)
         if form.is_valid():
-            if request.POST['prev_acc'] == "Yes":
-                f = request.POST['program_name']
-                form.save()
-                return redirect('programprev', f)
-            else:
-                form.save()
-                return redirect('programlist')
+            form.save()
+            return redirect('programlist')
     else:
         form = DegreeProgramForm()
         program_form = PrevAccreditationForm()
@@ -180,10 +178,11 @@ def createperiod(request):
                                                 degree_program_id=request.POST['program'],
                                                 onsite_date=request.POST['end_date'],
                                                 end_date=request.POST['end_date'])
-        users = User.objects.all()
-        documents = DocumentOutlineItem.objects.filter(document_outline_id_id=request.POST['document'])
+        # users = User.objects.all()
+        # documents = DocumentOutlineItem.objects.filter(document_outline_id_id=request.POST['document'])
         # outline_criteria = OutlineCriteria.objects.filter(outline_criteria_text=subsection.get("title"), document_outline=document_outline_id, document_outline_item=doc_outline_item)
-        return render(request, 'ams/config/createteam.html', {'accreditation': accreditation_period_id, 'users': users, 'documents': documents})
+        return redirect('createteam')
+        # return render(request, 'ams/config/createteam.html', {'accreditation': accreditation_period_id, 'users': users, 'documents': documents})
     else:
         agency = AccreditingBody.objects.all()
         outlines = DocumentOutline.objects.all()
@@ -192,14 +191,27 @@ def createperiod(request):
 
 @login_required
 def createteam(request):
-    form = MultiSelectUsersForm()
-    return render(request, 'ams/config/createteam.html', {'form': form})
-
+    # users = User.objects.all()
+    # form = MultiSelectUsersForm()
+    # accred = AccreditationPeriodForm()
+    form = TeamForm()
+    if request.method == "POST":
+        form = TeamForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = TeamForm()
+        # Team.objects.create(team_name=request.POST['team_name'],
+        #                     team_head=request.POST['team_head'],
+        #                     team_role=request.POST['team_role'])
+            return render(request, 'ams/config/createteam.html', {'form': form})
+        else:
+            return render(request, 'ams/config/createteam.html', {'form': form, 'error': form.errors})
+    else:
+        return render(request, 'ams/config/createteam.html', {'form': form})
 
 @login_required
 def assigncriteria(request):
     return render(request, 'ams/config/assigncriteria.html')
-
 
 @login_required
 def accreditationbase(request):

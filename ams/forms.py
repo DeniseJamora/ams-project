@@ -1,6 +1,6 @@
 from django import forms
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-     CompletedAccreditation, PrevAccreditation
+     CompletedAccreditation, PrevAccreditation, AccreditationPeriod
 from django_select2.forms import Select2MultipleWidget
 
 class UserForm(forms.ModelForm):
@@ -65,11 +65,15 @@ class FileForm(forms.ModelForm):
 
 
 class TeamForm(forms.ModelForm):
+    team_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Team A',}))
+    team_head = forms.ModelChoiceField(queryset=User.objects.all(), empty_label="Select Team Head", widget=forms.Select(attrs={'class':'form-control'}))
+    members = forms.ModelMultipleChoiceField(queryset=User.objects.all(), widget=Select2MultipleWidget)
+    accred = forms.ModelChoiceField(queryset=AccreditationPeriod.objects.all(), empty_label="Select Accreditation Period", widget=forms.Select(attrs={'class':'form-control'}))
+    team_role = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Team Role',}))
+
     class Meta:
         model = Team
-        fields = [
-            "team_name",
-        ]
+        fields = ('team_name', 'team_head', 'members', 'accred' , 'team_role')
 
 
 class DocumentOutlineForm(forms.ModelForm):
@@ -95,9 +99,6 @@ class CompletedAccreditationForm(forms.ModelForm):
             "completed_result",
             "completed_year",
         ]
-
-class MultiSelectUsersForm(forms.Form):
-    Users = forms.ModelMultipleChoiceField(queryset=User.objects.all(), widget=Select2MultipleWidget)
 
 """class StudentForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput())

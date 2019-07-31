@@ -1,27 +1,28 @@
 {
-  "_from": "popper.js@~1.12.9",
-  "_id": "popper.js@1.12.9",
+  "_from": "popper.js@^1.12.9",
+  "_id": "popper.js@1.15.0",
   "_inBundle": false,
-  "_integrity": "sha1-DfvC3/lsRRuzMu3Pz6r1ZtMx1bM=",
+  "_integrity": "sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==",
   "_location": "/popper.js",
   "_phantomChildren": {},
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "popper.js@~1.12.9",
+    "raw": "popper.js@^1.12.9",
     "name": "popper.js",
     "escapedName": "popper.js",
-    "rawSpec": "~1.12.9",
+    "rawSpec": "^1.12.9",
     "saveSpec": null,
-    "fetchSpec": "~1.12.9"
+    "fetchSpec": "^1.12.9"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.12.9.tgz",
-  "_shasum": "0dfbc2dff96c451bb332edcfcfaaf566d331d5b3",
-  "_spec": "popper.js@~1.12.9",
-  "_where": "C:\\Users\\Mash\\Documents\\Python\\assets",
+  "_resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.15.0.tgz",
+  "_shasum": "5560b99bbad7647e9faa475c6b8056621f5a4ff2",
+  "_spec": "popper.js@^1.12.9",
+  "_where": "C:\\Users\\EderaA\\python\\assets",
   "author": {
     "name": "Federico Zivolo",
     "email": "federico.zivolo@gmail.com"
@@ -44,7 +45,8 @@
     "@popperjs/test": "^1.0.0",
     "@popperjs/test-utils": "^1.0.0",
     "eslint": "^4.1.1",
-    "nuget-publish": "^1.0.3"
+    "nuget-publish": "^1.0.3",
+    "typescript": "^2.7.1"
   },
   "homepage": "https://popper.js.org",
   "keywords": [
@@ -68,10 +70,11 @@
     "micromatch": "^3.0.3"
   },
   "scripts": {
-    "build": "node bundle.js",
+    "build": "node bundle.js && cp index.js.flow dist/umd/poppper.js.flow",
     "coverage": "COVERAGE=true yarn test",
     "lint": "eslint .",
     "postpublish": "nuget-publish && ./bower-publish.sh",
+    "posttest": "tsc --project tests/types/tsconfig.json",
     "prebuild": "yarn lint",
     "prepare": "yarn build",
     "pretest": "yarn lint",
@@ -79,5 +82,6 @@
     "test:dev": "BROWSERS=Chrome NODE_ENV=development yarn test"
   },
   "types": "index.d.ts",
-  "version": "1.12.9"
+  "unpkg": "dist/umd/popper.min.js",
+  "version": "1.15.0"
 }

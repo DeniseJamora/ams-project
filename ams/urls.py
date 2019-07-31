@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
+    path('logout/', views.logout, name="logout"),
     path('dash/', views.dash, name='dash'),
     path('addagency/', views.addagency, name='addagency'),
     path('createdocuoutline/', views.createdocuoutline, name='createdocuoutline'),

@@ -1,29 +1,28 @@
 {
-  "_from": "@coreui/icons",
+  "_from": "@coreui/icons@0.3.0",
   "_id": "@coreui/icons@0.3.0",
   "_inBundle": false,
   "_integrity": "sha512-RbBi5K5hUA8LUI9mM/i1BTaLjlyoS6kHwKbxWsH62+/j9L9WF8gAiJUhrNjMt1br8TY9RLeolyQys0E9480fIg==",
   "_location": "/@coreui/icons",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "@coreui/icons",
+    "raw": "@coreui/icons@0.3.0",
     "name": "@coreui/icons",
     "escapedName": "@coreui%2ficons",
     "scope": "@coreui",
-    "rawSpec": "",
+    "rawSpec": "0.3.0",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "0.3.0"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@coreui/icons/-/icons-0.3.0.tgz",
   "_shasum": "d5bece91b1442a9543593d1146bc8042b18489e3",
-  "_spec": "@coreui/icons",
-  "_where": "C:\\Users\\Mash\\Documents\\Python\\assets",
+  "_spec": "@coreui/icons@0.3.0",
+  "_where": "C:\\Users\\EderaA\\python\\assets",
   "author": {
     "name": "Łukasz Holeczek",
     "url": "http://holeczek.pl"
