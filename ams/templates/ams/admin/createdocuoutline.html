@@ -66,19 +66,7 @@
                     <input class="form-control subsection-title" placeholder="Section title"/>
 
                 </div>
-                <div class="col-2">
-                    <select class="form-control subsection-section">
-                        <option selected>Section</option>
-                        <optgroup label="Criteria">
-                            <option>Criteria</option>
-                            <option>Criteria Numbers</option>
-                            <option>Criteria Letters</option>
-                        </optgroup>
-                        <option>Table</option>
-                        <option>Figure</option>
-                    </select>
 
-                </div>
                 <div class="col-1">
                     <button type="button" class="btn btn-danger remove-subsection-button">Remove</button>
                 </div>
@@ -322,8 +310,7 @@
 
                     const isCriteria = section
                         .find("select.subsection-section")
-                        .val()
-                        .includes("Criteria");
+                        .val();
 
                     createSubsection(level + 1, childSubsectionParent, isCriteria);
                 });
@@ -355,33 +342,33 @@
                     .find("input.subsection-title")
                     .first()
                     .val();
-                section.section = sectionItem
-                    .find("select.subsection-section")
-                    .first()
-                    .val();
-                if (level < 5) {
-                    section.subsections = [];
-                }
+                // section.section = sectionItem
+                //     .find("select.subsection-section")
+                //     .first()
+                //     .val();
+                // if (level < 5) {
+                //     section.subsections = [];
+                // }
                 
-                if(section.section == 'Criteria') {
-                    const criteriaChildren = sectionItem
-                    .find( "> .criteria-form-container" )
-                    .children();
+                // if(section.section == 'Criteria') {
+                //     const criteriaChildren = sectionItem
+                //     .find( "> .criteria-form-container" )
+                //     .children();
 
-                    if (criteriaChildren.length > 0) {
-                        var evidences = [];
+                //     if (criteriaChildren.length > 0) {
+                //         var evidences = [];
 
-                        $(criteriaChildren).find('.evidences-list .evidence-textarea').each(function () {
-                            evidences.push($(this).val());
-                        });
+                //         $(criteriaChildren).find('.evidences-list .evidence-textarea').each(function () {
+                //             evidences.push($(this).val());
+                //         });
 
-                        section.criteria = {
-                            'title'             : criteriaChildren.parent().prev('.document-item-parent').find("input.subsection-title").first().val(),
-                            'description'       : criteriaChildren.find("textarea.criteria-description").first().val(),
-                            'evidences'         : evidences
-                        }
-                    }
-                }
+                //         section.criteria = {
+                //             'title'             : criteriaChildren.parent().prev('.document-item-parent').find("input.subsection-title").first().val(),
+                //             'description'       : criteriaChildren.find("textarea.criteria-description").first().val(),
+                //             'evidences'         : evidences
+                //         }
+                //     }
+                // }
                 return section;
             }
 

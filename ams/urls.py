@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
+    path('logout/', views.logout, name="logout"),
     path('dash/', views.dash, name='dash'),
     path('addagency/', views.addagency, name='addagency'),
     path('createdocuoutline/', views.createdocuoutline, name='createdocuoutline'),
@@ -36,6 +37,8 @@ urlpatterns = [
     path('docuoutlinelist/', views.docuoutlinelist, name='docuoutlinelist'),
     path('viewdocuoutline/', views.viewdocuoutline, name='viewdocuoutline'),
     path('setdeadlines/', views.setdeadlines, name='setdeadlines'),
+    path('deadlinelist/', views.deadlinelist, name='deadlinelist'),
+    path('completeddoculist/', views.completeddoculist, name='completeddoculist'),
     path('addprogram/', views.addprogram, name='addprogram'),
     path('programlist/', views.programlist, name="programlist"),  
     path('viewprogram/<int:pk>/', views.viewprogram, name="viewprogram"), 
@@ -55,4 +58,6 @@ urlpatterns = [
     path('deadlines/', views.deadlines, name='deadlines'),
     path('filerepo/', views.filerepo, name='filerepo'),
     path('userlist/', views.userlist, name='userlist'),
+    path('viewcompletedreport/', views.viewcompletedreport, name='viewcompletedreport'),
+    path('selectevidence/', views.selectevidence, name='selectevidence'),
 ]

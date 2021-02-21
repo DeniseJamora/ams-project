@@ -16,7 +16,7 @@
                                     <thead>
                                     <tr>
                                         <th>Accreditation Body</th>
-                                        <th>Year</th>
+                                        <th>Report Submission Date</th>
                                         <th>Degree Program</th>
                                         <th>Document Name</th>
                                         <th>Teams</th>
@@ -24,13 +24,12 @@
                                         <th></th>
                                     </tr>
                                     </thead>
-                                    {% for accreditation in on_going_accreditation %}
                                     <tbody>
                                     <tr>
-                                        <td>accreditation.accrediting_body_id.accrediting_body/td>
+                                        <td>ABET</td>
                                         <td>2019</td>
-                                        <td>accreditation.program_name.degree_program</td>
-                                        <td>accreditation.document_name.document_outline</td>
+                                        <td>BS INSYS</td>
+                                        <td>ABET CAC Self-Survey Report</td>
                                         <td>Team A<br>Team B<br>Team C</td>
                                         <td>
                                             <div class="progress mb-3" style="margin-top: 1.5em;">
@@ -40,13 +39,10 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <button class="btn btn-primary" type="submit"><a
-                                                    href="accreditationlist.html"
-                                                    style="text-decoration: none; color: white;">View</a></button>
+                                            <a href="{% url 'accreditationbase' %}"><button class="btn btn-primary" type="submit">View</button></a>
                                         </td>
                                     </tr>
                                     </tbody>
-                                    {% endfor %}
                                 </table>
                             </div>
                         </div>

@@ -15,13 +15,13 @@
                         <form method="POST">
                             {% csrf_token %}
                             <div class="card-body" id="body">
-                                <button class="btn btn-outline-success" onclick="addDeadlines()">Add Deadline</button>
+                                <button class="btn btn-outline-success" type="button" onclick="addDeadlines()">Add Deadline</button>
                                 <br><br>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <i><label for="pName">Name/Title</label></i>
-                                            <input class="form-control" id="committeeName" name="team_name" type="text" placeholder="Team A">
+                                            <input class="form-control" id="committeeName" name="team_name" type="text" placeholder="e.g. Initial Meeting">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -54,7 +54,7 @@
                                     '<div class="col-sm-6">'+
                                         '<div class="form-group">'+
                                             '<i><label for="pName">Name/Title</label></i>'+
-                                            '<input class="form-control" id="committeeName" name="team_name" type="text" placeholder="Team A">'+
+                                            '<input class="form-control" id="committeeName" name="team_name" type="text" placeholder="e.g. Initial Meeting">'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="col-sm-6">'+
@@ -71,7 +71,7 @@
                                     '</div>'+
                                 '</div><hr>';
                   
-                    document.getElementById("body").appendChild(x); 
+                    document.getElementById("body").insertAdjacentHTML('beforeend', x); 
             }
         </script>
     <!--END OF CONTENT-->

@@ -25,9 +25,9 @@
                           <td>{{ outline.accrediting_body_id.accrediting_body }}</td>
                           <td>{{ outline.document_name }}</td>
                           <td>
-                            <a href=""><button class="btn btn-primary" type="submit">View</button></a>
-                            <a href=""><button class="btn btn-success" type="submit">Edit</button></a>
-                            <a href=""><button class="btn btn-danger" type="submit">Delete</button></a>
+                            <a href="{% url 'viewdocuoutline' %}"><button class="btn btn-primary" type="">View</button></a>
+                            <button class="btn btn-success" type="">Edit</button>
+                            <button class="btn btn-danger" type="">Delete</button>
                           </td>
                         </tr>
                         {% endfor %}

@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+    <li class="breadcrumb-item active">Document Outline Name</li>
+    <!-- Breadcrumb Menu-->
+    </ol>
+    <!--START OF CONTENT-->
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Document Outline Name <!--{{ accreditation.document_id }}--></strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row" style="margin-bottom: 15px">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" onclick="viewSubsection()" id="button">+</button>
+                                            <span style="padding-left: 25px">I. Section Area 1</span>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <p style="padding-left: 65px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra mauris at quam pharetra, nec sodales justo convallis. Nullam sagittis mollis risus, quis aliquet ipsum porta sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas tempus eget magna at cursus.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="subsection">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 50px" onclick="viewSub1()" id="btn">+</button>
+                                            <span style="padding-left: 25px">A. Sub-Section Chapter 1</span>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <p style="padding-left: 115px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra mauris at quam pharetra, nec sodales justo convallis. Nullam sagittis mollis risus, quis aliquet ipsum porta sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas tempus eget magna at cursus.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="sub1">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 100px">+</button>
+                                            <span style="padding-left: 25px">1. Inner Sub Section Level</span>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <p style="padding-left: 165px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra mauris at quam pharetra, nec sodales justo convallis. Nullam sagittis mollis risus, quis aliquet ipsum porta sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas tempus eget magna at cursus.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="subsection1">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 50px" onclick="viewSub1()" id="btn">+</button>
+                                            <span style="padding-left: 25px">A. Sub-Section Chapter 2</span>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <p style="padding-left: 115px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra mauris at quam pharetra, nec sodales justo convallis. Nullam sagittis mollis risus, quis aliquet ipsum porta sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas tempus eget magna at cursus.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="subsection2">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 50px" onclick="viewSub1()" id="btn">+</button>
+                                            <span style="padding-left: 25px">A. Sub-Section Chapter 3</span>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <p style="padding-left: 115px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra mauris at quam pharetra, nec sodales justo convallis. Nullam sagittis mollis risus, quis aliquet ipsum porta sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas tempus eget magna at cursus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row" style="margin-bottom: 15px">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" onclick="viewAppendixSection()" id="b">+</button>
+                                            <span style="padding-left: 25px">Appendices</span>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <ol class="appendices" style="padding-left: 75px">
+                                                <li> Course Flowchart</li>
+                                                <li> Curriculum Vitaes</li>
+                                                <li> Faculty Information Form</li>
+                                                <li> Classroom Layouts</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="appendicessub">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 50px" onclick="viewSub1()" id="a">+</button>
+                                            <span style="padding-left: 25px">A. Course FLowchart Image</span>
+                                        </div>
+                                        <div class="col-sm-11">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Temporary hidden to follow-->
+                            <!-- <button class="btn btn-primary" type="button" onclick="addTeam()"> Add Team</button> -->
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success" type="submit"> Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .appendices{
+            list-style-type: upper-alpha;
+        }
+    </style>
+
+    <script>
+
+        document.getElementById('subsection').style.display = 'none';
+        document.getElementById('subsection1').style.display = 'none';
+        document.getElementById('subsection2').style.display = 'none';
+
+        function viewSubsection(){
+
+            var x = document.getElementById('subsection');
+            var a = document.getElementById('subsection1');
+            var b = document.getElementById('subsection2');
+            var y = document.getElementById('button');
+                if (x.style.display === 'none') {
+                    x.style.display = '';
+                    a.style.display = '';
+                    b.style.display = '';
+                    y.innerHTML = '-';
+                    } 
+                else {
+                    x.style.display = 'none';
+                    a.style.display = 'none';
+                    b.style.display = 'none';
+                    y.innerHTML = '+';
+                }
+
+        }
+    </script>
+    <script>
+
+        document.getElementById('appendicessub').style.display = 'none';
+
+        function viewAppendixSection(){
+
+            var x = document.getElementById('appendicessub');
+            var y = document.getElementById('b');
+                if (x.style.display === 'none') {
+                    x.style.display = '';
+                    y.innerHTML = '-';
+                    } 
+                else {
+                    x.style.display = 'none';
+                    y.innerHTML = '+';
+                }
+
+        }
+    </script>
+    <script>
+
+        document.getElementById('sub1').style.display = 'none';
+
+        function viewSub1(){
+
+            var x = document.getElementById('sub1');
+            var y = document.getElementById('btn');
+                if (x.style.display === 'none') {
+                    x.style.display = '';
+                    y.innerHTML = '-';
+                    } 
+                else {
+                    x.style.display = 'none';
+                    y.innerHTML = '+';
+                }
+
+        }
+    </script>
+    <!--END OF CONTENT-->
+{% endblock %}

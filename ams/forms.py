@@ -1,17 +1,26 @@
 from django import forms
 from .models import User, AccreditingBody, File, Team, DegreeProgram, DocumentOutline, DocumentOutlineItem, \
-     CompletedAccreditation, PrevAccreditation
-
+     CompletedAccreditation, PrevAccreditation, AccreditationPeriod
+from django_select2.forms import Select2MultipleWidget
 
 class UserForm(forms.ModelForm):
-
+    user_type = (
+        ('', 'Please Select Type'),
+        ('survey-executive', 'Survey Executive'),
+        ('member', 'Member'),
+    )
+    departments = (
+        ('', 'Please Select Department'),
+        ('comp-tech', 'Computer Technology Dept'),
+        ('soft-tech', 'Software Technology Dept'),
+    )
     email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email',}))
-    dept = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Department',}))
+    dept = forms.CharField(widget=forms.Select(attrs={'class':'form-control',},choices=departments))
     given_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-6', 'placeholder':'Given Name',}))
     middle_initial = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-3', 'placeholder':'Middle Initial',}))
     surname = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control col-3', 'placeholder':'Surname',}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Password',}))
-    type = forms.CharField(widget=forms.Select(attrs={'class':'form-control', 'id':'type'}))
+    type = forms.CharField(widget=forms.Select(attrs={'class':'form-control', 'id':'type'},choices=user_type))
 
     class Meta:
         model = User
@@ -56,11 +65,15 @@ class FileForm(forms.ModelForm):
 
 
 class TeamForm(forms.ModelForm):
+    team_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Team A',}))
+    team_head = forms.ModelChoiceField(queryset=User.objects.all(), empty_label="Select Team Head", widget=forms.Select(attrs={'class':'form-control'}))
+    members = forms.ModelMultipleChoiceField(queryset=User.objects.all(), widget=Select2MultipleWidget)
+    accred = forms.ModelChoiceField(queryset=AccreditationPeriod.objects.all(), empty_label="Select Accreditation Period", widget=forms.Select(attrs={'class':'form-control'}))
+    team_role = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Team Role',}))
+
     class Meta:
         model = Team
-        fields = [
-            "team_name",
-        ]
+        fields = ('team_name', 'team_head', 'members', 'accred' , 'team_role')
 
 
 class DocumentOutlineForm(forms.ModelForm):
@@ -76,7 +89,6 @@ class DocumentOutlineItemForm(forms.ModelForm):
         Model = DocumentOutlineItem
         fields = [
             "item_title",
-            "item_type",
         ]
 
 

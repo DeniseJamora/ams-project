@@ -3,6 +3,7 @@
     <li class="breadcrumb-item active">Create Team</li>
     <!-- Breadcrumb Menu-->
     </ol>
+{{ form.media.css }}
     <!--START OF CONTENT-->
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -12,73 +13,57 @@
                         <div class="card-header">
                             <strong>Create Team <!--{{ accreditation.document_id }}--></strong>
                         </div>
+                        {% if error %}
+                        {{ error }}
+                        {% endif %}
+                        <form method="POST">
+                        {% csrf_token %}
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <i><label for="name">Team Name</label></i>
-                                                <input class="form-control" id="committeeName" name="team_name" type="text"
-                                                       placeholder="Team A">
+                                                {{ form.team_name }}
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <i><label for="name">Team Head</label></i>
-                                                <select class="form-control" name="team_head" id="team_head">
-                                                    <option value>Select User</option>
-                                                    {% for ab in users %}
-                                                        <option value="{{ ab.id }}">{{ ab }}</option>
-                                                    {% endfor %}
-                                                </select>
+                                                {{ form.team_head }}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <i><label for="name">Team Role</label></i>
+                                                {{ form.team_role }}
+                                                <!-- <input class="form-control" id="team_role" name="team_role" type="text"
+                                                       placeholder="Team Role"> -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <i><label for="name">Add Members</label></i><hr>
-                                    <div class="row">
-                                        <div class="col-sm-5 text-left">
-                                            <p>Jamora, Ivanna Denise T.</p>
-                                        </div>
-                                        <div class="col-sm-3 text-left">
-                                            <p>Faculty</p>
-                                        </div>
-                                        <div class="col-sm-3 text-left">
-                                            <p>IT Department</p>
-                                        </div>
-                                        <div class="col-sm-1 text-left">
-                                            <p><input type="checkbox" name="vehicle1" value="Bike"></p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-5 text-left">
-                                            <p>Martinez, Clifford Markus O.</p>
-                                        </div>
-                                        <div class="col-sm-3 text-left">
-                                            <p>Staff</p>
-                                        </div>
-                                        <div class="col-sm-3 text-left">
-                                            <p>ST Department</p>
-                                        </div>
-                                        <div class="col-sm-1 text-left">
-                                            <p><input type="checkbox" name="vehicle1" value="Bike"></p>
-                                        </div>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <i><label for="name">Select </label></i>
+                                    {{ form.accred }}
+                                </div>
+                                <div class="col-sm-6">
+                                    <i><label for="name">Add </label></i>
+                                    {{ form.members }}
                                 </div>
                             </div>
-                            <!-- Temporary hidden to follow-->
-                            <!-- <button class="btn btn-primary" type="button" onclick="addTeam()"> Add Team</button> -->
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-primary" type="submit"> Next</button>
                             <button class="btn btn-success" type="submit"> Save and Create Another Team</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--END OF CONTENT-->
+{{ form.media.js }}
 {% endblock %}

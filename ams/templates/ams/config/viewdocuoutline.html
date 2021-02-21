@@ -1,53 +1,109 @@
 {% extends 'base.html' %}
 {% block content %}
-          <a href="{% url 'docuoutlinelist' %"><li class="breadcrumb-item">Document Outlines</li></a>
-          <li class="breadcrumb-item active">Docu Outlines</li>
-          <!-- Breadcrumb Menu-->
-        </ol>
-<!--START OF CONTENT-->
-        <div class="container-fluid">
-          <div class="animated fadeIn">
+    <li class="breadcrumb-item active">Document Outline Name</li>
+    <!-- Breadcrumb Menu-->
+    </ol>
+    <!--START OF CONTENT-->
+    <div class="container-fluid">
+        <div class="animated fadeIn">
             <div class="row">
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-header">
-                    <strong>ABET CAC Self-Survey Report 2019</strong>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="pName">Accrediting Agency</label>
-                            <p><strong id="pName">ABET</strong></p>
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Document Outline Name <!--{{ accreditation.document_id }}--></strong>
                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label for="pCode">Document Name</label>
-                          <p><strong id="pCode">ABET CAC Self-Survey Report 2019-2020</strong></p>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row" style="margin-bottom: 15px">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" onclick="viewSubsection()" id="button">+</button>
+                                            <span style="padding-left: 25px">I. Section Area 1</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="subsection">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 50px" onclick="viewSub1()" id="btn">+</button>
+                                            <span style="padding-left: 25px">A. Sub-Section Chapter 1</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="sub1">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 100px">+</button>
+                                            <span style="padding-left: 25px">1. Inner Sub Section Level</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="subsection1">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 50px" onclick="viewSub1()" id="btn">+</button>
+                                            <span style="padding-left: 25px">A. Sub-Section Chapter 2</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px" id="subsection2">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-outline-success" type="" style="margin-left: 50px" onclick="viewSub1()" id="btn">+</button>
+                                            <span style="padding-left: 25px">A. Sub-Section Chapter 3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Temporary hidden to follow-->
+                            <!-- <button class="btn btn-primary" type="button" onclick="addTeam()"> Add Team</button> -->
                         </div>
-                      </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success" type="submit"> Edit</button>
+                        </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <br>
-                        <p><b>1.0 Introduction</b><span style="padding-left: 15px"><i>(Section)</i></span></p>
-                        <p style="padding-left: 100px">1.1 Background<span style="padding-left: 15px"><i>(Section)</i></p>
-                        <p style="padding-left: 175px">1.1.1 Computer Studies<span style="padding-left: 15px"><i>(Section)</i></p>
-                        <p style="padding-left: 175px">1.1.2 Education<span style="padding-left: 15px"><i>(Criteria)</i></p>
-                        <p><b>2.0 Objectives</b><span style="padding-left: 15px"><i>(Criteria)</i></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <button class="btn btn-primary" type="button"> <a href="createcheckoptionstfaculty.html" style="text-decoration: none; color:white;">Go Back</a></button>
-                    <button class="btn btn-primary" type="button" onclick="">Edit</button>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-<!--END OF CONTENT-->
+    </div>
+
+    <script>
+
+        document.getElementById('subsection').style.display = 'none';
+        document.getElementById('subsection1').style.display = 'none';
+        document.getElementById('subsection2').style.display = 'none';
+
+        function viewSubsection(){
+
+            var x = document.getElementById('subsection');
+            var a = document.getElementById('subsection1');
+            var b = document.getElementById('subsection2');
+            var y = document.getElementById('button');
+                if (x.style.display === 'none') {
+                    x.style.display = '';
+                    a.style.display = '';
+                    b.style.display = '';
+                    y.innerHTML = '-';
+                    } 
+                else {
+                    x.style.display = 'none';
+                    a.style.display = 'none';
+                    b.style.display = 'none';
+                    y.innerHTML = '+';
+                }
+
+        }
+    </script>
+    <script>
+
+        document.getElementById('sub1').style.display = 'none';
+
+        function viewSub1(){
+
+            var x = document.getElementById('sub1');
+            var y = document.getElementById('btn');
+                if (x.style.display === 'none') {
+                    x.style.display = '';
+                    y.innerHTML = '-';
+                    } 
+                else {
+                    x.style.display = 'none';
+                    y.innerHTML = '+';
+                }
+
+        }
+    </script>
+    <!--END OF CONTENT-->
 {% endblock %}

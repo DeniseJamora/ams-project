@@ -17,7 +17,7 @@
                           <th>Accrediting Body</th>
                           <th>Year</th>
                           <th>Degree Program</th>
-                          <th>Document</th>
+                          <th>Completed Report</th>
                           <th>Level / Result</th>
                           <th>Teams</th>
                           <th></th>
@@ -29,10 +29,10 @@
                           <td>2019</td>
                           <td>BS Information Systems</td>
                           <td>ABET CAC 2019 Self-Survey Report</td>
-                          <th>NGR</th>
+                          <td>NGR</td>
                           <td>Team A<br>Team B<br>Team C</td>
                           <td>
-                            <button class="btn btn-primary" type="submit"><a href="accreditationlist.html" style="text-decoration: none; color: white;">View</a></button>
+                            <a href="{% url 'viewcompletedreport' %}"><button class="btn btn-primary" type="submit">View Report</button></a>
                           </td>
                         </tr>
                       </tbody>

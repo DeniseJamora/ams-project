@@ -19,33 +19,17 @@
     <title>Login</title>
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Icons-->
-    <link href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="{% static 'vendors/@coreui/icons/css/coreui-icons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet">
     <!-- Main styles for this application-->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'vendors/pace-progress/css/pace.min.css' %}" rel="stylesheet">
 
     <!--PLUGINS AND OTHERS-->
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics-->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-        // Shared ID
-        gtag('config', 'UA-118965717-3');
-        // Bootstrap ID
-        gtag('config', 'UA-118965717-5');
-    </script>
+    <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+    <link href="{% static 'vendors/jquery.dataTables.min.css' %}" rel="stylesheet">
 
 </head>
 <body class="app flex-row align-items-center">
@@ -106,17 +90,8 @@
     </div>
 </div>
 <!-- CoreUI and necessary plugins-->
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/util.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-        crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+<script src="{% static 'vendors/popper.js/dist/umd/popper.js' %}"></script>
+<script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendors/@coreui/coreui/dist/js/coreui.min.js' %}"></script>
 </body>
 </html>
